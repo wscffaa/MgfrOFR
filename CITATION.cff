@@ -1,12 +1,12 @@
 cff-version: 1.2.0
 title: "MgfrOFR"
-message: "If you use this project, please cite the MgfrOFR paper."
+message: "If you use this code, please cite the MgfrOFR paper."
 type: software
 authors:
   - family-names: Cai
     given-names: Feifan
 repository-code: "https://github.com/wscffaa/MgfrOFR"
-version: "0.0.0-preview"
+version: "0.1.0"
 date-released: "2026-05-10"
 preferred-citation:
   type: article

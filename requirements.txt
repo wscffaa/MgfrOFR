@@ -1,0 +1,70 @@
+# ============================================
+# BasicOFR 依赖清单
+# ============================================
+# 注：torch/torchvision/mamba_ssm 由 setup_rtn_env.sh 单独安装
+
+# --- 核心科学计算 ---
+# NumPy 2.0 与 wandb/pandas/timm 等库不兼容，锁定 1.x
+numpy<2.0
+scipy
+Pillow
+PyYAML==6.0.3
+
+# --- 图像/视频处理 ---
+opencv_python==4.10.0.84
+opencv_python_headless==4.10.0.84
+imageio==2.34.2
+albumentations==1.4.14
+flow_vis==0.1
+scikit-image
+PyQt5==5.15.11
+
+# --- 深度学习工具 ---
+einops==0.8.1
+timm
+thop
+fvcore>=0.1.5
+pytorch_lightning==2.0.9.post0
+torchmetrics==1.2.0
+natten>=0.21.0  # 邻域注意力（ContMix 加速）
+
+# --- 小波变换 ---
+PyWavelets>=1.4.0
+pytorch_wavelets==1.3.0
+
+# --- 评价指标 (统一实现 PSNR/SSIM/LPIPS/DISTS/NIQE/BRISQUE/CLIPIQA/FID) ---
+pyiqa>=0.1.10
+
+# --- Transformer/CLIP ---
+transformers==4.36.2
+huggingface_hub==0.20.2
+openai-clip==1.0.1
+
+# --- 数据处理 ---
+pandas==2.0.3
+lmdb==1.4.1
+scikit-learn>=1.0.0
+
+# --- 配置/工具 ---
+dotmap==1.3.30
+easydict==1.10
+tqdm
+pydantic>=2,<3  # _shared/schemas.py — 核心实体类型化校验（know-054 Layer-2）
+
+# --- 实验记录 ---
+tensorboard==2.14.0
+wandb==0.16.2
+matplotlib
+seaborn==0.13.2
+
+# --- 构建工具 ---
+packaging==23.2
+setuptools==68.2.2
+wheel==0.41.2
+requests==2.31.0
+
+# --- 开发/测试 ---
+pytest==7.4.4
+
+# --- P2M Skill (PDF 论文转 Markdown) ---
+markitdown

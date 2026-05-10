@@ -1,28 +1,29 @@
-# OS / editor
-.DS_Store
-.vscode/
-.idea/
-
-# Python/runtime artifacts, kept out of preview releases
+# Python
 __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
 
-# Do not commit implementation or experiment artifacts before acceptance
-mgfrofr/
-basicofr/
-basicsr/
-options/
-scripts/
-tests/
+# Runtime outputs
 experiments/
 results/
 tb_logger/
 test_results/
-pretrained/
+logs/
+
+# Weights and datasets
+pretrained/*.pth
+pretrained/*.pt
+pretrained/*.state
+pretrained/*.safetensors
 datasets/
 *.pth
 *.pt
 *.state
 *.safetensors
+
+# Local/IDE
+.DS_Store
+.env
+.vscode/
+.idea/

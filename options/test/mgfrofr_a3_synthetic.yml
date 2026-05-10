@@ -1,0 +1,62 @@
+name: mgfrofr_a3_synthetic
+model_type: RTNGANModel
+scale: 1
+num_gpu: 1
+manual_seed: 2021
+dist: false
+find_unused_parameters: true
+
+datasets:
+  test:
+    name: REDS_synthetic
+    type: Film_dataset_1
+    dataroot_gt: datasets/OldFilmRestoration/val/REDS/GT/val_sharp
+    dataroot_lq: datasets/OldFilmRestoration/val/REDS/LQ/val_sharp_degraded
+    num_frame: -1
+    cache_data: true
+    normalizing: true
+    io_backend:
+      type: disk
+
+network_g:
+  type: MgfrOFR
+  num_feat: 16
+  num_block: 6
+  flow_type: raft
+  use_checkpoint: true
+  mamba_embed_dim: 64
+  mamba_depths: [2, 2, 2]
+  mamba_d_state: 16
+  mamba_mlp_ratio: 1.2
+  mamba_drop_path: 0.0
+  use_mgfe: true
+  mgfe_num_tokens: 12
+  mgfe_num_branches: 3
+  mgfe_token_fusion: max
+
+val:
+  save_img: true
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: true
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: true
+    lpips:
+      type: calculate_lpips
+      crop_border: 0
+      convert_to_grayscale: true
+    dists:
+      type: calculate_dists
+      crop_border: 0
+      convert_to_grayscale: true
+
+logger:
+  print_freq: 100
+
+path:
+  pretrain_network_g: pretrained/mgfrofr_a3_full.pth
+  results_root: results
