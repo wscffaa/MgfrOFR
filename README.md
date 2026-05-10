@@ -8,7 +8,7 @@ Official implementation of **Multi-Granularity Feature Decomposition with Rankin
 
 MgfrOFR is an old-film restoration framework built on a recurrent video restoration backbone. It introduces multi-granularity feature decomposition for degradation-aware restoration and ranking-aware temporal regularization for more stable video recovery.
 
-> Paper, pretrained weights, and benchmark links will be updated after the final camera-ready/release assets are frozen.
+> Paper and pretrained weight links will be updated after the final camera-ready/release assets are frozen. The source code, evaluation scripts, and configuration files are already available in this repository.
 
 ## News
 
@@ -22,12 +22,72 @@ MgfrOFR is an old-film restoration framework built on a recurrent video restorat
 - **Reproducible configs**: includes full-model and ablation configs for training and testing.
 - **Standalone release**: packages the required `mgfrofr`, `basicofr`, and `basicsr` code paths in one repository.
 
+## Method Overview
+
+<p align="center">
+  <img src="assets/figures/architecture.png" width="92%" alt="MgfrOFR architecture">
+</p>
+
+<p align="center"><b>MgfrOFR architecture.</b> The model extends a recurrent Mamba-based old-film restoration backbone with multi-granularity feature extraction and training-time ranking-aware regularization.</p>
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="assets/figures/mgfe_module.png" width="100%" alt="MGFE module"><br>
+      <b>MGFE.</b> Multi-granularity restoration-token branches summarize coarse-to-fine degradation cues and recalibrate propagated features.
+    </td>
+    <td align="center" width="50%">
+      <img src="assets/figures/ratr_module.png" width="100%" alt="RATR module"><br>
+      <b>RATR.</b> Ranking-aware triplet regularization discourages branch collapse and promotes complementary temporal descriptors during training.
+    </td>
+  </tr>
+</table>
+
+## Qualitative Results
+
+<p align="center">
+  <img src="assets/figures/qualitative_synthetic_readme.jpg" width="96%" alt="Synthetic REDS qualitative comparison">
+</p>
+
+<p align="center"><b>Synthetic REDS-style old-film restoration.</b> MgfrOFR improves structural recovery and suppresses local old-film artifacts compared with the recurrent baseline.</p>
+
+<p align="center">
+  <img src="assets/figures/qualitative_realworld_readme.jpg" width="82%" alt="Real-world SRWOV qualitative comparison">
+</p>
+
+<p align="center"><b>Real-world archival footage.</b> MgfrOFR produces visually cleaner restorations on real-world SRWOV clips without ground-truth supervision at test time.</p>
+
+## Experimental Analysis
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="assets/figures/ablation_qualitative_readme.jpg" width="100%" alt="Ablation qualitative comparison"><br>
+      <b>Ablation.</b> MGFE and RATR provide complementary improvements over the baseline.
+    </td>
+    <td align="center" width="50%">
+      <img src="assets/figures/sensitivity_readme.png" width="100%" alt="Sensitivity analysis"><br>
+      <b>Sensitivity.</b> Token/branch choices are stable around the default full-model setting.
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="assets/figures/convergence.png" width="100%" alt="Training convergence"><br>
+      <b>Convergence.</b> The full model preserves stable optimization behavior.
+    </td>
+    <td align="center" width="50%">
+      <img src="assets/figures/branch_similarity.png" width="100%" alt="Branch similarity"><br>
+      <b>Branch diversity.</b> RATR reduces redundant branch behavior and encourages multi-granularity specialization.
+    </td>
+  </tr>
+</table>
+
 ## TODO
 
 - [ ] Add paper link.
 - [ ] Add pretrained model download URLs and SHA256 checksums.
 - [ ] Add final benchmark tables after metric provenance is frozen.
-- [ ] Add qualitative examples and teaser figure.
+- [x] Add qualitative examples and method figures.
 
 ## Repository Structure
 
