@@ -1,0 +1,3 @@
+fix_id,date,category,severity,description,file_path,old_value,new_value,status,knowledge_tag
+F001,2026-04-12,scaffold,P3,__pycache__ 残留清理 (3处),archs/ + models/,存在 .pyc,已删除,fixed,pycache-cleanup
+F002,2026-04-12,scaffold,P2,无 issues.csv,项目根,不存在,Paper阶段可选,advisory,issues-optional

@@ -1,0 +1,418 @@
+{
+  "schema_version": "ablation_matrix/v2",
+  "project_id": "001-reidmamba",
+  "baseline": "MambaOFR",
+  "method_name": "MGFROFR",
+  "arch_class": "MgfrOFR",
+  "fixed_variables": {
+    "num_feat": 16,
+    "num_block": 6,
+    "mamba_embed_dim": 64,
+    "mamba_d_state": 16,
+    "mamba_mlp_ratio": 1.2,
+    "flow_type": "raft",
+    "_source": "Exp/options/train/mgfrofr_a0.yml network_g 字段（baseline MambaOFRNet 超参）"
+  },
+  "axes": [
+    {
+      "id": "MGFE",
+      "name": "Multi-Granularity Feature Extractor",
+      "description": "在 MambaOFR body 后引入 restoration token 多分支头。"
+    },
+    {
+      "id": "RATR",
+      "name": "Ranking-Aware Triplet Regularization",
+      "description": "对多分支特征施加可微 Kendall's Tau 排序多样性约束。"
+    }
+  ],
+  "variants": [
+    {
+      "id": "A0",
+      "name": "baseline_mambaofr",
+      "config": "mgfrofr_a0.yml",
+      "role": "baseline",
+      "comparison_target": null,
+      "params": {
+        "MGFE": false,
+        "RATR": false,
+        "network_g.type": "MambaOFRNet"
+      },
+      "protocol_note": "A0 为 frozen canonical pretrained baseline（model_type=RTNGANModel, MambaOFRNet, strict_load_g=true），复用 baselines/trained/mambaofr_reds_16，不做同协议从头重训；A1-A3 为 MGFROFRModel + strict_load_g=false 自 A0 warm-start。论文须诚实表述 A0 为 pretrained baseline 而非同协议重训对照。",
+      "tests": "提供纯 MambaOFR 基线参照（frozen pretrained），用于所有 ablation 的定量对照与统一 warm-start 源。",
+      "risk": "low"
+    },
+    {
+      "id": "A1",
+      "name": "plus_mgfe",
+      "config": "mgfrofr_a1.yml",
+      "role": "ablation",
+      "comparison_target": "A0",
+      "params": {
+        "MGFE": true,
+        "RATR": false,
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 12,
+        "mgfe_num_branches": 3,
+        "train.use_ratr": false
+      },
+      "tests": "隔离验证 MGFE 的结构收益（MGFE 单独加入带来的 PSNR 增量）。",
+      "risk": "medium"
+    },
+    {
+      "id": "A2",
+      "name": "plus_ratr",
+      "config": "mgfrofr_a2.yml",
+      "role": "ablation",
+      "comparison_target": "A0",
+      "params": {
+        "MGFE": false,
+        "RATR": true,
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": false,
+        "train.use_ratr": true
+      },
+      "tests": "隔离验证 RATR 的训练期正则收益。注：A2 为 partial architectural control——use_mgfe=false 仅关闭 channel-wise recalibration，MGFE 分支描述子仍计算并作为 RATR 的 ranking 目标（对齐论文 results.tex ablation 说明）。",
+      "risk": "medium"
+    },
+    {
+      "id": "A3",
+      "name": "full_mgfrofr",
+      "config": "mgfrofr_a3.yml",
+      "role": "full",
+      "comparison_target": "A0",
+      "params": {
+        "MGFE": true,
+        "RATR": true,
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 12,
+        "mgfe_num_branches": 3,
+        "train.use_ratr": true
+      },
+      "tests": "验证 MGFE 与 RATR 的组合收益，是完整方法配置；对照 A1/A2 检验互补性。",
+      "risk": "medium"
+    },
+    {
+      "id": "G1",
+      "name": "granularity_low_4t_1b",
+      "config": "mgfrofr_g1.yml",
+      "role": "auxiliary",
+      "comparison_target": "A3",
+      "params": {
+        "MGFE": true,
+        "RATR": true,
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 4,
+        "mgfe_num_branches": 1,
+        "train.use_ratr": true
+      },
+      "tests": "MGFE 粒度敏感性 (low)：4 tokens / 1 branch 下 MGFE 是否退化到不如 A1 的多 token 多分支效果。注意：branches=1 时 RATR 失效（RATRLoss 对 g<2 返回 0），G1 实为 low-granularity without effective RATR，不可作为 RATR-on-granularity 证据。",
+      "risk": "low"
+    },
+    {
+      "id": "G2",
+      "name": "granularity_mid_8t_2b",
+      "config": "mgfrofr_g2.yml",
+      "role": "auxiliary",
+      "comparison_target": "A3",
+      "params": {
+        "MGFE": true,
+        "RATR": true,
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 8,
+        "mgfe_num_branches": 2,
+        "train.use_ratr": true
+      },
+      "tests": "MGFE 粒度敏感性 (mid)：8 tokens / 2 branch 介于 G1 与 A3 之间，验证 tokens/branches 对性能的连续影响。",
+      "risk": "low"
+    },
+    {
+      "id": "G4",
+      "name": "granularity_high_16t_4b",
+      "config": "mgfrofr_g4.yml",
+      "role": "auxiliary",
+      "comparison_target": "A3",
+      "params": {
+        "MGFE": true,
+        "RATR": true,
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 16,
+        "mgfe_num_branches": 4,
+        "train.use_ratr": true
+      },
+      "tests": "MGFE 粒度扩展 (high)：16 tokens / 4 branches，超出原始 ablation matrix 的更大粒度探索，对照 A3/G1/G2。",
+      "risk": "low"
+    },
+    {
+      "id": "F1",
+      "name": "fusion_avg",
+      "config": "mgfrofr_f1.yml",
+      "role": "auxiliary",
+      "comparison_target": "A3",
+      "status": "pending",
+      "depends_on": "D2 decision; 预生成不开跑",
+      "params": {
+        "MGFE": true,
+        "RATR": true,
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 12,
+        "mgfe_num_branches": 3,
+        "mgfe_token_fusion": "avg",
+        "train.use_ratr": true
+      },
+      "tests": "D4 fusion 设计消融：token 池化 avg vs A3(max)，单变量隔离，验证多粒度 token 融合方式对性能的影响。",
+      "risk": "low"
+    },
+    {
+      "id": "R1",
+      "name": "ranking_tau005",
+      "config": "mgfrofr_r1.yml",
+      "role": "auxiliary",
+      "comparison_target": "A3",
+      "status": "pending",
+      "depends_on": "D2 decision; 预生成不开跑",
+      "params": {
+        "MGFE": true,
+        "RATR": true,
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 12,
+        "mgfe_num_branches": 3,
+        "mgfe_token_fusion": "max",
+        "train.use_ratr": true,
+        "train.ratr_opt.tau": 0.05
+      },
+      "tests": "D4 ranking 设计消融：RATR tau=0.05 vs A3(tau=0.1)，单变量隔离，验证可微排序温度（锐度）对分支多样性正则的影响。",
+      "risk": "low"
+    },
+    {
+      "id": "T1",
+      "name": "token_24t",
+      "config": "mgfrofr_t1.yml",
+      "role": "auxiliary",
+      "comparison_target": "A3",
+      "status": "pending",
+      "depends_on": "D2 decision; 预生成不开跑",
+      "params": {
+        "MGFE": true,
+        "RATR": true,
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 24,
+        "mgfe_num_branches": 3,
+        "mgfe_token_fusion": "max",
+        "train.use_ratr": true
+      },
+      "tests": "D4 token 设计消融：mgfe_num_tokens=24 vs A3(12t)，固定 branches=3 隔离纯 token 数量影响（区别于 G 系列 tokens+branches 联动）。",
+      "risk": "low"
+    },
+    {
+      "id": "B1",
+      "name": "branch_4b",
+      "config": "mgfrofr_b1.yml",
+      "role": "auxiliary",
+      "comparison_target": "A3",
+      "status": "pending",
+      "depends_on": "D2 decision; 预生成不开跑",
+      "params": {
+        "MGFE": true,
+        "RATR": true,
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 12,
+        "mgfe_num_branches": 4,
+        "mgfe_token_fusion": "max",
+        "train.use_ratr": true
+      },
+      "tests": "粒度正交对照：固定 tokens=12 只变 branches 3->4 vs A3(3b)，隔离纯 branch 数量影响（与 T1 固定 branches 变 tokens 正交，补全 G 系列 tokens/branches 耦合 sweep）。",
+      "risk": "low"
+    },
+    {
+      "id": "M1",
+      "name": "ranking_metric_pearson",
+      "config": "mgfrofr_m1.yml",
+      "role": "auxiliary",
+      "comparison_target": "A3",
+      "status": "active",
+      "reviewer_ref": "R2-3",
+      "params": {
+        "MGFE": true,
+        "RATR": true,
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 12,
+        "mgfe_num_branches": 3,
+        "mgfe_token_fusion": "max",
+        "train.use_ratr": true,
+        "train.ratr_opt.type": "RATRPearsonLoss",
+        "train.ratr_opt.tau": 0.1
+      },
+      "tests": "R2-3 ranking metric 消融：RATR 排序相关度量换 Pearson (RATRPearsonLoss) 对照 A3 的 Kendall's Tau (RATRLoss)，固定 12t/3b/max 单变量隔离。",
+      "risk": "low"
+    },
+    {
+      "id": "I1",
+      "name": "token_insertion_prepend",
+      "config": "mgfrofr_i1.yml",
+      "role": "auxiliary",
+      "comparison_target": "A3",
+      "status": "pending",
+      "reviewer_ref": "R2-3",
+      "params": {
+        "MGFE": true,
+        "RATR": true,
+        "network_g.type": "MgfrOFRInsertPrepend",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 12,
+        "mgfe_num_branches": 3,
+        "mgfe_token_fusion": "max",
+        "train.use_ratr": true
+      },
+      "tests": "R2-3 token insertion strategy 消融：restoration token 以 prepend 方式插入 (arch MgfrOFRInsertPrepend) 对照 A3 默认插入算子，单变量隔离。",
+      "risk": "low"
+    },
+    {
+      "id": "AG1",
+      "name": "branch_aggregation_max",
+      "config": "mgfrofr_ag1.yml",
+      "role": "auxiliary",
+      "comparison_target": "A3",
+      "status": "pending",
+      "reviewer_ref": "R2-3",
+      "params": {
+        "MGFE": true,
+        "RATR": true,
+        "network_g.type": "MgfrOFRAggMax",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 12,
+        "mgfe_num_branches": 3,
+        "mgfe_token_fusion": "max",
+        "train.use_ratr": true
+      },
+      "tests": "R2-3 branch aggregation strategy 消融：分支聚合采用 max 聚合 arch (MgfrOFRAggMax) 对照 A3 默认分支聚合，单变量隔离（区别于 token_fusion 的 token 级池化）。",
+      "risk": "low"
+    },
+    {
+      "id": "D1",
+      "name": "diversity_branch_decorrelation",
+      "config": "mgfrofr_d1.yml",
+      "role": "auxiliary",
+      "comparison_target": "A3",
+      "status": "active",
+      "reviewer_ref": "R2-3",
+      "params": {
+        "MGFE": true,
+        "RATR": true,
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "mgfe_num_tokens": 12,
+        "mgfe_num_branches": 3,
+        "mgfe_token_fusion": "max",
+        "train.use_ratr": true,
+        "train.ratr_opt.type": "BranchDiversityLoss",
+        "train.ratr_opt.loss_weight": 0.1
+      },
+      "tests": "R2-3 diversity regularization loss 消融：用 BranchDiversityLoss (跨分支 Gram 去相关) 替代 RATRLoss 排序正则，验证替代多样性损失对分支互补性的作用；外层 ratr_loss_weight=1.0、effective rho=0.1。",
+      "risk": "low"
+    }
+  ],
+  "ordering": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "G1",
+    "G2",
+    "G4",
+    "F1",
+    "R1",
+    "T1",
+    "B1",
+    "M1",
+    "I1",
+    "AG1",
+    "D1"
+  ],
+  "comparison_chain": [
+    "A0 vs A1: 验证 MGFE 模块的独立贡献（纯 MambaOFR → +MGFE 的 PSNR 增益）。",
+    "A0 vs A2: RATR partial control（A2 仍含 MGFE 分支描述子 head，仅关闭通道重标定 recalibration；不可解读为 RATR 独立增益，参见 A2 tests 说明）。",
+    "A1 vs A3: RATR 在完整 MGFE 之上的叠加贡献（RATR-on-MGFE 主证据；A1=MGFE 无 RATR → A3=MGFE+RATR）。",
+    "A2 vs A3: 通道重标定 recalibration 的增量贡献（A2 已含 MGFE 分支描述子 + RATR，A3 额外开启 recalibration；非纯 MGFE 增量）。",
+    "A0 vs A3: 完整方法对 baseline 的总增益。",
+    "A3 vs G1: MGFE 粒度敏感性——A3 基准粒度 (12t/3b) 对比最小粒度 G1 (4t/1b)；注意 G1 branches=1 时 RATR 失效（RATRLoss 对 g<2 返回 0），G1 实为 low-granularity without effective RATR。",
+    "A3 vs G2: MGFE 粒度敏感性——中间粒度 (8 tokens / 2 branches) 验证 tokens/branches 对性能的连续影响（注：G 系列 tokens 与 branches 联动，非单一变量隔离）。",
+    "G1 vs G2 vs A3 vs G4: MGFE 粒度四档耦合对照 (4t1b / 8t2b / 12t3b / 16t4b)，G4=16t/4b 为最大粒度，用于敏感性分析图表（Fig8 in Paper）。",
+    "A3 vs F1: D4 fusion 设计——token 融合 max vs avg。",
+    "A3 vs R1: D4 ranking 设计——RATR 排序温度 tau 0.1 vs 0.05。",
+    "A3 vs T1: D4 token 设计——固定 3 branches 下 token 数量 12 vs 24。",
+    "A3 vs B1: 粒度正交对照——固定 12 tokens 下 branches 3 vs 4（与 T1 正交，补全 G 系列耦合 sweep）。",
+    "A3 vs M1: R2-3 ranking metric——RATR 排序度量 Kendall's Tau vs Pearson。",
+    "A3 vs I1: R2-3 token insertion strategy——默认插入 vs prepend(MgfrOFRInsertPrepend)。",
+    "A3 vs AG1: R2-3 branch aggregation strategy——默认聚合 vs max 聚合(MgfrOFRAggMax)。",
+    "A3 vs D1: R2-3 diversity regularization loss——RATR 排序正则 vs BranchDiversityLoss 跨分支去相关。"
+  ],
+  "gates": [
+    "A1/A3 必须验证 `MGFE` 接入后 `B,T,C,H,W` 输入输出合同不变。",
+    "A2/A3 必须验证 `RATR` 标量 loss 有限且可反向传播。",
+    "A3 必须额外记录多分支排序相关性是否低于 A1，避免多分支退化成重复特征。",
+    "G1/G2 与 A3 必须共享 fixed_variables（num_feat/num_block/embed_dim），仅 mgfe_num_tokens/mgfe_num_branches 变动。",
+    "G1 (branches=1) 的 RATR 恒为 0（RATRLoss g<2 返回 0）：解读 G1 时必须排除 RATR 效应；G 系列 tokens/branches 为耦合变量，非单一隔离。"
+  ],
+  "multi_seed_policy": {
+    "_schema": "multi_seed/v1",
+    "purpose": "（已取消）D3 统计显著性曾计划对组件消融核心变体多 seed 复跑、主结果报 mean±std。",
+    "status": "cancelled",
+    "cancelled_by": "Paper/writing/review/round1/revision-execution-plan.md (D3 取消, :85/:142)",
+    "cancellation_reason": "现稿 per-clip Wilcoxon 已覆盖 LPIPS/DISTS；multi-seed 打偏且 MambaOFR 单跑无显著性检验先例。改补 effect size (rank-biserial/Cliff's δ) + per-clip Δ 分布，不做多 seed。",
+    "seeds": [2021],
+    "replicated_variants": [],
+    "excluded": {
+      "A1/A2/A3": "D3 取消后回退单 seed (2021)；seed2022/2023 预生成配置已清理",
+      "A0": "frozen canonical pretrained baseline，单点参照，不复跑",
+      "G1/G2/G4": "粒度耦合 sweep（sensitivity 证据），单 seed",
+      "B1/F1/R1/T1": "粒度正交 / D4 设计敏感性，单 seed"
+    },
+    "configs": {
+      "A1": ["mgfrofr_a1.yml"],
+      "A2": ["mgfrofr_a2.yml"],
+      "A3": ["mgfrofr_a3.yml"]
+    },
+    "reporting": "单 seed (2021) 主结果；统计显著性用 per-clip Wilcoxon (LPIPS/DISTS) + effect size，不做多 seed mean±std。"
+  },
+  "reviewer_checklist": {
+    "_schema": "reviewer_readiness/v1",
+    "_baseline_ref": "papers/Refs/MambaOFR (CVPR 2025)",
+    "comparison_methods": ["DeOldify", "OldPhoto", "DeepRemaster", "RTN", "VRT", "RVRT", "ShiftNet"],
+    "complexity_compare": {
+      "required": true,
+      "metrics": ["params", "flops", "runtime", "peak_mem", "fps"],
+      "tool": "framework/basicofr/utils/complexity.py (单模型 CLI, --paper 论文格式; 2026-06-20 已扩展 peak_mem_gb + fps) + framework/scripts/batch_complexity.py (批量→YAML)",
+      "baseline_data": "memory/knowledge/know-006-复杂度分析工具与基准.md (RTN/RRTN/MambaOFR/RemasterNet 已验证 Params/FLOPs/Runtime 基准, L40 1x7x3x256x256 per-frame)",
+      "note": "MambaOFR 论文未提供复杂度对比；本项目复用现有 complexity 工具补强作为加分项（实际测量在 GPU 服务器跑，Mac 仅作工具可用性校验）。2026-06-20 R2-5 补充 peak GPU memory + FPS：complexity.py 已扩展 measure_peak_memory + fps 字段（TDD 见 framework/basicofr/utils/test_complexity.py）。"
+    },
+    "test_sets": {
+      "synthetic_full_reference": ["SRWOV-synthetic"],
+      "realworld_no_reference": ["SRWOV-realworld"],
+      "degradation_levels": ["mild", "moderate", "extreme"],
+      "extended": ["REDS", "RealFilm", "DAVIS", "RealMovie-TestFR", "RealMovie-TestNR-368p"]
+    },
+    "metrics": {
+      "full_reference": ["psnr", "ssim", "lpips", "dists"],
+      "no_reference": ["niqe", "brisque", "clipiqa_plus"]
+    },
+    "warm_start_policy": {
+      "source": "baselines/trained/mambaofr_reds_16/models/net_g_best.pth",
+      "consistent_across_ablation_group": true,
+      "note": "同一消融组所有变体必须一致 warm-start，保证公平对比（know-033/034）。"
+    },
+    "ablation_coverage": {
+      "module_ablation": ["A0 baseline", "A1 +MGFE", "A2 +RATR", "A3 +MGFE+RATR full"],
+      "hyperparam_sweep": ["MGFE granularity: G1(4t/1b), G2(8t/2b), A3(12t/3b)=G3 slot, G4(16t/4b)"]
+    }
+  }
+}

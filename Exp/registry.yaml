@@ -1,0 +1,1304 @@
+schema_version: ofr_experiment_registry/v1
+project_id: 001-reidmamba
+source:
+  type: ablation-matrix
+  path: projects/001-reidmamba/Idea/ablation_matrix.json
+created_at: '2026-05-06T19:15:50+08:00'
+updated_at: '2026-07-01T02:02:42+08:00'
+updated_by: ofr-exp-test.launch
+handoff_status: recovery_launched
+paper_model_selection:
+  status: direction_frozen
+  main_model: F1
+  decided_at: '2026-06-26'
+  source: projects/001-reidmamba/Paper/writing/review/round1/d2-decision-record-20260626.md
+  note: F1(MGFE+RATR, avg fusion) is the paper main model; A3(max fusion) is retained
+    only as a fusion-ablation control.
+  demoted:
+    A3: fusion_ablation
+variants:
+- id: A0
+  name: baseline_mambaofr
+  role: baseline
+  config: Exp/options/train/mgfrofr_a0.yml
+  params:
+    MGFE: false
+    RATR: false
+    network_g.type: MambaOFRNet
+  description: 提供纯 MambaOFR 基线参照，用于所有 ablation 的定量对照。
+- id: A1
+  name: plus_mgfe
+  role: ablation
+  config: Exp/options/train/mgfrofr_a1.yml
+  comparison_target: A0
+  params:
+    MGFE: true
+    RATR: false
+    network_g.type: MgfrOFR
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 12
+    mgfe_num_branches: 3
+    train.use_ratr: false
+  description: 隔离验证 MGFE 的结构收益（MGFE 单独加入带来的 PSNR 增量）。
+  test_results:
+    status: done
+    updated_at: '2026-06-26T18:34:09+08:00'
+    synthetic:
+      psnr: 27.7451
+      ssim: 0.9219
+      lpips: 0.0651
+      dists: 0.0702
+    davis:
+      psnr: 26.9543
+      ssim: 0.9051
+      lpips: 0.0945
+      dists: 0.092
+    realworld:
+      niqe: 5.366
+      brisque: 24.6559
+      clipiqa: 0.4303
+- id: A2
+  name: plus_ratr
+  role: ablation
+  config: Exp/options/train/mgfrofr_a2.yml
+  comparison_target: A0
+  params:
+    MGFE: false
+    RATR: true
+    network_g.type: MgfrOFR
+    network_g.use_mgfe: false
+    train.use_ratr: true
+  description: 隔离验证 RATR 的训练期正则收益（无 MGFE 时 RATR 是否仍带来改进）。
+  test_results:
+    status: done
+    updated_at: '2026-06-26T18:34:09+08:00'
+    synthetic:
+      psnr: 27.7176
+      ssim: 0.9246
+      lpips: 0.0646
+      dists: 0.0696
+    davis:
+      psnr: 26.8719
+      ssim: 0.9053
+      lpips: 0.0952
+      dists: 0.0926
+    realworld:
+      niqe: 5.1951
+      brisque: 27.1824
+      clipiqa: 0.4298
+- id: A3
+  name: full_mgfrofr
+  role: fusion_ablation
+  config: Exp/options/train/mgfrofr_a3.yml
+  comparison_target: A0
+  params:
+    MGFE: true
+    RATR: true
+    network_g.type: MgfrOFR
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 12
+    mgfe_num_branches: 3
+    train.use_ratr: true
+  description: D2 后降为 max-fusion 消融对照；保留用于解释 A3(max) 负协同与 F1(avg) 主模型选择。
+  test_results:
+    status: done
+    updated_at: '2026-06-26T18:34:09+08:00'
+    synthetic:
+      psnr: 27.1696
+      ssim: 0.9168
+      lpips: 0.074
+      dists: 0.0773
+    davis:
+      psnr: 25.9049
+      ssim: 0.8941
+      lpips: 0.105
+      dists: 0.0993
+    realworld:
+      niqe: 5.3626
+      brisque: 29.2816
+      clipiqa: 0.4433
+- id: G1
+  name: granularity_low_4t_1b
+  role: auxiliary
+  config: Exp/options/train/mgfrofr_g1.yml
+  comparison_target: A3
+  params:
+    MGFE: true
+    RATR: true
+    network_g.type: MgfrOFR
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 4
+    mgfe_num_branches: 1
+    train.use_ratr: true
+  description: MGFE 粒度敏感性 (low)：4 tokens / 1 branch，验证最小粒度下 MGFE 是否退化；注意 G=1 时 RATR
+    无实际作用。
+  test_results:
+    status: done
+    updated_at: '2026-06-30T14:39:14+08:00'
+    source: L40 test logs + RealFilm_SRWOV NR postprocess 2026-06-30
+    checkpoint: Exp/experiments/mgfrofr_g1/models/net_g_180000.pth
+    checkpoint_sha256: d9b966e9f93d67998d4d6127a02c323785d0a453fd61b75e5f097a0a5e111da5
+    evidence:
+      synthetic_log: Exp/results_best_g1/mgfrofr_g1_reds/test_mgfrofr_g1_reds_20260628_230004.log
+      davis_log: Exp/results_best_g1/mgfrofr_g1_davis/test_mgfrofr_g1_davis_20260629_000442.log
+      realworld_log: Exp/results_best_g1/mgfrofr_g1_srwov/test_mgfrofr_g1_srwov_20260629_011722.log
+      realworld_nr_json: Exp/results_best_g1/mgfrofr_g1_srwov/nr_metrics.json
+      provenance_note: G1 test logs record path.results_root under results_best_g4,
+        but evidence files and outputs are under results_best_g1.
+    synthetic:
+      psnr: 27.9485
+      ssim: 0.9263
+      lpips: 0.2153
+      dists: 0.1554
+    davis:
+      psnr: 26.7395
+      ssim: 0.9069
+      lpips: 0.092
+      dists: 0.0906
+    realworld:
+      niqe: 5.3346
+      brisque: 27.4808
+      clipiqa: 0.3996
+- id: G2
+  name: granularity_mid_8t_2b
+  role: auxiliary
+  config: Exp/options/train/mgfrofr_g2.yml
+  comparison_target: A3
+  params:
+    MGFE: true
+    RATR: true
+    network_g.type: MgfrOFR
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 8
+    mgfe_num_branches: 2
+    train.use_ratr: true
+  description: MGFE 粒度敏感性 (mid)：8 tokens / 2 branches 介于 G1 与 A3 之间，验证 tokens/branches
+    对性能的连续影响。
+  test_results:
+    status: done
+    updated_at: '2026-06-30T14:39:14+08:00'
+    source: L40 test logs + RealFilm_SRWOV NR postprocess 2026-06-30
+    checkpoint: Exp/experiments/mgfrofr_g2/models/net_g_180000.pth
+    checkpoint_sha256: aa270867f7bc7a099fbf986acb5ec8d9c5ff91f523d406637fb0cd623ab7d59a
+    evidence:
+      synthetic_log: Exp/results_best_g2/mgfrofr_g2_reds/test_mgfrofr_g2_reds_20260629_023650.log
+      davis_log: Exp/results_best_g2/mgfrofr_g2_davis/test_mgfrofr_g2_davis_20260629_034227.log
+      realworld_log: Exp/results_best_g2/mgfrofr_g2_srwov/test_mgfrofr_g2_srwov_20260629_045508.log
+      realworld_nr_json: Exp/results_best_g2/mgfrofr_g2_srwov/nr_metrics.json
+    synthetic:
+      psnr: 27.4874
+      ssim: 0.9211
+      lpips: 0.2162
+      dists: 0.1557
+    davis:
+      psnr: 26.6758
+      ssim: 0.9023
+      lpips: 0.0941
+      dists: 0.0939
+    realworld:
+      niqe: 5.317
+      brisque: 23.7837
+      clipiqa: 0.4115
+- id: G4
+  name: granularity_high_16t_4b
+  role: auxiliary
+  config: Exp/options/train/mgfrofr_g4.yml
+  comparison_target: A3
+  params:
+    MGFE: true
+    RATR: true
+    network_g.type: MgfrOFR
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 16
+    mgfe_num_branches: 4
+    train.use_ratr: true
+  description: MGFE 粒度扩展 (high)：16 tokens / 4 branches，超出原始 ablation matrix 的更大粒度探索，对照
+    A3/G1/G2 使用。
+  test_results:
+    status: done
+    updated_at: '2026-06-30T14:39:14+08:00'
+    source: L40 test logs + RealFilm_SRWOV NR postprocess 2026-06-30
+    checkpoint: Exp/experiments/mgfrofr_g4/models/net_g_155000.pth
+    checkpoint_sha256: 2dbe31c237cde19a2ae57c91712f6daedd2184b126f7aee5c90f28322fb7be58
+    evidence:
+      synthetic_log: Exp/results_best_g4/mgfrofr_g4_reds/test_mgfrofr_g4_reds_20260628_104202.log
+      davis_log: Exp/results_best_g4/mgfrofr_g4_davis/test_mgfrofr_g4_davis_20260628_114754.log
+      realworld_log: Exp/results_best_g4/mgfrofr_g4_srwov/test_mgfrofr_g4_srwov_20260628_141601.log
+      realworld_nr_json: Exp/results_best_g4/mgfrofr_g4_srwov/nr_metrics.json
+      provenance_note: G4 REDS/DAVIS logs record results_root as mgfrofr_g4_synthetic;
+        metrics are taken from the log summaries.
+    synthetic:
+      psnr: 27.5312
+      ssim: 0.9197
+      lpips: 0.2169
+      dists: 0.1565
+    davis:
+      psnr: 26.3607
+      ssim: 0.9008
+      lpips: 0.0976
+      dists: 0.0945
+    realworld:
+      niqe: 5.2675
+      brisque: 25.3134
+      clipiqa: 0.4083
+- id: F1
+  name: fusion_avg
+  role: full
+  config: Exp/options/train/mgfrofr_f1.yml
+  comparison_target: A3
+  params:
+    MGFE: true
+    RATR: true
+    network_g.type: MgfrOFR
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 12
+    mgfe_num_branches: 3
+    mgfe_token_fusion: avg
+    train.use_ratr: true
+  description: D2 后升为论文主模型：MGFE+RATR with average fusion；A3(max fusion) 仅作为融合策略消融对照。
+  test_results:
+    status: done
+    updated_at: '2026-06-26T18:34:09+08:00'
+    synthetic:
+      psnr: 27.8615
+      ssim: 0.9255
+      lpips: 0.06
+      dists: 0.0656
+    davis:
+      psnr: 26.5488
+      ssim: 0.9064
+      lpips: 0.0891
+      dists: 0.0883
+    realworld:
+      niqe: 5.1233
+      brisque: 24.7942
+      clipiqa: 0.4092
+- id: B1
+  name: branches_4
+  role: auxiliary
+  config: Exp/options/train/mgfrofr_b1.yml
+  comparison_target: A3
+  params:
+    MGFE: true
+    RATR: true
+    network_g.type: MgfrOFR
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 12
+    mgfe_num_branches: 4
+    mgfe_token_fusion: max
+    train.use_ratr: true
+  description: MGFE 分支数正交消融：固定 12 tokens，branches 4 对照 A3 的 3，隔离纯分支数量影响。
+  test_results:
+    status: partial
+    updated_at: '2026-06-30T14:39:14+08:00'
+    source: a100 REDS_synthetic + RealFilm_SRWOV test log summary
+    scope_note: DAVIS_synthetic is not present in top-level test_results; use only
+      for REDS_synthetic + RealFilm_SRWOV until DAVIS is measured.
+    synthetic:
+      psnr: 27.3207
+      ssim: 0.9212
+      lpips: 0.0696
+      dists: 0.0748
+    realworld:
+      niqe: 5.2689
+      brisque: 27.4512
+      clipiqa: 0.4256
+- id: T1
+  name: tokens_24
+  role: auxiliary
+  config: Exp/options/train/mgfrofr_t1.yml
+  comparison_target: A3
+  params:
+    MGFE: true
+    RATR: true
+    network_g.type: MgfrOFR
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 24
+    mgfe_num_branches: 3
+    mgfe_token_fusion: max
+    train.use_ratr: true
+  description: MGFE token 数消融：固定 3 branches，tokens 24 对照 A3 的 12，隔离纯 token 数量影响。
+  test_results:
+    status: partial
+    updated_at: '2026-06-30T14:39:14+08:00'
+    source: a100 REDS_synthetic + RealFilm_SRWOV test log summary
+    scope_note: DAVIS_synthetic is not present in top-level test_results; use only
+      for REDS_synthetic + RealFilm_SRWOV until DAVIS is measured.
+    synthetic:
+      psnr: 27.2079
+      ssim: 0.9149
+      lpips: 0.0727
+      dists: 0.0774
+    realworld:
+      niqe: 5.3104
+      brisque: 25.5897
+      clipiqa: 0.4405
+- id: R1
+  name: ranking_tau005
+  role: auxiliary
+  config: Exp/options/train/mgfrofr_r1.yml
+  comparison_target: A3
+  params:
+    MGFE: true
+    RATR: true
+    network_g.type: MgfrOFR
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 12
+    mgfe_num_branches: 3
+    mgfe_token_fusion: max
+    train.use_ratr: true
+    train.ratr_opt.tau: 0.05
+  description: R2-3 ranking 设计消融：RATR tau=0.05 对照 A3(tau=0.1)，隔离可微排序温度对分支多样性正则的影响。
+  test_results:
+    status: done
+    updated_at: '2026-06-30T14:39:14+08:00'
+    source: L40 test logs 2026-06-29
+    checkpoint: Exp/experiments/mgfrofr_r1_tau005/models/net_g_155000.pth
+    checkpoint_sha256: 23046f4c3282a9eed4d783942a3f990ecea49fca73cf02b7ba01906e8a89812b
+    evidence:
+      synthetic_log: Exp/results_best_r1_tau005/mgfrofr_r1_tau005_reds/test_mgfrofr_r1_tau005_reds_20260629_145837.log
+      davis_log: Exp/results_best_r1_tau005/mgfrofr_r1_tau005_davis/test_mgfrofr_r1_tau005_davis_20260629_155008.log
+      realworld_log: Exp/results_best_r1_tau005/mgfrofr_r1_tau005_srwov/test_mgfrofr_r1_tau005_srwov_20260629_164642.log
+    synthetic:
+      psnr: 26.8685
+      ssim: 0.9177
+      lpips: 0.0672
+      dists: 0.0717
+    davis:
+      psnr: 25.7367
+      ssim: 0.8984
+      lpips: 0.0971
+      dists: 0.0948
+    realworld:
+      niqe: 5.2385
+      brisque: 25.5482
+      clipiqa: 0.4113
+- id: M1
+  name: ranking_metric_pearson
+  role: auxiliary
+  config: Exp/options/train/mgfrofr_m1.yml
+  comparison_target: A3
+  params:
+    MGFE: true
+    RATR: true
+    network_g.type: MgfrOFR
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 12
+    mgfe_num_branches: 3
+    mgfe_token_fusion: max
+    train.use_ratr: true
+    train.ratr_opt.type: RATRPearsonLoss
+    train.ratr_opt.tau: 0.1
+  description: R2-3 ranking metric 消融：排序相关度量换 Pearson(RATRPearsonLoss) 对照 A3 的 Kendall's
+    Tau(RATRLoss)，固定 12t/3b/max。
+  test_results:
+    status: done
+    updated_at: '2026-06-26T18:34:09+08:00'
+    synthetic:
+      psnr: 27.3726
+      ssim: 0.9206
+      lpips: 0.0669
+      dists: 0.0708
+    davis:
+      psnr: 26.3179
+      ssim: 0.9041
+      lpips: 0.0953
+      dists: 0.0921
+    realworld:
+      niqe: 5.1213
+      brisque: 25.3925
+      clipiqa: 0.4207
+- id: I1
+  name: token_insertion_prepend
+  role: auxiliary
+  config: Exp/options/train/mgfrofr_i1.yml
+  comparison_target: A3
+  params:
+    MGFE: true
+    RATR: true
+    network_g.type: MgfrOFRInsertPrepend
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 12
+    mgfe_num_branches: 3
+    mgfe_token_fusion: max
+    train.use_ratr: true
+  description: R2-3 token insertion strategy 消融：restoration token 以 prepend 方式插入(MgfrOFRInsertPrepend)
+    对照 A3 默认插入算子，单变量隔离。
+  test_results:
+    status: done
+    updated_at: '2026-07-01T05:00:00+08:00'
+    checkpoint: net_g_150000.pth
+    synthetic:
+      psnr: 27.6129
+      ssim: 0.9234
+      lpips: 0.0627
+      dists: 0.0694
+    realworld:
+      niqe: 5.1935
+      brisque: 26.2573
+      clipiqa: 0.4132
+- id: AG1
+  name: branch_aggregation_max
+  role: auxiliary
+  config: Exp/options/train/mgfrofr_ag1.yml
+  comparison_target: A3
+  params:
+    MGFE: true
+    RATR: true
+    network_g.type: MgfrOFRAggMax
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 12
+    mgfe_num_branches: 3
+    mgfe_token_fusion: max
+    train.use_ratr: true
+  description: R2-3 branch aggregation strategy 消融：分支聚合采用 max 聚合 arch(MgfrOFRAggMax)
+    对照 A3 默认聚合，单变量隔离。
+- id: D1
+  name: diversity_branch_decorrelation
+  role: auxiliary
+  config: Exp/options/train/mgfrofr_d1.yml
+  comparison_target: A3
+  params:
+    MGFE: true
+    RATR: true
+    network_g.type: MgfrOFR
+    network_g.use_mgfe: true
+    mgfe_num_tokens: 12
+    mgfe_num_branches: 3
+    mgfe_token_fusion: max
+    train.use_ratr: true
+    train.ratr_opt.type: BranchDiversityLoss
+    train.ratr_opt.loss_weight: 0.1
+  description: R2-3 diversity regularization loss 消融：BranchDiversityLoss(跨分支 Gram
+    去相关) 替代 RATRLoss 排序正则，验证替代多样性损失对分支互补性的作用。
+  test_results:
+    status: done
+    updated_at: '2026-06-26T18:34:09+08:00'
+    synthetic:
+      psnr: 27.6083
+      ssim: 0.9208
+      lpips: 0.0642
+      dists: 0.0684
+    davis:
+      psnr: 25.7508
+      ssim: 0.8981
+      lpips: 0.0967
+      dists: 0.0924
+    realworld:
+      niqe: 5.1623
+      brisque: 24.8182
+      clipiqa: 0.4145
+runs:
+- run_id: mgfrofr_a0_baseline::l40
+  variant: mgfrofr_a0_baseline
+  created_at: '2026-05-08T18:51:49+08:00'
+  variant_source: mgfrofr_a0_baseline
+  status: stopped
+  server: l40
+  gpu: null
+  tmux: null
+  config: null
+  source: ofr-exp-progress.sync
+  updated_at: '2026-05-11T20:15:07+08:00'
+  current_iter: 200000
+  eta: -1 day, 23:59:58
+  best_psnr: 28.48
+  best_ssim: 0.9302
+  best_iter: 175000
+- run_id: mgfrofr_a1_mgfe::l40
+  variant: mgfrofr_a1_mgfe
+  created_at: '2026-05-08T18:51:49+08:00'
+  variant_source: mgfrofr_a1_mgfe
+  status: lost_data
+  server: l40
+  gpu: null
+  tmux: null
+  config: null
+  source: ofr-exp-progress.sync
+  updated_at: '2026-05-11T20:15:07+08:00'
+  current_iter: 200000
+  eta: -1 day, 23:59:58
+  best_psnr: 28.3861
+  best_ssim: 0.9278
+  best_iter: 125000
+- run_id: mgfrofr_a2_ratr::l40
+  variant: mgfrofr_a2_ratr
+  created_at: '2026-05-08T18:51:49+08:00'
+  variant_source: mgfrofr_a2_ratr
+  status: lost_data
+  server: l40
+  gpu: null
+  tmux: null
+  config: null
+  source: ofr-exp-progress.sync
+  updated_at: '2026-05-11T20:15:07+08:00'
+  current_iter: 200000
+  eta: -1 day, 23:59:58
+  best_psnr: 27.942
+  best_ssim: 0.9176
+  best_iter: 105000
+- run_id: mgfrofr_a3_full::l40
+  variant: mgfrofr_a3_full
+  created_at: '2026-05-08T18:51:49+08:00'
+  variant_source: mgfrofr_a3_full
+  status: lost_data
+  server: l40
+  gpu: null
+  tmux: null
+  config: null
+  source: ofr-exp-progress.sync
+  updated_at: '2026-05-11T20:15:07+08:00'
+  current_iter: 200000
+  eta: -1 day, 23:59:58
+  best_psnr: 28.5073
+  best_ssim: 0.9227
+  best_iter: 145000
+- run_id: mgfrofr_g1::l40
+  variant: G1
+  created_at: '2026-05-08T18:51:49+08:00'
+  variant_source: mgfrofr_g1
+  status: lost_data
+  server: l40
+  gpu: null
+  tmux: null
+  config: null
+  source: ofr-exp-progress.sync
+  updated_at: '2026-05-11T20:15:07+08:00'
+  current_iter: 0
+- run_id: G2::l40::001-reidmamba_mgfrofr_g2
+  variant: G2
+  created_at: '2026-06-16T12:41:50+08:00'
+  variant_source: G2
+  status: stopped
+  server: l40
+  gpu: null
+  tmux: null
+  config: Exp/options/train/mgfrofr_g2.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-20T11:30:00+08:00'
+  started_at: '2026-06-20T07:33:00.000000'
+  ssh_host: L40_aliyun
+  resume_from_iter: 110000
+  note: stopped and archived 12-token checkpoints; original 8 tokens / 2 branches
+    variant restarted in fresh session
+- run_id: G4::l40::001-reidmamba_mgfrofr_g4
+  variant: G4
+  created_at: '2026-06-16T12:42:01+08:00'
+  variant_source: G4
+  status: done
+  server: l40
+  gpu: 1
+  tmux: 001-reidmamba_mgfrofr_g4
+  config: Exp/options/train/mgfrofr_g4.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-29T23:25:00+08:00'
+  started_at: '2026-06-20T07:02:00.000000'
+  ssh_host: L40_aliyun
+  resume_from_iter: 105000
+  current_iter: 200000
+  note: restarted with 16 tokens / 4 branches config (matches 105000.state), running
+    on L40 GPU1; training and testing completed on L40
+  test_results:
+    status: done
+    updated_at: '2026-06-30T14:39:14+08:00'
+    source: L40 logs + RealFilm_SRWOV nr_metrics.json 2026-06-30
+    synthetic:
+      psnr: 27.5312
+      ssim: 0.9197
+      lpips: 0.2169
+      dists: 0.1565
+    davis:
+      psnr: 26.3607
+      ssim: 0.9008
+      lpips: 0.0976
+      dists: 0.0945
+    realworld:
+      niqe: 5.2675
+      brisque: 25.3134
+      clipiqa: 0.4083
+- run_id: G1::l40::001-reidmamba_G1_archived_12t
+  variant: G1
+  created_at: '2026-06-20T07:35:00+08:00'
+  variant_source: G1
+  status: stopped
+  server: l40
+  gpu: null
+  tmux: null
+  config: Exp/options/train/mgfrofr_g1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-20T11:30:00+08:00'
+  started_at: '2026-06-20T07:35:00.000000'
+  ssh_host: L40_aliyun
+  resume_from_iter: 70000
+  note: stopped and archived 12-token checkpoints; original 4 tokens / 1 branch variant
+    restarted in fresh session
+- run_id: G1::l40::001-reidmamba_G1
+  variant: G1
+  created_at: '2026-06-20T11:30:00+08:00'
+  variant_source: G1
+  status: done
+  server: l40
+  gpu: 2
+  tmux: 001-reidmamba_G1
+  config: Exp/options/train/mgfrofr_g1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-29T23:25:00+08:00'
+  started_at: '2026-06-20T11:30:00.000000'
+  ssh_host: L40_aliyun
+  current_iter: 200000
+  note: restarted from scratch with original 4 tokens / 1 branch config (use_checkpoint:true)
+    after archiving 12-token checkpoints; training and testing completed on L40
+  test_results:
+    status: done
+    updated_at: '2026-06-30T14:39:14+08:00'
+    source: L40 logs + RealFilm_SRWOV nr_metrics.json 2026-06-30
+    synthetic:
+      psnr: 27.9485
+      ssim: 0.9263
+      lpips: 0.2153
+      dists: 0.1554
+    davis:
+      psnr: 26.7395
+      ssim: 0.9069
+      lpips: 0.092
+      dists: 0.0906
+    realworld:
+      niqe: 5.3346
+      brisque: 27.4808
+      clipiqa: 0.3996
+- run_id: G2::l40::001-reidmamba_G2
+  variant: G2
+  created_at: '2026-06-20T11:30:00+08:00'
+  variant_source: G2
+  status: done
+  server: l40
+  gpu: 0
+  tmux: 001-reidmamba_G2
+  config: Exp/options/train/mgfrofr_g2.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-29T23:25:00+08:00'
+  started_at: '2026-06-20T11:30:00.000000'
+  ssh_host: L40_aliyun
+  current_iter: 200000
+  note: restarted from scratch with original 8 tokens / 2 branches config (use_checkpoint:true)
+    after archiving 12-token checkpoints; training and testing completed on L40
+  test_results:
+    status: done
+    updated_at: '2026-06-30T14:39:14+08:00'
+    source: L40 logs + RealFilm_SRWOV nr_metrics.json 2026-06-30
+    synthetic:
+      psnr: 27.4874
+      ssim: 0.9211
+      lpips: 0.2162
+      dists: 0.1557
+    davis:
+      psnr: 26.6758
+      ssim: 0.9023
+      lpips: 0.0941
+      dists: 0.0939
+    realworld:
+      niqe: 5.317
+      brisque: 23.7837
+      clipiqa: 0.4115
+- run_id: A1::a100::001-reidmamba_A1
+  variant: A1
+  created_at: '2026-06-20T05:51:22+08:00'
+  variant_source: A1
+  status: running
+  server: a100
+  gpu: 0
+  tmux: 001-reidmamba_A1
+  config: Exp/options/train/mgfrofr_a1.yml
+  source: workflow-001-recovery-v3
+  updated_at: '2026-06-20T06:21:41+08:00'
+  started_at: '2026-06-20T06:21:41+08:00'
+  ssh_host: A100_22_aliyun
+  warm_start_from: pretrained/mambaofr_reds_16_net_g_best.pth
+  note: restarted with use_checkpoint:false for higher GPU utilization
+- run_id: A2::a100::001-reidmamba_A2
+  variant: A2
+  created_at: '2026-06-20T05:51:22+08:00'
+  variant_source: A2
+  status: running
+  server: a100
+  gpu: 1
+  tmux: 001-reidmamba_A2
+  config: Exp/options/train/mgfrofr_a2.yml
+  source: workflow-001-recovery-v3
+  updated_at: '2026-06-20T06:21:41+08:00'
+  started_at: '2026-06-20T06:21:41+08:00'
+  ssh_host: A100_22_aliyun
+  warm_start_from: pretrained/mambaofr_reds_16_net_g_best.pth
+  note: restarted with use_checkpoint:false for higher GPU utilization
+- run_id: A3::a100::001-reidmamba_A3
+  variant: A3
+  created_at: '2026-06-20T05:51:22+08:00'
+  variant_source: A3
+  status: running
+  server: a100
+  gpu: 2
+  tmux: 001-reidmamba_A3
+  config: Exp/options/train/mgfrofr_a3.yml
+  source: workflow-001-recovery-v3
+  updated_at: '2026-06-20T06:21:41+08:00'
+  started_at: '2026-06-20T06:21:41+08:00'
+  ssh_host: A100_22_aliyun
+  warm_start_from: pretrained/mambaofr_reds_16_net_g_best.pth
+  note: restarted with use_checkpoint:false for higher GPU utilization
+- run_id: G1::a100::001-reidmamba_G1
+  variant: G1
+  created_at: '2026-06-20T06:33:32+08:00'
+  variant_source: G1
+  status: running
+  server: a100
+  gpu: 0
+  tmux: 001-reidmamba_G1
+  config: Exp/options/train/mgfrofr_g1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-25T23:17:57+08:00'
+  started_at: '2026-06-25T23:17:57.595263'
+  ssh_host: A100_22_aliyun
+  resume_from_iter: 70000
+  note: stopped by user decision to archive 12-token polluted checkpoints; original
+    4 tokens / 1 branch variant restarted fresh on L40
+  kind: train
+- run_id: mgfrofr_f1::4090_0::001-reidmamba_mgfrofr_f1
+  variant: F1
+  created_at: '2026-06-20T17:05:31+08:00'
+  variant_source: mgfrofr_f1
+  status: running
+  server: '4090_0'
+  gpu: 0
+  tmux: 001-reidmamba_mgfrofr_f1
+  config: Exp/options/train/mgfrofr_f1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-21T21:47:05+08:00'
+  started_at: '2026-06-21T21:47:05.778317'
+  ssh_host: '4090_0'
+  warm_start_from: pretrained/mambaofr_reds_16_net_g_best.pth
+  note: rtn27(torch2.7) 重跑；旧 torch2.11+zero-flow 无效数据(2026-06-20)已按用户授权物理清理；分步验证门
+    iter5000 判 l_ratr 突变到 -0.05 再放长 200k
+  kind: train
+- run_id: mgfrofr_b1::4090_0::001-reidmamba_mgfrofr_b1
+  variant: B1
+  created_at: '2026-06-20T17:05:54+08:00'
+  variant_source: mgfrofr_b1
+  status: done
+  server: '4090_0'
+  gpu: 1
+  tmux: 001-reidmamba_mgfrofr_b1
+  config: Exp/options/train/mgfrofr_b1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-30T01:58:24+08:00'
+  started_at: '2026-06-24T12:42:33.200488'
+  ssh_host: '4090_0'
+  current_iter: 200000
+  warm_start_from: pretrained/mambaofr_reds_16_net_g_best.pth
+  note: RATR 时间中心化修复后重训(commit d072672f)；旧 RATR 失效 checkpoint 已归档 experiments/mgfrofr_b1_4b_archived_ratrbuggy_20260624；修复后
+    RATR 为正值，验证门改为 iter5000 判 |l_ratr|>0.01(诊断预期 +0.062)非零生效再放长 200k；training completed
+    200k, testing completed on a100
+  kind: train
+  test_results:
+    status: done
+    updated_at: '2026-06-30T01:58:24+08:00'
+    source: a100 RealFilm_SRWOV test log summary
+    synthetic:
+      psnr: 27.3207
+      ssim: 0.9212
+      lpips: 0.0696
+      dists: 0.0748
+    realworld:
+      niqe: 5.2689
+      brisque: 27.4512
+      clipiqa: 0.4256
+- run_id: mgfrofr_t1::4090_1::001-reidmamba_mgfrofr_t1
+  variant: T1
+  created_at: '2026-06-20T17:05:55+08:00'
+  variant_source: mgfrofr_t1
+  status: done
+  server: '4090_1'
+  gpu: 0
+  tmux: 001-reidmamba_mgfrofr_t1
+  config: Exp/options/train/mgfrofr_t1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-30T01:57:05+08:00'
+  started_at: '2026-06-24T12:42:35.350953'
+  ssh_host: '4090_1'
+  current_iter: 200000
+  warm_start_from: pretrained/mambaofr_reds_16_net_g_best.pth
+  note: RATR 时间中心化修复后重训(commit d072672f)；旧 RATR 失效 checkpoint 已归档 experiments/mgfrofr_t1_24t_archived_ratrbuggy_20260624；修复后
+    RATR 为正值，验证门改为 iter5000 判 |l_ratr|>0.01(诊断预期 +0.043)非零生效再放长 200k；training completed
+    200k, testing completed on a100
+  kind: train
+  test_results:
+    status: done
+    updated_at: '2026-06-30T01:57:05+08:00'
+    source: a100 RealFilm_SRWOV test log summary
+    synthetic:
+      psnr: 27.2079
+      ssim: 0.9149
+      lpips: 0.0727
+      dists: 0.0774
+    realworld:
+      niqe: 5.3104
+      brisque: 25.5897
+      clipiqa: 0.4405
+- run_id: mgfrofr_m1::a100::001-reidmamba_mgfrofr_m1
+  variant: M1
+  created_at: '2026-06-20T17:23:25+08:00'
+  variant_source: mgfrofr_m1
+  status: running
+  server: a100
+  gpu: 3
+  tmux: 001-reidmamba_mgfrofr_m1
+  config: Exp/options/train/mgfrofr_m1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-21T22:31:20+08:00'
+  started_at: '2026-06-21T22:31:20.675655'
+  ssh_host: A100_22_aliyun
+  kind: train
+- run_id: mgfrofr_r1::l40::001-reidmamba_mgfrofr_r1
+  variant: R1
+  created_at: '2026-06-20T17:23:53+08:00'
+  variant_source: mgfrofr_r1
+  status: done
+  server: l40
+  gpu: 3
+  tmux: 001-reidmamba_mgfrofr_r1
+  config: Exp/options/train/mgfrofr_r1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-29T23:25:00+08:00'
+  started_at: '2026-06-21T22:09:20.072860'
+  ssh_host: L40_aliyun
+  current_iter: 200000
+  kind: train
+  note: training and testing completed on L40
+  test_results:
+    status: done
+    updated_at: '2026-06-30T14:39:14+08:00'
+    source: L40 test logs 2026-06-29; corrected 2026-06-30
+    synthetic:
+      psnr: 26.8685
+      ssim: 0.9177
+      lpips: 0.0672
+      dists: 0.0717
+    davis:
+      psnr: 25.7367
+      ssim: 0.8984
+      lpips: 0.0971
+      dists: 0.0948
+    realworld:
+      niqe: 5.2385
+      brisque: 25.5482
+      clipiqa: 0.4113
+- run_id: mgfrofr_d1::4090_1::001-reidmamba_mgfrofr_d1
+  variant: D1
+  created_at: '2026-06-20T17:26:40+08:00'
+  variant_source: mgfrofr_d1
+  status: running
+  server: '4090_1'
+  gpu: 1
+  tmux: 001-reidmamba_mgfrofr_d1
+  config: Exp/options/train/mgfrofr_d1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-21T21:47:48+08:00'
+  started_at: '2026-06-21T21:47:48.833097'
+  ssh_host: '4090_1'
+  warm_start_from: pretrained/mambaofr_reds_16_net_g_best.pth
+  note: rtn27(torch2.7) 重跑(BranchDiversityLoss)；旧 torch2.11 无效数据(2026-06-20)已按用户授权物理清理；分步验证门
+    iter5000 判分支去相关损失生效再放长 200k
+  kind: train
+- run_id: mgfrofr_a1::a100::001-reidmamba_mgfrofr_a1
+  variant: A1
+  created_at: '2026-06-21T21:45:40+08:00'
+  variant_source: mgfrofr_a1
+  status: running
+  server: a100
+  gpu: 0
+  tmux: 001-reidmamba_mgfrofr_a1
+  config: Exp/options/train/mgfrofr_a1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-21T22:31:40+08:00'
+  started_at: '2026-06-21T22:31:40.946688'
+  ssh_host: A100_22_aliyun
+  kind: train
+- run_id: mgfrofr_a2::a100::001-reidmamba_mgfrofr_a2
+  variant: A2
+  created_at: '2026-06-21T21:46:17+08:00'
+  variant_source: mgfrofr_a2
+  status: running
+  server: a100
+  gpu: 1
+  tmux: 001-reidmamba_mgfrofr_a2
+  config: Exp/options/train/mgfrofr_a2.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-21T22:30:58+08:00'
+  started_at: '2026-06-21T22:30:58.604151'
+  ssh_host: A100_22_aliyun
+  note: RATR 时间中心化修复后诊断为健康(const:fluct 0.9x 未塌缩)；经蔡博决策不重训，继续旧 loss 跑完(见 know-092 /
+    Exp/EXPERIMENT_STATUS.md)
+  kind: train
+- run_id: mgfrofr_a3::a100::001-reidmamba_mgfrofr_a3
+  variant: A3
+  created_at: '2026-06-21T21:46:18+08:00'
+  variant_source: mgfrofr_a3
+  status: running
+  server: a100
+  gpu: 2
+  tmux: 001-reidmamba_mgfrofr_a3
+  config: Exp/options/train/mgfrofr_a3.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-21T22:31:09+08:00'
+  started_at: '2026-06-21T22:31:09.337409'
+  ssh_host: A100_22_aliyun
+  note: RATR 时间中心化修复后诊断为健康(const:fluct 1.2x 未塌缩,信号保留)；作为 b1/t1 公共对照,经蔡博决策不重训,继续旧 loss
+    跑完(见 know-092 / Exp/EXPERIMENT_STATUS.md)
+  kind: train
+- run_id: mgfrofr_g2::l40::001-reidmamba_mgfrofr_g2
+  variant: G2
+  created_at: '2026-06-21T22:10:27+08:00'
+  variant_source: mgfrofr_g2
+  status: running
+  server: l40
+  gpu: 0
+  tmux: 001-reidmamba_mgfrofr_g2
+  config: Exp/options/train/mgfrofr_g2.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-21T22:10:27+08:00'
+  started_at: '2026-06-21T22:10:27.102373'
+  ssh_host: L40_aliyun
+  kind: train
+- run_id: mgfrofr_g1::l40::001-reidmamba_mgfrofr_g1
+  variant: G1
+  created_at: '2026-06-21T22:11:17+08:00'
+  variant_source: mgfrofr_g1
+  status: running
+  server: l40
+  gpu: 2
+  tmux: 001-reidmamba_mgfrofr_g1
+  config: Exp/options/train/mgfrofr_g1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-21T22:11:17+08:00'
+  started_at: '2026-06-21T22:11:17.123777'
+  ssh_host: L40_aliyun
+  kind: train
+- run_id: mgfrofr_g4::l40::001-reidmamba_mgfrofr_g4
+  variant: G4
+  created_at: '2026-06-21T22:11:17+08:00'
+  variant_source: mgfrofr_g4
+  status: running
+  server: l40
+  gpu: 1
+  tmux: 001-reidmamba_mgfrofr_g4
+  config: Exp/options/train/mgfrofr_g4.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-21T22:11:17+08:00'
+  started_at: '2026-06-21T22:11:17.278738'
+  ssh_host: L40_aliyun
+  kind: train
+- run_id: test_run_a1::a100::test_001-reidmamba
+  variant: test_run_a1
+  created_at: '2026-06-25T15:06:51+08:00'
+  variant_source: test_run_a1
+  status: running
+  server: a100
+  gpu: null
+  tmux: test_001-reidmamba
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-06-25T15:06:51+08:00'
+  kind: test
+- run_id: test_run_a1_realworld::a100::test_001-reidmamba
+  variant: test_run_a1_realworld
+  created_at: '2026-06-25T15:41:35+08:00'
+  variant_source: test_run_a1_realworld
+  status: running
+  server: a100
+  gpu: null
+  tmux: test_001-reidmamba
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-06-25T15:41:35+08:00'
+  kind: test
+- run_id: test_run_a1::a100::test_a1
+  variant: test_run_a1
+  created_at: '2026-06-25T15:50:44+08:00'
+  variant_source: test_run_a1
+  status: running
+  server: a100
+  gpu: null
+  tmux: test_a1
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-06-25T15:50:44+08:00'
+  kind: test
+- run_id: test_run_a2::a100::test_a2
+  variant: test_run_a2
+  created_at: '2026-06-25T15:50:51+08:00'
+  variant_source: test_run_a2
+  status: running
+  server: a100
+  gpu: null
+  tmux: test_a2
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-06-25T15:50:51+08:00'
+  kind: test
+- run_id: test_run_a3::a100::test_a3
+  variant: test_run_a3
+  created_at: '2026-06-25T15:50:59+08:00'
+  variant_source: test_run_a3
+  status: running
+  server: a100
+  gpu: null
+  tmux: test_a3
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-06-25T15:50:59+08:00'
+  kind: test
+- run_id: test_eval_a2::a100::retest_a2
+  variant: test_eval_a2
+  created_at: '2026-06-25T21:11:06+08:00'
+  variant_source: test_eval_a2
+  status: running
+  server: a100
+  gpu: null
+  tmux: retest_a2
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-06-25T21:16:18+08:00'
+  kind: test
+- run_id: test_eval_a3::a100::retest_a3
+  variant: test_eval_a3
+  created_at: '2026-06-25T21:11:14+08:00'
+  variant_source: test_eval_a3
+  status: running
+  server: a100
+  gpu: null
+  tmux: retest_a3
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-06-25T21:18:23+08:00'
+  kind: test
+- run_id: test_run_m1::a100::retest_m1
+  variant: test_run_m1
+  created_at: '2026-06-25T21:33:14+08:00'
+  variant_source: test_run_m1
+  status: running
+  server: a100
+  gpu: null
+  tmux: retest_m1
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-06-25T21:33:14+08:00'
+  kind: test
+- run_id: test_run_a2::a100::retest_a2
+  variant: test_run_a2
+  created_at: '2026-06-25T21:39:17+08:00'
+  variant_source: test_run_a2
+  status: running
+  server: a100
+  gpu: null
+  tmux: retest_a2
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-06-25T21:39:17+08:00'
+  kind: test
+- run_id: test_run_a3::a100::retest_a3
+  variant: test_run_a3
+  created_at: '2026-06-25T21:42:33+08:00'
+  variant_source: test_run_a3
+  status: running
+  server: a100
+  gpu: null
+  tmux: retest_a3
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-06-25T21:42:33+08:00'
+  kind: test
+- run_id: I1::a100::001-reidmamba_I1
+  variant: I1
+  created_at: '2026-06-25T23:16:36+08:00'
+  variant_source: I1
+  status: stopped
+  server: a100
+  gpu: 1
+  tmux: 001-reidmamba_I1
+  config: Exp/options/train/mgfrofr_i1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-07-01T05:00:00+08:00'
+  started_at: '2026-06-28T09:46:27.917270'
+  stopped_at: '2026-07-01T00:47:00+08:00'
+  stop_reason: early_stopped_due_to_overfitting_at_150k
+  ssh_host: A100_22_aliyun
+  kind: train
+- run_id: AG1::a100::001-reidmamba_AG1
+  variant: AG1
+  created_at: '2026-06-25T23:17:08+08:00'
+  variant_source: AG1
+  status: running
+  server: a100
+  gpu: 3
+  tmux: 001-reidmamba_AG1
+  config: Exp/options/train/mgfrofr_ag1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-25T23:17:08+08:00'
+  started_at: '2026-06-25T23:17:08.702090'
+  ssh_host: A100_22_aliyun
+  kind: train
+- run_id: G2::a100::001-reidmamba_G2
+  variant: G2
+  created_at: '2026-06-25T23:18:27+08:00'
+  variant_source: G2
+  status: running
+  server: a100
+  gpu: 1
+  tmux: 001-reidmamba_G2
+  config: Exp/options/train/mgfrofr_g2.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-25T23:18:27+08:00'
+  started_at: '2026-06-25T23:18:27.276219'
+  ssh_host: A100_22_aliyun
+  kind: train
+- run_id: R1::4090_1::001-reidmamba_R1
+  variant: R1
+  created_at: '2026-06-26T07:42:18+08:00'
+  variant_source: R1
+  status: running
+  server: '4090_1'
+  gpu: 1
+  tmux: 001-reidmamba_R1
+  config: Exp/options/train/mgfrofr_r1.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-26T07:42:18+08:00'
+  started_at: '2026-06-26T07:42:18.842060'
+  ssh_host: '4090_1'
+  kind: train
+- run_id: G4::4090_0::001-reidmamba_G4
+  variant: G4
+  created_at: '2026-06-26T07:42:28+08:00'
+  variant_source: G4
+  status: running
+  server: '4090_0'
+  gpu: 0
+  tmux: 001-reidmamba_G4
+  config: Exp/options/train/mgfrofr_g4.yml
+  source: ofr-exp-train.post-start
+  updated_at: '2026-06-26T07:42:28+08:00'
+  started_at: '2026-06-26T07:42:28.715618'
+  ssh_host: '4090_0'
+  kind: train
+- run_id: test_eval_mgfrofr_i1_synthetic::a100::test_001-reidmamba
+  variant: test_eval_mgfrofr_i1_synthetic
+  created_at: '2026-07-01T00:47:44+08:00'
+  variant_source: test_eval_mgfrofr_i1_synthetic
+  status: done
+  server: a100
+  gpu: null
+  tmux: test_001-reidmamba
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-07-01T05:00:00+08:00'
+  kind: test
+- run_id: test_eval_mgfrofr_i1_realworld::a100::test_001-reidmamba_i1_realworld
+  variant: test_eval_mgfrofr_i1_realworld
+  created_at: '2026-07-01T00:48:00+08:00'
+  variant_source: test_eval_mgfrofr_i1_realworld
+  status: done
+  server: a100
+  gpu: null
+  tmux: test_001-reidmamba_i1_realworld
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-07-01T05:00:00+08:00'
+  kind: test
+- run_id: test_eval_ag1_realworld::a100::test_001-reidmamba_ag1_realworld
+  variant: test_eval_ag1_realworld
+  created_at: '2026-07-01T02:02:42+08:00'
+  variant_source: test_eval_ag1_realworld
+  status: running
+  server: a100
+  gpu: null
+  tmux: test_001-reidmamba_ag1_realworld
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-07-01T02:02:42+08:00'
+  kind: test
+- run_id: test_eval_ag1_davis::a100::test_001-reidmamba_ag1_davis
+  variant: test_eval_ag1_davis
+  created_at: '2026-07-01T02:02:42+08:00'
+  variant_source: test_eval_ag1_davis
+  status: running
+  server: a100
+  gpu: null
+  tmux: test_001-reidmamba_ag1_davis
+  config: null
+  source: ofr-exp-test.launch
+  updated_at: '2026-07-01T02:02:42+08:00'
+  kind: test
+best_metrics:
+  baseline_floor:
+    y_channel:
+      psnr: 26.8403
+      ssim: 0.9153
+      lpips: 0.0719
+      dists: 0.0733
+      n_clips: 30
+      splits:
+        split0:
+          psnr: 26.793
+          ssim: 0.9255
+          lpips: 0.0583
+          dists: 0.0616
+        split1:
+          psnr: 26.6495
+          ssim: 0.9041
+          lpips: 0.0813
+          dists: 0.0782
+        split2:
+          psnr: 27.0785
+          ssim: 0.9164
+          lpips: 0.076
+          dists: 0.08
+    rgb:
+      psnr: 22.6712
+      ssim: 0.9008
+      lpips: 0.0718
+      dists: 0.0733
+      n_clips: 30
+      splits:
+        split0:
+          psnr: 22.2145
+          ssim: 0.9099
+          lpips: 0.0583
+          dists: 0.0617
+        split1:
+          psnr: 22.4982
+          ssim: 0.8917
+          lpips: 0.0812
+          dists: 0.0782
+        split2:
+          psnr: 23.3009
+          ssim: 0.9009
+          lpips: 0.0759
+          dists: 0.08
+    source: A0 baseline MambaOFR REDS Synthetic 30 clips (3 splits)
+    computed_at: '2026-06-20T06:13:32+08:00'
+test_results: {}
+anomalies: []
+sync_state:
+  status: synced
+  last_synced_at: '2026-07-01T02:02:42+08:00'
+  deprecated_sources:
+    remote_status_json: read-only fallback; registry-first migration active
+    project_index_variant_fields: compatibility fallback; registry owns variant runtime
+      state
+baseline: MambaOFR
+use_checkpoint_policy:
+  rationale: use_checkpoint 随显存声明（声明式差异 B）：A100(80GB) 关闭提速、L40(46GB) 开启省显存；不影响数值结果，仅工程差异（config_audit
+    走 advisory）。
+  by_server:
+    a100: false
+    l40: true
+ablation_topology_note: MGFE 粒度扫描档位 token/branch：G1(4/1) < G2(8/2) < A3(12/3) < G4(16/4)。'G3'
+  档(12/3) 即 A3 full 配置，故不单独建 G3 变体；粒度敏感性图表用 G1/G2/A3/G4 四点（A3 充当 G3）。

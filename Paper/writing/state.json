@@ -1,0 +1,95 @@
+{
+  "project": "001-reidmamba",
+  "method_name": "MGFROFR",
+  "journal": "Symmetry",
+  "current_step": 11,
+  "steps": {
+    "1": {
+      "status": "done",
+      "completed_at": "2026-04-13",
+      "note": "Pipeline sketch via V1-V5 iteration"
+    },
+    "2": {
+      "status": "done",
+      "completed_at": "2026-04-14",
+      "note": "4-segment story + experiment checklist"
+    },
+    "3": {
+      "status": "done",
+      "completed_at": "2026-04-17",
+      "note": "Method draft + ablation training A0-A3 launched"
+    },
+    "4": {
+      "status": "done",
+      "completed_at": "2026-04-18",
+      "note": "Intro+Method revised, experiments completed"
+    },
+    "5": {
+      "status": "done",
+      "completed_at": "2026-04-19",
+      "note": "Experiment section + 12figs/10tables"
+    },
+    "6": {
+      "status": "done",
+      "completed_at": "2026-04-19",
+      "note": "12 figures finalized as vector PDF"
+    },
+    "7": {
+      "status": "done",
+      "completed_at": "2026-04-19",
+      "note": "Related Work with journal ratio 50.6%"
+    },
+    "8": {
+      "status": "done",
+      "completed_at": "2026-05-02",
+      "note": "Mode A review: 1P0+7P1+13P2 found, all text fixes applied"
+    },
+    "9": {
+      "status": "done",
+      "completed_at": "2026-04-17",
+      "note": "Abstract 187 words, MDPI 4-segment"
+    },
+    "10": {
+      "status": "done",
+      "completed_at": "2026-04-19",
+      "note": "Title: MGFROFR: Multi-Granularity Feature Recalibration for Old Film Restoration"
+    }
+  },
+  "review_round": 5,
+  "last_session": "2026-05-10",
+  "blocked_by": [
+    "Fig6 real-world zoom-in needs figure regeneration",
+    "GPT5.4 Pro revised package imported; metric provenance P0 still needs fresh verification before submission claim"
+  ],
+  "known_issues": {
+    "P0": [
+      "Metric values in paper conflict with L40 server logs",
+      "figures_review.md reports 22 items (target 10-14)",
+      "Revised package still uses 27.13 / 0.9237 / 0.0653 and related real-world metrics; verify against accepted protocol A evidence before declaring submit-ready"
+    ],
+    "P1": [
+      "Fig6 real-world lacks zoom-in red boxes",
+      "Caption verbs need audit (shows->illustrates)",
+      "Table compression needed (10 -> 5-6)",
+      "D1 switched protocol to project-internal retrain: manuscript baseline-protocol wording (historical fixes_applied P1-01 'aligned with protocol A') must be rewritten to project-internal after Phase1 numbers freeze"
+    ],
+    "P2": [
+      "Fig2 Eq reference misalignment",
+      "Fig8 caption stale"
+    ]
+  },
+  "p0_decision": "project_internal_retrain",
+  "p0_decision_note": "D1 (2026-06-20) confirmed project-internal single-protocol retrain (A0-A3 + design ablations same pipeline/budget, warm-start from baselines/trained/mambaofr_reds_16/net_g_best.pth), superseding the earlier protocol_A_external_pretrained choice; aligns with revision-execution-plan.md D1 and the live A1/A2/A3 retrain.",
+  "fixes_applied": {
+    "P0-01": "PyTorch 1.13.1 -> 2.7, CUDA 11.7 -> 12.4",
+    "P1-01": "baseline retraining statement aligned with protocol A",
+    "P1-02": "Fig7 caption A0-A3 -> descriptive naming",
+    "P1-04": "real-world reference values source clarified",
+    "P1-05": "LPIPS p=0.71 explanation strengthened",
+    "P1-07": "Fig6 caption updated, zoom-in redirected to Supplementary",
+    "P1-08": "lambda_ratr sensitivity forward reference added",
+    "P2-13": "MGFE/RATR/Architecture captions: noun phrase -> active verb",
+    "R5-GPT54-01": "Imported GPT5.4 Pro revised manuscript text, cover letter, supplementary protocol, and submission notes",
+    "R5-GPT54-02": "Preserved existing Qi Zhang ORCID and local figure governance metadata during revised package sync"
+  }
+}

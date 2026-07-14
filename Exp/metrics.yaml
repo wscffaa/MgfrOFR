@@ -1,0 +1,374 @@
+project: reidmamba
+method_name: MGFROFR
+baseline: MambaOFR
+sota:
+  synthetic:
+    dataset: REDS_synthetic
+    metrics:
+    - psnr
+    - ssim
+    - lpips
+    - dists
+    results:
+      DeOldify:
+        psnr: 23.2197
+        ssim: 0.8923
+        lpips: 0.2775
+        dists: 0.126
+        source: baselines/results/deoldify/deoldify_synthetic/metrics_synthetic.json
+      OldPhoto:
+        psnr: 24.6174
+        ssim: 0.8524
+        lpips: 0.2252
+        dists: 0.1144
+        source: baselines/results/oldphoto/oldphoto_synthetic/visualization/metrics_synthetic.json
+      DeepRemaster:
+        psnr: 25.059
+        ssim: 0.9185
+        lpips: 0.1108
+        dists: 0.0895
+        source: baselines/results/remasternet/remasternet_synthetic/test_20260319.log
+      RTN:
+        psnr: 25.8514
+        ssim: 0.8869
+        lpips: 0.1214
+        dists: 0.0862
+        source: baselines/results/rtn/rtn_synthetic/test_20260319.log
+      RRTN:
+        psnr: 24.145
+        ssim: 0.9006
+        lpips: 0.1082
+        dists: 0.0668
+        source: baselines/results/rrtn/rrtn_synthetic/test_20260319.log
+      VRT:
+        psnr: 22.3866
+        ssim: 0.8631
+        lpips: 0.175
+        dists: 0.1087
+        source: baselines/results/vrt/vrt_synthetic/test_20260319.log
+      RVRT:
+        psnr: 22.4317
+        ssim: 0.871
+        lpips: 0.1655
+        dists: 0.1078
+        source: baselines/results/rvrt/rvrt_synthetic/test_20260322.log
+      ShiftNet:
+        psnr: 21.4817
+        ssim: 0.8234
+        lpips: 0.203
+        dists: 0.1303
+        source: baselines/results/shiftnet/shiftnet_synthetic/test_20260319.log
+      MambaOFR:
+        psnr: 26.8403
+        ssim: 0.9153
+        lpips: 0.0719
+        dists: 0.0733
+        note: =A0 baseline, same-protocol 30-clip REDS split logs
+        source: A100_22_aliyun Exp/results/mgfrofr_a0_synthetic_split{0,1,2}/test_20260620 logs; see round1/t5-figures/evidence/per_clip_f1_vs_a0_reds_synthetic_20260630.json
+      MgfrOFR:
+        psnr: 27.8615
+        ssim: 0.9255
+        lpips: 0.06
+        dists: 0.0656
+        note: =F1_fusion_avg, D2 冻结后主模型 (avg fusion)
+        source: results_best/mgfrofr_f1_synthetic_best/test_20260626.log
+  realworld:
+    dataset: RealFilm_SRWOV
+    metrics:
+    - niqe
+    - brisque
+    - clipiqa
+    note: niqe/brisque lower=better, clipiqa higher=better
+    results:
+      DeOldify:
+        niqe: 5.7218
+        brisque: 41.6118
+        clipiqa: 0.3768
+        source: baselines/results/deoldify/deoldify_realworld/metrics_realworld.json
+      OldPhoto:
+        niqe: 6.5601
+        brisque: 30.4532
+        clipiqa: 0.4503
+        source: baselines/results/oldphoto/oldphoto_realworld/metrics_realworld.json
+      DeepRemaster:
+        niqe: 5.9917
+        brisque: 40.6158
+        clipiqa: 0.3991
+        source: baselines/results/remasternet/remasternet_realworld/test_20260319.log
+      RTN:
+        niqe: 5.1723
+        brisque: 19.0031
+        clipiqa: 0.4163
+        source: baselines/results/rtn/rtn_realworld/test_20260319.log
+      RRTN:
+        niqe: 5.6664
+        brisque: 32.8572
+        clipiqa: 0.3969
+        source: baselines/results/rrtn/rrtn_realworld/test_20260319.log
+      VRT:
+        niqe: 5.6551
+        brisque: 42.7296
+        clipiqa: 0.3985
+        source: baselines/results/vrt/vrt_realworld/test_20260319.log
+      RVRT:
+        niqe: 5.7217
+        brisque: 42.6402
+        clipiqa: 0.4013
+        source: baselines/results/rvrt/rvrt_realworld/test_20260319.log
+      ShiftNet:
+        niqe: 5.7126
+        brisque: 42.8195
+        clipiqa: 0.3975
+        source: baselines/results/shiftnet/shiftnet_realworld/test_20260319.log
+      MambaOFR:
+        niqe: 5.3381
+        brisque: 29.7853
+        clipiqa: 0.4351
+        note: =A0 baseline, 来自 memory/core/benchmarks.yaml
+        source: memory/core/benchmarks.yaml
+      MgfrOFR:
+        niqe: 5.1233
+        brisque: 24.7942
+        clipiqa: 0.4092
+        note: =F1_fusion_avg, D2 冻结后主模型 (avg fusion)
+        source: registry.yaml F1 RealFilm_SRWOV test_results
+ablation:
+  synthetic:
+    dataset: REDS_synthetic
+    metrics:
+    - psnr
+    - ssim
+    - lpips
+    - dists
+    results:
+      A0_baseline:
+        setting: 'A: Baseline (MambaOFR)'
+        MGFE: false
+        RATR: false
+        psnr: 26.8403
+        ssim: 0.9153
+        lpips: 0.0719
+        dists: 0.0733
+        source: A100_22_aliyun Exp/results/mgfrofr_a0_synthetic_split{0,1,2}/test_20260620 logs
+      F1_fusion_avg:
+        psnr: 27.8615
+        ssim: 0.9255
+        lpips: 0.06
+        dists: 0.0656
+      D1_diversity_branch_decorrelation:
+        psnr: 27.6083
+        ssim: 0.9208
+        lpips: 0.0642
+        dists: 0.0684
+      A1_mgfe:
+        psnr: 27.7451
+        ssim: 0.9219
+        lpips: 0.0651
+        dists: 0.0702
+      A2_ratr:
+        psnr: 27.7176
+        ssim: 0.9246
+        lpips: 0.0646
+        dists: 0.0696
+      A3_full:
+        psnr: 27.1696
+        ssim: 0.9168
+        lpips: 0.074
+        dists: 0.0773
+      M1_ranking_metric_pearson:
+        psnr: 27.3726
+        ssim: 0.9206
+        lpips: 0.0669
+        dists: 0.0708
+      B1_mgfrofr_b1_4branches:
+        psnr: 27.3207
+        ssim: 0.9212
+        lpips: 0.0696
+        dists: 0.0748
+        source: a100 test log summary 2026-06-30
+      T1_mgfrofr_t1_24tokens:
+        psnr: 27.2079
+        ssim: 0.9149
+        lpips: 0.0727
+        dists: 0.0774
+        source: a100 test log summary 2026-06-30
+      G1_mgfrofr_g1_4t1b:
+        psnr: 27.9485
+        ssim: 0.9263
+        lpips: 0.2153
+        dists: 0.1554
+        source: L40 REDS_synthetic log 2026-06-28; frozen 2026-06-30
+        note: high lpips/dists verified from L40 log
+      G2_mgfrofr_g2_8t2b:
+        psnr: 27.4874
+        ssim: 0.9211
+        lpips: 0.2162
+        dists: 0.1557
+        source: L40 REDS_synthetic log 2026-06-29; frozen 2026-06-30
+        note: high lpips/dists verified from L40 log
+      G4_mgfrofr_g4_16t4b:
+        psnr: 27.5312
+        ssim: 0.9197
+        lpips: 0.2169
+        dists: 0.1565
+        source: L40 REDS_synthetic log 2026-06-28; frozen 2026-06-30
+        note: high lpips/dists verified from L40 log
+      R1_mgfrofr_r1_tau005:
+        psnr: 26.8685
+        ssim: 0.9177
+        lpips: 0.0672
+        dists: 0.0717
+        source: L40 REDS_synthetic log 2026-06-29; frozen 2026-06-30
+      I1_mgfrofr_i1_prepend:
+        psnr: 27.6129
+        ssim: 0.9234
+        lpips: 0.0627
+        dists: 0.0694
+        source: a100 test log 2026-07-01 @ 150k checkpoint
+  davis:
+    dataset: DAVIS
+    metrics:
+    - psnr
+    - ssim
+    - lpips
+    - dists
+    results:
+      F1_fusion_avg:
+        psnr: 26.5488
+        ssim: 0.9064
+        lpips: 0.0891
+        dists: 0.0883
+      D1_diversity_branch_decorrelation:
+        psnr: 25.7508
+        ssim: 0.8981
+        lpips: 0.0967
+        dists: 0.0924
+      A1_mgfe:
+        psnr: 26.9543
+        ssim: 0.9051
+        lpips: 0.0945
+        dists: 0.092
+      A2_ratr:
+        psnr: 26.8719
+        ssim: 0.9053
+        lpips: 0.0952
+        dists: 0.0926
+      A3_full:
+        psnr: 25.9049
+        ssim: 0.8941
+        lpips: 0.105
+        dists: 0.0993
+      M1_ranking_metric_pearson:
+        psnr: 26.3179
+        ssim: 0.9041
+        lpips: 0.0953
+        dists: 0.0921
+      G1_mgfrofr_g1_4t1b:
+        psnr: 26.7395
+        ssim: 0.9069
+        lpips: 0.0920
+        dists: 0.0906
+        source: L40 DAVIS_synthetic log 2026-06-29; frozen 2026-06-30
+      G2_mgfrofr_g2_8t2b:
+        psnr: 26.6758
+        ssim: 0.9023
+        lpips: 0.0941
+        dists: 0.0939
+        source: L40 DAVIS_synthetic log 2026-06-29; frozen 2026-06-30
+      G4_mgfrofr_g4_16t4b:
+        psnr: 26.3607
+        ssim: 0.9008
+        lpips: 0.0976
+        dists: 0.0945
+        source: L40 DAVIS_synthetic log 2026-06-28; frozen 2026-06-30
+      R1_mgfrofr_r1_tau005:
+        psnr: 25.7367
+        ssim: 0.8984
+        lpips: 0.0971
+        dists: 0.0948
+        source: L40 DAVIS_synthetic log 2026-06-29; frozen 2026-06-30
+  realworld:
+    dataset: RealFilm_SRWOV
+    metrics:
+    - niqe
+    - brisque
+    - clipiqa
+    note: niqe/brisque lower=better, clipiqa higher=better
+    results:
+      A0_baseline:
+        niqe: 5.3381
+        brisque: 29.7853
+        clipiqa: 0.4351
+        source: memory/core/benchmarks.yaml
+      F1_fusion_avg:
+        niqe: 5.1233
+        brisque: 24.7942
+        clipiqa: 0.4092
+      D1_diversity_branch_decorrelation:
+        niqe: 5.1623
+        brisque: 24.8182
+        clipiqa: 0.4145
+      A1_mgfe:
+        niqe: 5.366
+        brisque: 24.6559
+        clipiqa: 0.4303
+      A2_ratr:
+        niqe: 5.1951
+        brisque: 27.1824
+        clipiqa: 0.4298
+      A3_full:
+        niqe: 5.3626
+        brisque: 29.2816
+        clipiqa: 0.4433
+      M1_ranking_metric_pearson:
+        niqe: 5.1213
+        brisque: 25.3925
+        clipiqa: 0.4207
+      B1_mgfrofr_b1_4branches:
+        niqe: 5.2689
+        brisque: 27.4512
+        clipiqa: 0.4256
+        source: a100 test log summary 2026-06-30
+      T1_mgfrofr_t1_24tokens:
+        niqe: 5.3104
+        brisque: 25.5897
+        clipiqa: 0.4405
+        source: a100 test log summary 2026-06-30
+      G1_mgfrofr_g1_4t1b:
+        niqe: 5.3346
+        brisque: 27.4808
+        clipiqa: 0.3996
+        source: L40 RealFilm_SRWOV nr_metrics.json 2026-06-30
+        note: Frame-weighted NR postprocess over 216 output dirs / 29256 frames; original test log had metrics null and a results_root typo pointing at results_best_g4.
+      G2_mgfrofr_g2_8t2b:
+        niqe: 5.3170
+        brisque: 23.7837
+        clipiqa: 0.4115
+        source: L40 RealFilm_SRWOV nr_metrics.json 2026-06-30
+        note: Frame-weighted NR postprocess over 216 output dirs / 29256 frames; original test log had metrics null.
+      G4_mgfrofr_g4_16t4b:
+        niqe: 5.2675
+        brisque: 25.3134
+        clipiqa: 0.4083
+        source: L40 RealFilm_SRWOV nr_metrics.json 2026-06-30
+        note: Frame-weighted NR postprocess over 216 output dirs / 29256 frames; original test log had metrics null.
+      R1_mgfrofr_r1_tau005:
+        niqe: 5.2385
+        brisque: 25.5482
+        clipiqa: 0.4113
+        source: L40 RealFilm_SRWOV test log 2026-06-29; corrected 2026-06-30
+        note: Replaces stale local value 8.5018/48.2061/0.3103.
+      I1_mgfrofr_i1_prepend:
+        niqe: 5.1935
+        brisque: 26.2573
+        clipiqa: 0.4132
+        source: a100 test log 2026-07-01 @ 150k checkpoint
+  updated_at: '2026-07-01T05:00:00+08:00'
+notes:
+- A0/MambaOFR synthetic 数据已修正为同协议 30-clip REDS split logs (26.8403/0.9153/0.0719/0.0733); 旧 memory/core/benchmarks.yaml 的 25.9938 不再作为 F1 主线对照
+- A3 的 SSIM/DISTS (synthetic) 和 NIQE/BRISQUE (realworld) 以论文为准，与 results_best test log 存在差异
+- 'I1 (mgfrofr_i1_prepend) 测试基于 150k checkpoint (val PSNR best 20.7165)，训练已因过拟合提前停止'
+- Sensitivity 数据 (Tables 8-10) 不在此文件，直接存在论文 tex 中
+- Complexity 数据 (Table 11) 不在此文件，来自 standalone profiling 脚本
+- 'Per-clip 分布数据: Paper/writing/review/round1/t5-figures/evidence/per_clip_f1_vs_a0_reds_synthetic_20260630.json'
+- '训练曲线数据: Paper/applsci/visual_data/convergence_stats.csv'

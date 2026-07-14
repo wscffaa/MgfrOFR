@@ -1,0 +1,63 @@
+{
+  "schema_version": "module_names/v1",
+  "project": "reidmamba",
+  "method": "MGFROFR",
+  "arch_class": "MgfrOFR",
+  "baseline": "MambaOFRNet",
+  "modules": [
+    {
+      "name": "mgfe",
+      "class_name": "MGFE",
+      "slot": "s2_spatial",
+      "source_paper": "reidmamba",
+      "id": "A",
+      "source_name": "Multi-Granularity Feature Extractor",
+      "ofr_name": "MGFE",
+      "type": "ssm_multi_branch_head",
+      "location": "projects/001-reidmamba/ref_code/reidmamba.py:199-316",
+      "mount_target": "framework/basicofr/archs/mambaofr_arch.py:186,218",
+      "status": "implemented"
+    },
+    {
+      "name": "ratr_loss",
+      "class_name": "RATRLoss",
+      "slot": "s5_reconstruction",
+      "source_paper": "reidmamba",
+      "id": "B",
+      "source_name": "Ranking-Aware Triplet Regularization",
+      "ofr_name": "RATR",
+      "type": "training_regularizer",
+      "location": "projects/001-reidmamba/ref_latex/GranRankMamba.md:141-185; projects/001-reidmamba/ref_code/reidmamba.py:318-335",
+      "mount_target": "framework/basicofr/models/wavemamba_model.py:27-33,129-138",
+      "status": "implemented"
+    }
+  ],
+  "excluded_modules": [
+    {
+      "slot": "s1_flow",
+      "reason": "继承 MambaOFR 的 RAFT 光流子模块，baseline 已足够，不在本项目创新范围内"
+    },
+    {
+      "slot": "s3_degprompt",
+      "reason": "baseline MambaOFR 不含退化提示分支，MGFROFR 亦无适配组件，保持空槽"
+    },
+    {
+      "slot": "s4_temporal_fusion",
+      "reason": "继承 MambaOFR 的双向 Mamba forward/backward 传播，时序融合已由 baseline 提供"
+    }
+  ],
+  "_legacy_excluded": [
+    {
+      "name": "OverlapPatchEmbed",
+      "reason": "输入 token 化工具，不作为独立创新模块迁移。"
+    },
+    {
+      "name": "GeneralizedMean",
+      "reason": "只是 tokens fusion 的候选池化方式。"
+    },
+    {
+      "name": "TokenFusion",
+      "reason": "属于 MGFE 的内部融合实现，不单列。"
+    }
+  ]
+}

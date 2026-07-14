@@ -1,0 +1,7 @@
+/Users/caifeifan/VibeScholar/OldFilmRestoration/MgfrOFR/Paper/writing/review
+/Users/caifeifan/VibeScholar/OldFilmRestoration/MgfrOFR/Paper/submission_symmetry/_archive
+/Users/caifeifan/VibeScholar/OldFilmRestoration/MgfrOFR/Paper/submission_symmetry/cover_letter/build
+/Users/caifeifan/VibeScholar/OldFilmRestoration/MgfrOFR/Paper/symmetry/02_revision_round1_rework/build
+/Users/caifeifan/VibeScholar/OldFilmRestoration/MgfrOFR/Paper/symmetry/03_revision_round2_rework/build
+/Users/caifeifan/VibeScholar/OldFilmRestoration/MgfrOFR/Paper/symmetry/03_revision_round2_rework/evidence/fig4-compression-candidates
+/Users/caifeifan/VibeScholar/OldFilmRestoration/MgfrOFR/Paper/symmetry/02_revision_round1_rework/evidence/fig4-compression-candidates

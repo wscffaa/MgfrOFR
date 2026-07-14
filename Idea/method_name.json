@@ -1,0 +1,17 @@
+{
+  "schema_version": "method_name/v1",
+  "project": "reidmamba",
+  "core": "MGFR",
+  "core_keyword": "MGFR",
+  "method": "MGFROFR",
+  "arch_class": "MgfrOFR",
+  "expanded_name": "Multi-Granularity Feature Recalibration for Old Film Restoration",
+  "title_direction": "Multi-Granularity Feature Recalibration for Old Film Restoration",
+  "keyword_source": "MGFE (Multi-Granularity Feature Extractor) + RATR (Ranking-Aware Triplet Regularization)",
+  "_aliases": {
+    "method_name": "MGFROFR",
+    "full_name": "MGFROFR"
+  },
+  "generated": "2026-03-22",
+  "updated": "2026-06-20"
+}

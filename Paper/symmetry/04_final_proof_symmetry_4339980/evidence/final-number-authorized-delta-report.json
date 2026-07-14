@@ -1,0 +1,17 @@
+{
+  "scope": "pre-closure-upload-to-final-proof",
+  "baseline_tex_sha256": "c071db1ba2b7291c8008c87bdc311eb3531de6ebc9d030375c4a4b1e26bf2860",
+  "final_tex_sha256": "9779e5039cc15bfefcbfbf5ddf2424ca7a36daf00f711b1cd0ba710cf05192a0",
+  "verdict": "PASS",
+  "authorized_delta": {
+    "removed": [
+      "7.6%"
+    ],
+    "added": []
+  },
+  "authorization_reason": "The exact training-time increase had no retained training-time log; the author explicitly approved removing the unsupported value while retaining the evidence-supported qualitative quadratic-cost limitation.",
+  "baseline_count": 954,
+  "expected_count": 953,
+  "candidate_count": 953,
+  "exact_order_match_after_authorized_removal": true
+}

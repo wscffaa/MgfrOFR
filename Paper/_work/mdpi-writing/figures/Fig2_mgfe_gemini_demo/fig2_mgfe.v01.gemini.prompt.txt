@@ -1,0 +1,37 @@
+A flat-vector publication scientific module diagram in the CVPR / ICCV image-restoration paper style. White canvas. Clean sans-serif text. Thin uniform strokes. Rounded rectangles. Minimal colors. No 3D, no shadows, no gradients, no decorative frames, no watermark.
+
+HARD PROHIBITIONS
+No overview pipeline, no RATR loss, no reconstruction head, no photos, no 3D tensor cubes, no dense formulas, no long paragraphs. Do not invent extra modules. This figure is only the MGFE module.
+
+LAYOUT
+Horizontal 16 by 9. One module-detail diagram with left-to-right flow. Use three stacked branch lanes in the center. Make it suitable for manual PowerPoint redraw.
+
+THUMBNAIL SPECS
+Feature map: flat blue grid rectangle labeled f_t. Image tokens: row of small blue squares. Restoration tokens: row of small yellow squares labeled M=12. Branch lanes: three clean horizontal lanes with grouped token squares. Recalibration output: green scale/shift block and blue output feature map.
+
+MAIN STRUCTURE LEFT TO RIGHT
+1. "Feature map f_t" -> "Flatten" -> "Image tokens".
+2. "Restoration tokens M=12" are inserted into image tokens. Label this stage "uniform token insertion".
+3. Three branch lanes under a dashed group "progressive token fusion":
+   - Coarse branch: fewer grouped tokens, label "Coarse".
+   - Medium branch: medium grouped tokens, label "Medium".
+   - Fine branch: more grouped tokens, label "Fine".
+4. Each branch passes through a compact "linear token mixer" block.
+5. The three branch outputs merge into "Branch descriptors B_t".
+6. Branch descriptors feed "scale / shift" with labels gamma_t and beta_t.
+7. Final operation applies channel-wise recalibration and outputs "recalibrated feature f_t tilde".
+
+SUB-PANELS
+No separate subpanels; use one cohesive MGFE module panel. The three branch lanes are visually aligned and balanced.
+
+COLOR PALETTE
+Pale blue for image tokens and input/output feature maps. Pale yellow for restoration tokens and MGFE grouping. Pale purple for branch descriptors. Pale green for scale/shift recalibration. Near-black arrows.
+
+TYPOGRAPHY
+Large readable labels. Bold: MGFE, Coarse, Medium, Fine, Branch descriptors, scale / shift. Keep math labels minimal: f_t, M=12, B_t, gamma_t, beta_t, f_t tilde.
+
+VOCABULARY WHITELIST
+Feature map f_t, Flatten, Image tokens, Restoration tokens M=12, uniform token insertion, progressive token fusion, Coarse, Medium, Fine, linear token mixer, Branch descriptors B_t, scale / shift, channel-wise recalibration, recalibrated feature.
+
+NEGATIVE PROMPT
+No text blocks. No code names. No extra loss. No 3D blocks. No glossy style. No decorative icons. No arbitrary equations.

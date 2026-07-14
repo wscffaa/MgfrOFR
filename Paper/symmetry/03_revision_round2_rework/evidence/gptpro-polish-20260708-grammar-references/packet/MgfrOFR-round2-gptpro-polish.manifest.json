@@ -1,0 +1,61 @@
+{
+  "packet_type": "paper-polish-pack",
+  "schema_version": 2,
+  "generated_at": "2026-07-08T18:45:40+08:00",
+  "scope": "gptpro-polish-grammar-references-round2",
+  "project": {
+    "root": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework",
+    "name": "001-reidmamba"
+  },
+  "artifact": {
+    "output_dir": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/evidence/gptpro-polish-20260708-grammar-references/packet"
+  },
+  "review": {
+    "scope_key": "gptpro-polish-grammar-references-round2",
+    "round": "round2",
+    "mode": "polish"
+  },
+  "prompt": {
+    "path": "PROMPT.md",
+    "source": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/evidence/gptpro-polish-20260708-grammar-references/00_GPTPro_prompt.md",
+    "sha256": "ead727752d170368f6a910034809ecb789ec898615f2b361400c42b72bed2ce2"
+  },
+  "limits": {
+    "max_file_bytes": 2097152,
+    "max_total_bytes": 20971520,
+    "allow_binary": false,
+    "ack_sensitive_risk": false,
+    "budget_check": true
+  },
+  "files": [
+    {
+      "path": "files/evidence/gptpro-polish-20260708-grammar-references/01_manuscript_current_full.tex",
+      "source_relpath": "evidence/gptpro-polish-20260708-grammar-references/01_manuscript_current_full.tex",
+      "bytes": 81102,
+      "sha256": "622bef146b05399110de8f7721a13f19760ecb4154eab89db1023b0d0303472a",
+      "binary": false
+    },
+    {
+      "path": "files/evidence/gptpro-polish-20260708-grammar-references/04_FROZEN_numbers.md",
+      "source_relpath": "evidence/gptpro-polish-20260708-grammar-references/04_FROZEN_numbers.md",
+      "bytes": 21327,
+      "sha256": "a650c9935a97d685b2601436f41991c153564e5b37b522c67539ac6e3b76f0db",
+      "binary": false
+    },
+    {
+      "path": "files/evidence/gptpro-polish-20260708-grammar-references/02_reference_citation_report.md",
+      "source_relpath": "evidence/gptpro-polish-20260708-grammar-references/02_reference_citation_report.md",
+      "bytes": 8048,
+      "sha256": "eff3a1e18fa612c2a5c81c0f89c7422d636b5cd950bd76537415f77ba37a93cc",
+      "binary": false
+    },
+    {
+      "path": "files/source/references.bib",
+      "source_relpath": "source/references.bib",
+      "bytes": 20348,
+      "sha256": "0bd46b8da0a04287edb4aba0b6ab5b73e6fdefee28398d6f30133788a504e74a",
+      "binary": false
+    }
+  ],
+  "sensitive_findings": []
+}

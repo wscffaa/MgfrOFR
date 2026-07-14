@@ -1,0 +1,75 @@
+{
+  "figure": "Fig9a_branch_similarity",
+  "data_source": {
+    "a1_json": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/writing/review/round1/t5-figures/evidence/branch_sim_evolution_a1_20260630.json",
+    "a1_sha256": "79e3010bbef18d703304a7d2f1cca334880877757d1908c74c1ff63c81db1484",
+    "f1_json": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/writing/review/round1/t5-figures/evidence/branch_sim_evolution_f1_20260630.json",
+    "f1_sha256": "c176860c54ad89202a0d3b6965bb27b8d46a71bb0b666350b74c6460a93e0158"
+  },
+  "protocol": {
+    "dataset": "synthetic",
+    "num_clips": 30,
+    "metric": "mean_offdiagonal_cosine_similarity(branch_sim_bwd+fwd)",
+    "checkpoints": [
+      50000,
+      100000,
+      150000,
+      200000
+    ]
+  },
+  "final_200k": {
+    "mgfe_only": {
+      "mean": 0.8625233620405197,
+      "std": 0.005584412028743444,
+      "offdiag_min": 0.8456009318431218,
+      "offdiag_max": 0.8958926270405452,
+      "matrix": [
+        [
+          1.0,
+          0.8460764239231745,
+          0.8456009318431218
+        ],
+        [
+          0.8460764239231745,
+          1.0,
+          0.8958926270405452
+        ],
+        [
+          0.8456009318431218,
+          0.8958926270405452,
+          1.0
+        ]
+      ]
+    },
+    "mgfrofr_full": {
+      "mean": 0.26089740519722304,
+      "std": 0.14345013570557077,
+      "offdiag_min": 0.22610248290002347,
+      "offdiag_max": 0.3102188795184096,
+      "matrix": [
+        [
+          1.0,
+          0.3102188795184096,
+          0.24637082231541474
+        ],
+        [
+          0.3102188795184096,
+          1.0,
+          0.22610248290002347
+        ],
+        [
+          0.24637082231541474,
+          0.22610248290002347,
+          1.0
+        ]
+      ]
+    }
+  },
+  "outputs": {
+    "pdf": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/source/figures/Fig9a_branch_similarity.pdf",
+    "svg": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/evidence/Fig9a_branch_similarity_realdata.svg",
+    "png_preview": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/evidence/Fig9a_branch_similarity_realdata_preview.png",
+    "grayscale_preview": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/evidence/Fig9a_branch_similarity_realdata_grayscale.png",
+    "plot_data_csv": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/evidence/fig9a_branch_similarity_realdata_plotdata.csv"
+  }
+}

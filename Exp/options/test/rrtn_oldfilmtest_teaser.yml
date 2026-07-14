@@ -1,0 +1,45 @@
+name: rrtn_oldfilmtest_teaser
+model_type: RTNGANModel
+scale: 1
+num_gpu: 1
+manual_seed: 2021
+dist: false
+find_unused_parameters: true
+
+datasets:
+  test:
+    name: OldFilmTest
+    type: RRTN_Film_SRWOV_dataset
+    dataroot_lq: datasets/val/RealFilm/OldFilmTest
+    num_frame: -1
+    cache_data: false
+    normalizing: true
+    grayscale: true
+    align: 16
+    io_backend:
+      type: disk
+
+network_g:
+  type: RRTNRestorationNetLegacy
+  num_feat: 16
+  num_block: 6
+  input_channel: 1
+  input_size: 128
+  num_recursion: 2
+  max_residue_magnitude: 10
+  downscale_first: false
+  flow_type: raft
+  cpu_cache_length: 100
+
+val:
+  save_img: true
+  val_chunk_size: 4
+  metrics: null
+
+logger:
+  print_freq: 100
+
+path:
+  pretrain_network_g: baselines/pretrained_model/rrtn/rrtn_128_second_converted.pth
+  strict_load_g: true
+  results_root: Exp/results

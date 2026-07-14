@@ -1,0 +1,23 @@
+# upload file sizes
+MGFROFR-clean.pdf 27567379 bytes
+MGFROFR-highlighted-changes.pdf 27704695 bytes
+MGFROFR-latex-source.zip 27239988 bytes
+Response-to-reviewer1-round1.docx 42590 bytes
+Response-to-reviewer2-round1.docx 43566 bytes
+Cover-Letter.pdf 141882 bytes
+Supplementary_Video_S1.mp4 20655713 bytes
+
+# pdf info
+Pages:           27
+File size:       27567379 bytes
+Pages:           32
+File size:       27704695 bytes
+
+# sha256
+3b85dcebecbfdc23f5a8cefe159d18e58e05da26dd4cc92c60fed91ced63860c  MGFROFR-clean.pdf
+256caa0786c17503c73f2e62b004f6779f119dd6e4f661eb492a6a2efc0b23bc  MGFROFR-highlighted-changes.pdf
+0bd181356b207cd76cd5b8d8c077eae6e8378388603ba445f298122e658e49ce  MGFROFR-latex-source.zip
+191e64f86c646b6daff0e22c294ff1338b08b9ea715a221e3b9519053e4cca31  Response-to-reviewer1-round1.docx
+262ddb8c18d2577047f981a3990450d14639e5bcc9abcd7fc87254630794fd11  Response-to-reviewer2-round1.docx
+3f8ce4da4315c849c3f0ecbb92f10261b2b8d2eeb062734497f0ac6cab415195  Cover-Letter.pdf
+43efb7c7a88fdaf12e3d8bf3b1a12e2a2bae38195ac556082d5dc6fc98e56130  Supplementary_Video_S1.mp4

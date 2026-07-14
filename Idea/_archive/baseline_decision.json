@@ -1,0 +1,29 @@
+{
+  "project": "reidmamba",
+  "selected": "MambaOFR",
+  "consensus": true,
+  "consensus_ratio": 1.0,
+  "vote_counts": {
+    "MambaOFR": 1
+  },
+  "total_models": 1,
+  "agreeing_models": 1,
+  "decision_reason": "论文基于纯 Mamba 架构，MGFE 和 RATR 可直接挂载到 MambaOFR 的 SSM 模块后",
+  "council_enabled": false,
+  "timestamp": "2026-03-22T00:00:00+08:00",
+  "votes": [
+    {
+      "model": "evidence_review",
+      "baseline": "MambaOFR",
+      "confidence": 0.95,
+      "reasons": [
+        "论文把 ReIDMamba 定义为纯 Mamba 框架",
+        "MGFE 依赖共享 Mamba 主干后的多分支分叉",
+        "MambaOFR 已有双向 MambaIR body，可直接承接 MGFE",
+        "RATR 只依赖多分支特征输出，不依赖 Transformer 特有结构"
+      ],
+      "success": true,
+      "error": ""
+    }
+  ]
+}

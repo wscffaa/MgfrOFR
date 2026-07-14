@@ -1,0 +1,571 @@
+{
+  "project": "001-reidmamba",
+  "generated_at": "2026-05-11T07:16:40",
+  "ranking_path": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/ranking_local.json",
+  "data_root": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20",
+  "thresholds": {
+    "min_delta_psnr": 1.0,
+    "min_improved_pixel_ratio": 0.55,
+    "require_ssim_non_decrease": true
+  },
+  "candidates": [
+    {
+      "rank": 19,
+      "rel_path": "004/00000000.png",
+      "clip": "004",
+      "frame": "00000000",
+      "passes": true,
+      "reject_reasons": [],
+      "score": 4.089658,
+      "metrics": {
+        "psnr_baseline": 16.5546,
+        "psnr_ours": 18.4374,
+        "delta_psnr": 1.8828,
+        "ssim_baseline": 0.8165,
+        "ssim_ours": 0.8436,
+        "mae_baseline": 30.2723,
+        "mae_ours": 21.8236,
+        "mae_drop": 8.4487,
+        "improved_pixel_ratio": 0.8497,
+        "edge_retention_score": 0.3595
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/004/00000000.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/004/00000000.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/004/00000000.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/004/00000000.png"
+      }
+    },
+    {
+      "rank": 3,
+      "rel_path": "028/00000004.png",
+      "clip": "028",
+      "frame": "00000004",
+      "passes": true,
+      "reject_reasons": [],
+      "score": 3.661123,
+      "metrics": {
+        "psnr_baseline": 24.2903,
+        "psnr_ours": 26.5557,
+        "delta_psnr": 2.2654,
+        "ssim_baseline": 0.9315,
+        "ssim_ours": 0.9341,
+        "mae_baseline": 10.7637,
+        "mae_ours": 7.0291,
+        "mae_drop": 3.7345,
+        "improved_pixel_ratio": 0.7216,
+        "edge_retention_score": 0.4559
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/028/00000004.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/028/00000004.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/028/00000004.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/028/00000004.png"
+      }
+    },
+    {
+      "rank": 5,
+      "rel_path": "005/00000076.png",
+      "clip": "005",
+      "frame": "00000076",
+      "passes": true,
+      "reject_reasons": [],
+      "score": 3.598062,
+      "metrics": {
+        "psnr_baseline": 25.2575,
+        "psnr_ours": 27.4337,
+        "delta_psnr": 2.1762,
+        "ssim_baseline": 0.926,
+        "ssim_ours": 0.9285,
+        "mae_baseline": 11.8176,
+        "mae_ours": 8.1379,
+        "mae_drop": 3.6798,
+        "improved_pixel_ratio": 0.768,
+        "edge_retention_score": 0.4075
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/005/00000076.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/005/00000076.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/005/00000076.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/005/00000076.png"
+      }
+    },
+    {
+      "rank": 4,
+      "rel_path": "010/00000021.png",
+      "clip": "010",
+      "frame": "00000021",
+      "passes": true,
+      "reject_reasons": [],
+      "score": 3.545474,
+      "metrics": {
+        "psnr_baseline": 25.0756,
+        "psnr_ours": 27.2989,
+        "delta_psnr": 2.2233,
+        "ssim_baseline": 0.8982,
+        "ssim_ours": 0.9107,
+        "mae_baseline": 9.8816,
+        "mae_ours": 6.416,
+        "mae_drop": 3.4656,
+        "improved_pixel_ratio": 0.7044,
+        "edge_retention_score": 0.3917
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/010/00000021.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/010/00000021.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/010/00000021.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/010/00000021.png"
+      }
+    },
+    {
+      "rank": 18,
+      "rel_path": "001/00000076.png",
+      "clip": "001",
+      "frame": "00000076",
+      "passes": true,
+      "reject_reasons": [],
+      "score": 3.443377,
+      "metrics": {
+        "psnr_baseline": 22.8327,
+        "psnr_ours": 24.7297,
+        "delta_psnr": 1.897,
+        "ssim_baseline": 0.9038,
+        "ssim_ours": 0.9085,
+        "mae_baseline": 13.6576,
+        "mae_ours": 9.0339,
+        "mae_drop": 4.6237,
+        "improved_pixel_ratio": 0.7488,
+        "edge_retention_score": 0.4163
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/001/00000076.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/001/00000076.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/001/00000076.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/001/00000076.png"
+      }
+    },
+    {
+      "rank": 7,
+      "rel_path": "010/00000020.png",
+      "clip": "010",
+      "frame": "00000020",
+      "passes": true,
+      "reject_reasons": [],
+      "score": 3.393745,
+      "metrics": {
+        "psnr_baseline": 25.6267,
+        "psnr_ours": 27.793,
+        "delta_psnr": 2.1663,
+        "ssim_baseline": 0.9013,
+        "ssim_ours": 0.906,
+        "mae_baseline": 9.5822,
+        "mae_ours": 6.444,
+        "mae_drop": 3.1382,
+        "improved_pixel_ratio": 0.6642,
+        "edge_retention_score": 0.3702
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/010/00000020.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/010/00000020.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/010/00000020.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/010/00000020.png"
+      }
+    },
+    {
+      "rank": 14,
+      "rel_path": "005/00000077.png",
+      "clip": "005",
+      "frame": "00000077",
+      "passes": true,
+      "reject_reasons": [],
+      "score": 3.354618,
+      "metrics": {
+        "psnr_baseline": 24.7442,
+        "psnr_ours": 26.7411,
+        "delta_psnr": 1.9969,
+        "ssim_baseline": 0.9175,
+        "ssim_ours": 0.9234,
+        "mae_baseline": 12.3483,
+        "mae_ours": 9.0382,
+        "mae_drop": 3.3101,
+        "improved_pixel_ratio": 0.7589,
+        "edge_retention_score": 0.4093
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/005/00000077.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/005/00000077.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/005/00000077.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/005/00000077.png"
+      }
+    },
+    {
+      "rank": 11,
+      "rel_path": "025/00000009.png",
+      "clip": "025",
+      "frame": "00000009",
+      "passes": true,
+      "reject_reasons": [],
+      "score": 3.148764,
+      "metrics": {
+        "psnr_baseline": 26.2591,
+        "psnr_ours": 28.3182,
+        "delta_psnr": 2.0591,
+        "ssim_baseline": 0.9053,
+        "ssim_ours": 0.9148,
+        "mae_baseline": 7.6827,
+        "mae_ours": 5.3293,
+        "mae_drop": 2.3533,
+        "improved_pixel_ratio": 0.6333,
+        "edge_retention_score": 0.4135
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/025/00000009.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/025/00000009.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/025/00000009.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/025/00000009.png"
+      }
+    },
+    {
+      "rank": 10,
+      "rel_path": "028/00000040.png",
+      "clip": "028",
+      "frame": "00000040",
+      "passes": true,
+      "reject_reasons": [],
+      "score": 3.14108,
+      "metrics": {
+        "psnr_baseline": 21.9235,
+        "psnr_ours": 23.9832,
+        "delta_psnr": 2.0597,
+        "ssim_baseline": 0.9026,
+        "ssim_ours": 0.9093,
+        "mae_baseline": 9.0445,
+        "mae_ours": 6.647,
+        "mae_drop": 2.3975,
+        "improved_pixel_ratio": 0.6165,
+        "edge_retention_score": 0.421
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/028/00000040.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/028/00000040.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/028/00000040.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/028/00000040.png"
+      }
+    },
+    {
+      "rank": 13,
+      "rel_path": "025/00000010.png",
+      "clip": "025",
+      "frame": "00000010",
+      "passes": true,
+      "reject_reasons": [],
+      "score": 3.134745,
+      "metrics": {
+        "psnr_baseline": 25.7786,
+        "psnr_ours": 27.7828,
+        "delta_psnr": 2.0042,
+        "ssim_baseline": 0.8991,
+        "ssim_ours": 0.9046,
+        "mae_baseline": 8.1623,
+        "mae_ours": 5.5962,
+        "mae_drop": 2.5662,
+        "improved_pixel_ratio": 0.6463,
+        "edge_retention_score": 0.3972
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/025/00000010.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/025/00000010.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/025/00000010.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/025/00000010.png"
+      }
+    },
+    {
+      "rank": 20,
+      "rel_path": "010/00000051.png",
+      "clip": "010",
+      "frame": "00000051",
+      "passes": true,
+      "reject_reasons": [],
+      "score": 3.002186,
+      "metrics": {
+        "psnr_baseline": 26.7601,
+        "psnr_ours": 28.5901,
+        "delta_psnr": 1.83,
+        "ssim_baseline": 0.917,
+        "ssim_ours": 0.9186,
+        "mae_baseline": 8.1054,
+        "mae_ours": 5.6092,
+        "mae_drop": 2.4962,
+        "improved_pixel_ratio": 0.6988,
+        "edge_retention_score": 0.3959
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/010/00000051.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/010/00000051.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/010/00000051.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/010/00000051.png"
+      }
+    },
+    {
+      "rank": 1,
+      "rel_path": "028/00000045.png",
+      "clip": "028",
+      "frame": "00000045",
+      "passes": false,
+      "reject_reasons": [
+        "improved_pixel_ratio<0.55"
+      ],
+      "score": 5.323014,
+      "metrics": {
+        "psnr_baseline": 18.8074,
+        "psnr_ours": 23.3401,
+        "delta_psnr": 4.5327,
+        "ssim_baseline": 0.8745,
+        "ssim_ours": 0.8925,
+        "mae_baseline": 11.5088,
+        "mae_ours": 8.9862,
+        "mae_drop": 2.5225,
+        "improved_pixel_ratio": 0.3005,
+        "edge_retention_score": 0.4459
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/028/00000045.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/028/00000045.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/028/00000045.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/028/00000045.png"
+      }
+    },
+    {
+      "rank": 2,
+      "rel_path": "028/00000005.png",
+      "clip": "028",
+      "frame": "00000005",
+      "passes": false,
+      "reject_reasons": [
+        "ssim_ours<ssim_baseline"
+      ],
+      "score": 3.827483,
+      "metrics": {
+        "psnr_baseline": 23.9968,
+        "psnr_ours": 26.3957,
+        "delta_psnr": 2.3989,
+        "ssim_baseline": 0.9314,
+        "ssim_ours": 0.9306,
+        "mae_baseline": 11.7953,
+        "mae_ours": 7.8684,
+        "mae_drop": 3.9269,
+        "improved_pixel_ratio": 0.7295,
+        "edge_retention_score": 0.4403
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/028/00000005.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/028/00000005.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/028/00000005.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/028/00000005.png"
+      }
+    },
+    {
+      "rank": 6,
+      "rel_path": "029/00000066.png",
+      "clip": "029",
+      "frame": "00000066",
+      "passes": false,
+      "reject_reasons": [
+        "ssim_ours<ssim_baseline"
+      ],
+      "score": 3.58397,
+      "metrics": {
+        "psnr_baseline": 21.7747,
+        "psnr_ours": 23.9431,
+        "delta_psnr": 2.1684,
+        "ssim_baseline": 0.8058,
+        "ssim_ours": 0.8025,
+        "mae_baseline": 13.3668,
+        "mae_ours": 8.7995,
+        "mae_drop": 4.5674,
+        "improved_pixel_ratio": 0.6682,
+        "edge_retention_score": 0.2489
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/029/00000066.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/029/00000066.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/029/00000066.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/029/00000066.png"
+      }
+    },
+    {
+      "rank": 9,
+      "rel_path": "029/00000065.png",
+      "clip": "029",
+      "frame": "00000065",
+      "passes": false,
+      "reject_reasons": [
+        "ssim_ours<ssim_baseline"
+      ],
+      "score": 3.548261,
+      "metrics": {
+        "psnr_baseline": 21.618,
+        "psnr_ours": 23.7224,
+        "delta_psnr": 2.1044,
+        "ssim_baseline": 0.7943,
+        "ssim_ours": 0.7938,
+        "mae_baseline": 13.32,
+        "mae_ours": 8.6893,
+        "mae_drop": 4.6306,
+        "improved_pixel_ratio": 0.6888,
+        "edge_retention_score": 0.242
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/029/00000065.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/029/00000065.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/029/00000065.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/029/00000065.png"
+      }
+    },
+    {
+      "rank": 8,
+      "rel_path": "028/00000006.png",
+      "clip": "028",
+      "frame": "00000006",
+      "passes": false,
+      "reject_reasons": [
+        "ssim_ours<ssim_baseline"
+      ],
+      "score": 3.52519,
+      "metrics": {
+        "psnr_baseline": 23.8963,
+        "psnr_ours": 26.0384,
+        "delta_psnr": 2.1421,
+        "ssim_baseline": 0.9301,
+        "ssim_ours": 0.9264,
+        "mae_baseline": 12.2742,
+        "mae_ours": 8.6217,
+        "mae_drop": 3.6525,
+        "improved_pixel_ratio": 0.7245,
+        "edge_retention_score": 0.443
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/028/00000006.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/028/00000006.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/028/00000006.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/028/00000006.png"
+      }
+    },
+    {
+      "rank": 15,
+      "rel_path": "005/00000075.png",
+      "clip": "005",
+      "frame": "00000075",
+      "passes": false,
+      "reject_reasons": [
+        "ssim_ours<ssim_baseline"
+      ],
+      "score": 3.326797,
+      "metrics": {
+        "psnr_baseline": 25.2098,
+        "psnr_ours": 27.1748,
+        "delta_psnr": 1.965,
+        "ssim_baseline": 0.9226,
+        "ssim_ours": 0.9184,
+        "mae_baseline": 11.9129,
+        "mae_ours": 8.4058,
+        "mae_drop": 3.5071,
+        "improved_pixel_ratio": 0.7347,
+        "edge_retention_score": 0.4043
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/005/00000075.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/005/00000075.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/005/00000075.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/005/00000075.png"
+      }
+    },
+    {
+      "rank": 17,
+      "rel_path": "029/00000067.png",
+      "clip": "029",
+      "frame": "00000067",
+      "passes": false,
+      "reject_reasons": [
+        "ssim_ours<ssim_baseline"
+      ],
+      "score": 3.230492,
+      "metrics": {
+        "psnr_baseline": 21.8974,
+        "psnr_ours": 23.8433,
+        "delta_psnr": 1.9459,
+        "ssim_baseline": 0.8099,
+        "ssim_ours": 0.7989,
+        "mae_baseline": 13.0793,
+        "mae_ours": 9.1756,
+        "mae_drop": 3.9037,
+        "improved_pixel_ratio": 0.6364,
+        "edge_retention_score": 0.2507
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/029/00000067.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/029/00000067.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/029/00000067.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/029/00000067.png"
+      }
+    },
+    {
+      "rank": 16,
+      "rel_path": "010/00000022.png",
+      "clip": "010",
+      "frame": "00000022",
+      "passes": false,
+      "reject_reasons": [
+        "ssim_ours<ssim_baseline"
+      ],
+      "score": 3.126002,
+      "metrics": {
+        "psnr_baseline": 23.4751,
+        "psnr_ours": 25.4339,
+        "delta_psnr": 1.9588,
+        "ssim_baseline": 0.8753,
+        "ssim_ours": 0.8745,
+        "mae_baseline": 11.5166,
+        "mae_ours": 8.6189,
+        "mae_drop": 2.8977,
+        "improved_pixel_ratio": 0.6413,
+        "edge_retention_score": 0.365
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/010/00000022.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/010/00000022.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/010/00000022.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/010/00000022.png"
+      }
+    },
+    {
+      "rank": 12,
+      "rel_path": "025/00000000.png",
+      "clip": "025",
+      "frame": "00000000",
+      "passes": false,
+      "reject_reasons": [
+        "improved_pixel_ratio<0.55"
+      ],
+      "score": 2.807648,
+      "metrics": {
+        "psnr_baseline": 26.1724,
+        "psnr_ours": 28.1857,
+        "delta_psnr": 2.0133,
+        "ssim_baseline": 0.8848,
+        "ssim_ours": 0.9113,
+        "mae_baseline": 6.3525,
+        "mae_ours": 5.2916,
+        "mae_drop": 1.0609,
+        "improved_pixel_ratio": 0.5342,
+        "edge_retention_score": 0.4042
+      },
+      "paths": {
+        "input": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/lq/025/00000000.png",
+        "baseline": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a0/025/00000000.png",
+        "ours": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/a3/025/00000000.png",
+        "gt": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Exp/vis_output/top20/gt/025/00000000.png"
+      }
+    }
+  ]
+}

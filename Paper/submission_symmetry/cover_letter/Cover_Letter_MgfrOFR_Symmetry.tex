@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{hyperref}
+\setstretch{1.08}
+\begin{document}
+\begin{flushright}
+July 1, 2026
+\end{flushright}
+
+Dear Editors,
+
+We thank you and the two reviewers for the constructive and detailed evaluation of our manuscript. This submission is a comprehensively revised version of our previous manuscript \texttt{symmetry-4339980}, which received a decision of \emph{Major Revision}. We have addressed each comment and strengthened the theoretical justification, experimental evidence, limitations, and reproducibility details. A point-by-point response to each reviewer is provided in the accompanying response documents, and all manuscript changes are marked in the highlighted version. Below we summarize the principal revisions.
+
+\textbf{Manuscript title:} Multi-Granularity Feature Decomposition with Ranking-Aware Regularization for Old Film Restoration
+
+\textbf{Previous Manuscript ID:} symmetry-4339980
+
+\section*{Principal Revisions}
+
+\begin{enumerate}
+\item \textbf{Main configuration and symmetry justification (Reviewer 2, Comment 1; Reviewer 1, Comments 1 and 3).} The revised manuscript defines the main MgfrOFR configuration as MGFE+RATR with average restoration-token fusion and keeps max fusion as a fusion-ablation control. We strengthened the symmetry interpretation by introducing two formal invariance properties, branch permutation and forward/backward direction swap, and by narrowing the claim to functional and representation-level symmetry.
+
+\item \textbf{Novelty positioning and difference analysis (Reviewer 1, Comment 1).} We added focused positioning prose that distinguishes MGFE/RATR from multi-scale pyramids, token-stripe recognition models, Mamba-based restoration, and generic diversity regularization, clarifying that the increment over MambaOFR is granularity decomposition plus ranking-aware diversity regularization.
+
+\item \textbf{Fair comparison protocol (Reviewer 1, Comment 2).} We revised the comparison text to separate task-matched old film restoration baselines from enhancement-oriented reference methods and to state the evaluation protocol, adaptation policy, and metric interpretation more explicitly.
+
+\item \textbf{Extended ablation and sensitivity study (Reviewer 1, Comment 3; Reviewer 2, Comment 3).} We expanded the ablation and sensitivity analysis to cover MGFE, RATR, average versus max fusion, ranking temperature, token insertion, and branch aggregation. The tables and discussion now explain the fidelity--perception trade-off and justify average fusion as the main configuration.
+
+\item \textbf{Direct RATR validation (Reviewer 2, Comment 2).} We complemented quantitative results with direct evidence from pairwise branch-similarity analysis and pixel-domain absolute-error maps, showing how RATR reduces branch redundancy and broadens restoration gains.
+
+\item \textbf{Qualitative figures and supplementary video (Reviewer 1, Comment 4; Reviewer 2, Comments 4 and 8).} We rebuilt the synthetic and real-world qualitative comparisons using full-method layouts and added Supplementary Video S1. The video contains a synthetic part with paired ground truth and per-frame PSNR, followed by a real-world SRWOV part annotated with no-reference NIQE and BRISQUE values.
+
+\item \textbf{Efficiency analysis (Reviewer 1, Comment 5).} We quantified parameters, FLOPs, latency, FPS, and peak GPU memory under a unified L40 FP32 protocol and added a matched runtime comparison to isolate the cost of the proposed design over MambaOFR.
+
+\item \textbf{Failure-case and limitations discussion (Reviewer 1, Comment 6).} We expanded the Discussion and Limitations sections to cover synthetic-to-real transfer, no-reference metric limits, training-time cost, the absence of an expert reader study, and the need for broader archival validation.
+
+\item \textbf{Reproducibility (Reviewer 2, Comment 5).} We added implementation details on truncated-normal token initialization (standard deviation 0.02), the insertion operator, hyperparameter selection, data availability, and public code/configuration availability.
+
+\item \textbf{English language and references (Reviewer 2, Comments 6, 9 and 10).} We shortened repetitive passages in the Introduction, unified terminology, checked the references and in-text citations, and proofread the revised manuscript.
+\end{enumerate}
+
+\section*{Ethics Statement}
+
+All algorithmic experiments were conducted on publicly available video datasets for old film restoration evaluation. This study did not recruit human subjects, collect human biological samples, record identifiable personal or private information, or involve any intervention on the human body. In accordance with Article 2 of the \emph{Measures for Scientific and Technological Ethics Review (Trial)} (Guo Ke Fa Jian [2023] No. 167), this work does not fall within the scope requiring mandatory ethics review, and no ethics approval or exemption document is required.
+
+\section*{Declarations}
+
+We confirm that neither the manuscript nor any parts of its content are currently under consideration for publication with, or published in, another journal. All authors have approved the manuscript and agree with its submission to \emph{Symmetry}. We acknowledge that this work was previously submitted to \emph{Symmetry} (Manuscript ID: symmetry-4339980), and the present resubmission addresses all reviewer and editor comments from that round.
+
+Code, configurations, and evaluation scripts are publicly available at \url{https://github.com/wscffaa/MgfrOFR}.
+
+Sincerely,
+
+Youdong Ding \\
+(on behalf of all authors)
+
+\end{document}

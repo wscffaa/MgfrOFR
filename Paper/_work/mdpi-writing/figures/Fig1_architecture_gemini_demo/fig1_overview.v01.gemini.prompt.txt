@@ -1,0 +1,34 @@
+A flat-vector publication scientific architecture diagram in the CVPR / ICCV computer-vision paper figure style. White canvas. Clean sans-serif text for module names. Italic math style for variable labels. Thin uniform dark strokes with small triangular arrowheads. Rounded-rectangle modules. No 3D, no shadows, no gradients inside module boxes, no decorative frames, no watermark. The canvas must not contain any technical parameter text such as stroke width, corner radius, pixel size, DPI, or colour hex codes.
+
+HARD PROHIBITIONS
+No photorealistic filmstrip, no 3D cubes, no glossy icons, no poster style, no dense equations, no long paragraphs, no cartoon decoration, no random neural-network spaghetti. Do not invent extra modules. Do not include code class names.
+
+LAYOUT
+Horizontal 16 by 9. Single clean overview figure. Left-to-right main pipeline centered vertically. Use compact top-conference paper spacing. Add one small red dashed training-only branch from MGFE to RATR; keep it visually secondary. Use at most seven main boxes.
+
+THUMBNAIL SPECS
+Input clip thumbnail: three small abstract frame tiles labeled x_{t-1}, x_t, x_{t+1}; use simple gray image placeholders, not real photos. Feature-map thumbnail: flat blue grid rectangle with label C x H x W. Output thumbnail: one abstract restored frame tile labeled y_t.
+
+MAIN STRUCTURE LEFT TO RIGHT
+1. Box "Input clip" with three frame tiles x_{t-1}, x_t, x_{t+1}.
+2. Box "MambaOFR backbone" with a small note "unchanged".
+3. Box "Bidirectional propagation" producing two feature labels f_t^b and f_t^f.
+4. Highlighted box "MGFE" with subtitle "coarse-to-fine branches". Inside show three mini lanes: Coarse, Medium, Fine.
+5. Box "Channel-wise recalibration" showing scale and shift symbols gamma_t and beta_t.
+6. Box "Reconstruction head".
+7. Box "Restored frame" labeled y_t.
+
+TRAINING-ONLY BRANCH
+From MGFE, draw a red dashed arrow downward to a compact red dashed inset labeled "RATR loss". Inside the inset show three small items: "temporal ranking" -> "DiffKendall" -> "L_intra + L_inter". Put the label "training only" on the dashed arrow. Put a small note near the main inference path: "RATR disabled at inference".
+
+COLOR PALETTE
+Pale blue for backbone and feature propagation. Pale yellow for MGFE. Pale green for recalibration. Pale red only for RATR and dashed training path. Near-black arrows for normal dataflow. Red dashed arrows only for training loss.
+
+TYPOGRAPHY
+All text must be clearly legible at print size. Use bold for module names: MambaOFR backbone, MGFE, RATR loss. Use short labels only. Keep equations minimal: x_t, f_t^b, f_t^f, gamma_t, beta_t, y_t, L_intra + L_inter.
+
+VOCABULARY WHITELIST
+Input clip, MambaOFR backbone, unchanged, Bidirectional propagation, MGFE, coarse-to-fine branches, Coarse, Medium, Fine, Channel-wise recalibration, Reconstruction head, Restored frame, RATR loss, temporal ranking, DiffKendall, training only, RATR disabled at inference.
+
+NEGATIVE PROMPT
+Do not make it look like a textbook infographic. Do not use 3D layer stacks. Do not use photos. Do not add extra methods. Do not use tiny unreadable labels. Do not clutter arrows.

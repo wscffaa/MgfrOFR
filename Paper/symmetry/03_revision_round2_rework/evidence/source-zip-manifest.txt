@@ -1,0 +1,33 @@
+Archive:  projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/upload/MGFROFR-latex-source.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     5459  07-01-2026 15:52   MGFROFR.tex
+    20348  07-01-2026 02:13   references.bib
+    12671  05-10-2026 17:10   Definitions/logo-orcid.pdf
+    13161  05-10-2026 17:13   Definitions/logo-mdpi-eps-converted-to.pdf
+   138426  05-10-2026 17:10   Definitions/mdpi_apacite.bst
+    62350  05-10-2026 17:10   Definitions/mdpi.cls
+   563678  05-10-2026 17:10   Definitions/logo-mdpi.eps
+   287998  05-10-2026 17:10   Definitions/logo-updates.eps
+    71315  05-10-2026 17:10   Definitions/mdpi_apacite.sty
+   120406  05-10-2026 17:10   Definitions/journalnames.tex
+    23683  05-10-2026 17:10   Definitions/mdpi.bst
+    37920  05-10-2026 17:10   Definitions/mdpi_chicago.bst
+    26739  07-08-2026 20:57   sections/method.tex
+    12467  07-08-2026 20:57   sections/discussion.tex
+     2628  07-08-2026 20:57   sections/conclusion.tex
+     1180  07-08-2026 20:57   sections/abstract.tex
+    24246  07-08-2026 20:57   sections/results.tex
+     7827  07-08-2026 20:57   sections/related_work.tex
+     5329  07-08-2026 20:57   sections/introduction.tex
+      781  05-10-2026 21:47   sections/authors.tex
+   195710  07-08-2026 15:09   figures/Fig1_mgfrofr_architecture.pdf
+   162754  07-08-2026 16:48   figures/Fig2_mgfe_module_detail.pdf
+   225875  05-10-2026 23:26   figures/Fig3_ratr_module_detail.pdf
+  1336980  07-08-2026 13:34   figures/Fig4_SOTA_Synthetic_REDS_synthetic_Qualitative.pdf
+  1003324  07-08-2026 14:31   figures/Fig5_SOTA_RealWorld_RealFilm_SRWOV_Qualitative.pdf
+  3374957  05-11-2026 05:06   figures/Fig6_Ablation_REDS_synthetic_Qualitative.jpg
+    36537  07-08-2026 16:44   figures/Fig9a_branch_similarity.pdf
+  6791884  04-19-2026 20:27   figures/Fig9b_error_map.pdf
+---------                     -------
+ 14566633                     28 files

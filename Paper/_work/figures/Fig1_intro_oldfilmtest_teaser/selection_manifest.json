@@ -1,0 +1,101 @@
+{
+  "schema": "mgfrofr-intro-oldfilmtest-teaser-v1",
+  "figure": {
+    "png": "projects/001-reidmamba/Paper/_work/figures/Fig1_intro_oldfilmtest_teaser/Fig1_Intro_OldFilmTest_Teaser.png",
+    "pdf": "projects/001-reidmamba/Paper/_work/figures/Fig1_intro_oldfilmtest_teaser/Fig1_Intro_OldFilmTest_Teaser.pdf",
+    "canvas_size": [
+      2380,
+      2104
+    ],
+    "layout": "3 rows x 2 columns; Input / Restoration Results"
+  },
+  "selected": [
+    {
+      "clip": "004",
+      "frame": "00000020",
+      "score": 27.83641975308642,
+      "roi_xywh": [
+        840,
+        720,
+        536,
+        324
+      ],
+      "input": {
+        "source": "datasets/val/RealFilm/OldFilmTest/004/00000020.png",
+        "pack": "projects/001-reidmamba/Paper/_work/figures/Fig1_intro_oldfilmtest_teaser/source/004_00000020/Input.png",
+        "sha256": "7d6c9c8948b4b974f759a7c267b617f15db2c4196ba102bf799081c564111544",
+        "size": [
+          1920,
+          1080
+        ]
+      },
+      "restoration": {
+        "source": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/004/outputs/00000020_mgfrofr_f1_oldfilmtest_teaser.png",
+        "pack": "projects/001-reidmamba/Paper/_work/figures/Fig1_intro_oldfilmtest_teaser/source/004_00000020/F1.png",
+        "sha256": "45fd78f9c157affa9aa6077b2593f2645d717c3b63e46489d43d960ad129147e",
+        "size": [
+          1920,
+          1080
+        ]
+      }
+    },
+    {
+      "clip": "001",
+      "frame": "0000009",
+      "score": 24.221289386401327,
+      "roi_xywh": [
+        880,
+        40,
+        536,
+        324
+      ],
+      "input": {
+        "source": "datasets/val/RealFilm/OldFilmTest/001/0000009.png",
+        "pack": "projects/001-reidmamba/Paper/_work/figures/Fig1_intro_oldfilmtest_teaser/source/001_0000009/Input.png",
+        "sha256": "aa7e5d1535368b52dd044f10baa90f9cc13a421faf419384004718b599c63a97",
+        "size": [
+          1920,
+          1080
+        ]
+      },
+      "restoration": {
+        "source": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/001/outputs/0000009_mgfrofr_f1_oldfilmtest_teaser.png",
+        "pack": "projects/001-reidmamba/Paper/_work/figures/Fig1_intro_oldfilmtest_teaser/source/001_0000009/F1.png",
+        "sha256": "032928158f2cc450f9b140be4b08d7e0b5e5e63cae62e26ce6520035b8c468d4",
+        "size": [
+          1920,
+          1080
+        ]
+      }
+    },
+    {
+      "clip": "003",
+      "frame": "0000003",
+      "score": 21.807732172470978,
+      "roi_xywh": [
+        760,
+        440,
+        536,
+        324
+      ],
+      "input": {
+        "source": "datasets/val/RealFilm/OldFilmTest/003/0000003.png",
+        "pack": "projects/001-reidmamba/Paper/_work/figures/Fig1_intro_oldfilmtest_teaser/source/003_0000003/Input.png",
+        "sha256": "48249519608c900e8145e45bea9e1c121fcf373be5b84d52af7efadd554d06bd",
+        "size": [
+          1920,
+          1080
+        ]
+      },
+      "restoration": {
+        "source": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/003/outputs/0000003_mgfrofr_f1_oldfilmtest_teaser.png",
+        "pack": "projects/001-reidmamba/Paper/_work/figures/Fig1_intro_oldfilmtest_teaser/source/003_0000003/F1.png",
+        "sha256": "169587ef0c589ef1d4e830c8d3be596a2364faa62253d64089ad7c97785f91c2",
+        "size": [
+          1920,
+          1080
+        ]
+      }
+    }
+  ]
+}

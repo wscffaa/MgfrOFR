@@ -1,0 +1,176 @@
+{
+  "project": "reidmamba",
+  "baseline": "MambaOFR",
+  "method_name": "MGFROFR",
+  "arch_class": "MgfrOFR",
+  "mode": "incremental",
+  "mount_points": [
+    "MGFE",
+    "RATR"
+  ],
+  "baseline_refs": [
+    "framework/basicofr/archs/mambaofr_arch.py:92-115",
+    "framework/basicofr/archs/mambaofr_arch.py:176-186",
+    "framework/basicofr/archs/mambaofr_arch.py:208-230",
+    "framework/options/train/mambaofr/mambaofr_baseline.yml:18-24",
+    "framework/options/train/mambaofr/mambaofr_baseline.yml:84-101"
+  ],
+  "source_refs": [
+    "projects/001-reidmamba/Idea/00-创新分析.md",
+    "projects/001-reidmamba/Idea/04-框架对齐.md",
+    "projects/001-reidmamba/ref_code/reidmamba.py:199-335",
+    "projects/001-reidmamba/ref_latex/GranRankMamba.md:107-185"
+  ],
+  "mount_details": [
+    {
+      "id": "MGFE",
+      "target": "framework/basicofr/archs/mambaofr_arch.py:186,218",
+      "strategy": "在 backward/forward `MambaIR` body 输出后接入 restoration token adapter，把 `feat_prop` 展平成 token 序列，引入多粒度分支头，再将分支描述向量回写为特征重标定信号。"
+    },
+    {
+      "id": "RATR",
+      "target": "framework/basicofr/models/wavemamba_model.py:27-33,129-138",
+      "strategy": "参考现有附加损失接线模式，在 `MGFROFR` 训练模型中新增 `ratr_opt`、`ratr_loss_weight` 和 branch feature 收集逻辑；`RATR` 只在训练期启用。"
+    }
+  ],
+  "files": [
+    {
+      "path": "projects/001-reidmamba/archs/mgfe.py",
+      "action": "create",
+      "reason": "实现多粒度 restoration token 分支头",
+      "risks": [
+        "shape",
+        "memory"
+      ],
+      "validate": [
+        "python -m py_compile projects/001-reidmamba/archs/mgfe.py"
+      ]
+    },
+    {
+      "path": "projects/001-reidmamba/archs/mgfrofr_arch.py",
+      "action": "create",
+      "reason": "在 MambaOFR 上集成 MGFE 并暴露多分支特征",
+      "risks": [
+        "contract",
+        "shape"
+      ],
+      "validate": [
+        "python -m py_compile projects/001-reidmamba/archs/mgfrofr_arch.py"
+      ]
+    },
+    {
+      "path": "framework/basicofr/losses/ratr_loss.py",
+      "action": "create",
+      "reason": "实现 D-KTau、intra/inter ranking regularization",
+      "risks": [
+        "numerical"
+      ],
+      "validate": [
+        "python -m py_compile framework/basicofr/losses/ratr_loss.py"
+      ]
+    },
+    {
+      "path": "framework/basicofr/models/mgfrofr_model.py",
+      "action": "create",
+      "reason": "按训练期附加 loss 模式接入 RATR",
+      "risks": [
+        "training"
+      ],
+      "validate": [
+        "python -m py_compile framework/basicofr/models/mgfrofr_model.py"
+      ]
+    },
+    {
+      "path": "projects/001-reidmamba/Exp/options/train/mgfrofr_a0.yml",
+      "action": "create",
+      "reason": "A0 baseline 配置",
+      "risks": [
+        "config"
+      ],
+      "validate": [
+        "python train.py -opt projects/001-reidmamba/Exp/options/train/mgfrofr_a0.yml --debug"
+      ]
+    },
+    {
+      "path": "projects/001-reidmamba/Exp/options/train/mgfrofr_a1.yml",
+      "action": "create",
+      "reason": "A1 +MGFE 配置",
+      "risks": [
+        "config"
+      ],
+      "validate": [
+        "python train.py -opt projects/001-reidmamba/Exp/options/train/mgfrofr_a1.yml --debug"
+      ]
+    },
+    {
+      "path": "projects/001-reidmamba/Exp/options/train/mgfrofr_a2.yml",
+      "action": "create",
+      "reason": "A2 +RATR 配置",
+      "risks": [
+        "config"
+      ],
+      "validate": [
+        "python train.py -opt projects/001-reidmamba/Exp/options/train/mgfrofr_a2.yml --debug"
+      ]
+    },
+    {
+      "path": "projects/001-reidmamba/Exp/options/train/mgfrofr_a3.yml",
+      "action": "create",
+      "reason": "A3 +MGFE+RATR 完整配置",
+      "risks": [
+        "config"
+      ],
+      "validate": [
+        "python train.py -opt projects/001-reidmamba/Exp/options/train/mgfrofr_a3.yml --debug"
+      ]
+    }
+  ],
+  "ablation_variants": [
+    {
+      "id": "A0",
+      "name": "baseline_mambaofr",
+      "components": [],
+      "settings": {
+        "network_g.type": "MambaOFRNet"
+      }
+    },
+    {
+      "id": "A1",
+      "name": "plus_mgfe",
+      "components": [
+        "MGFE"
+      ],
+      "settings": {
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "train.use_ratr": false
+      }
+    },
+    {
+      "id": "A2",
+      "name": "plus_ratr",
+      "components": [
+        "RATR"
+      ],
+      "settings": {
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": false,
+        "train.use_ratr": true
+      }
+    },
+    {
+      "id": "A3",
+      "name": "full_mgfrofr",
+      "components": [
+        "MGFE",
+        "RATR"
+      ],
+      "settings": {
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "train.use_ratr": true
+      }
+    }
+  ],
+  "generated": "2026-03-22"
+}

@@ -1,0 +1,39 @@
+{
+  "verdict": "PASS",
+  "baseline_tex_sha256": "9779e5039cc15bfefcbfbf5ddf2424ca7a36daf00f711b1cd0ba710cf05192a0",
+  "final_tex_sha256": "d5e685c98c61a7432615d415ee8b55e9cbfb531fc575e5877f6ad16386be1d8b",
+  "upload_zip_sha256": "4152460d8e7252c4324582b5b03b3c30efc7015a0ce4029c09d939f64ac85696",
+  "upload_pdf_sha256": "7f33ec06185060db77868514a47d8b279ce10f4679173ddb09ba37afc5ec9c4c",
+  "number_tokens": {
+    "baseline": 953,
+    "final": 953,
+    "exact_order": true,
+    "sequence_sha256": "887fde3997c87bbe025f778cb37fa302a37dd67cfd076cd86265d7fd6dcfcf7c"
+  },
+  "equations": {
+    "count": 27,
+    "byte_exact": true,
+    "combined_sha256": "92c8735aafb24b8a792aaea462e62df38bcf69d6a594c1ade51481e7a6ce9f79"
+  },
+  "structure": {
+    "figures": 8,
+    "tables": 5,
+    "figure_labels": 8,
+    "table_labels": 5,
+    "equation_labels": 9,
+    "section_labels": 34,
+    "includegraphics_exact_order": true,
+    "citation_commands": 93,
+    "citation_keys": 101,
+    "citation_keys_exact_order": true
+  },
+  "queries": {
+    "mdpi": 23,
+    "author": 23,
+    "orphan": 0
+  },
+  "pdf_pages": 28,
+  "undefined_references": 0,
+  "undefined_citations": 0,
+  "latex_errors": 0
+}

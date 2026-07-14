@@ -1,0 +1,36 @@
+{
+  "schema_version": "gate_status/v2",
+  "project": "001-reidmamba",
+  "arch_class": "MgfrOFR",
+  "verified_at": "2026-03-22",
+  "last_run": "2026-04-19T16:00:00Z",
+  "gates": {
+    "gate_1_syntax": {
+      "status": "passed",
+      "message": "py_compile passed for mgfrofr_arch.py + mgfe.py"
+    },
+    "gate_2_shape": {
+      "status": "passed",
+      "message": "Input (1,3,3,128,128) -> Output (1,3,3,128,128), shape preserved"
+    },
+    "gate_3_gradient": {
+      "status": "passed",
+      "message": "Forward+backward passed, no NaN gradients"
+    },
+    "gate_4_registry": {
+      "status": "passed",
+      "message": "ARCH_REGISTRY.get('MgfrOFR') succeeded"
+    },
+    "gate_5_performance": {
+      "status": "skipped",
+      "message": "Verified implicitly via successful 200k iter training"
+    },
+    "gate_6_fidelity": {
+      "status": "skipped",
+      "message": "MGFE is novel adaptation, not direct port from ref_code"
+    }
+  },
+  "overall": "passed",
+  "training_validation": "200k iterations completed successfully on L40 GPU (2026-03-29)",
+  "notes": "W10 upgrade (2026-04-19): migrated gate keys already conform to gate_<N>_<slug> pattern; status values normalized from pass/skip -> passed/skipped per gate_status/v2 schema. gate_5/gate_6 marked skipped because 200k-iter training implicitly validated performance and MGFE is a novel adaptation (not a direct port from ref_code), so fidelity check does not apply."
+}

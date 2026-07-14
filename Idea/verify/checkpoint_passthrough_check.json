@@ -1,0 +1,7 @@
+{
+  "name": "checkpoint_passthrough",
+  "passed": true,
+  "message": "use_checkpoint 三级透传检查通过（主类声明 + 层传递 + forward 实现）",
+  "details": {},
+  "timestamp": "2026-04-19T23:54:02.184745"
+}

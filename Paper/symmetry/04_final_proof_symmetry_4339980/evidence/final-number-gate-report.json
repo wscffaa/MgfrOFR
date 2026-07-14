@@ -1,0 +1,2921 @@
+{
+  "scope": "stage1-production-to-pre-closure-proof",
+  "superseded_for_final_source_by": "final-number-authorized-delta-report.json",
+  "verdict": "PASS",
+  "literals": [
+    {
+      "literal": "1",
+      "kind": "generic",
+      "expected_count": 48,
+      "original_count": 48,
+      "found_count": 48,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0",
+      "kind": "generic",
+      "expected_count": 17,
+      "original_count": 17,
+      "found_count": 17,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2026",
+      "kind": "generic",
+      "expected_count": 9,
+      "original_count": 9,
+      "found_count": 9,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "11",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "8",
+      "kind": "generic",
+      "expected_count": 5,
+      "original_count": 5,
+      "found_count": 5,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "9",
+      "kind": "generic",
+      "expected_count": 5,
+      "original_count": 5,
+      "found_count": 5,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0009",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0000",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1111",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "7667",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "3",
+      "kind": "generic",
+      "expected_count": 26,
+      "original_count": 26,
+      "found_count": 26,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "788",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "10501",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2",
+      "kind": "generic",
+      "expected_count": 53,
+      "original_count": 53,
+      "found_count": 53,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "839",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.8",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.08",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.85",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "10",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "20",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "300",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2019",
+      "kind": "generic",
+      "expected_count": 26,
+      "original_count": 26,
+      "found_count": 26,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2022",
+      "kind": "generic",
+      "expected_count": 29,
+      "original_count": 29,
+      "found_count": 29,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2024",
+      "kind": "generic",
+      "expected_count": 43,
+      "original_count": 43,
+      "found_count": 43,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2025",
+      "kind": "generic",
+      "expected_count": 24,
+      "original_count": 24,
+      "found_count": 24,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2017",
+      "kind": "generic",
+      "expected_count": 10,
+      "original_count": 10,
+      "found_count": 10,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2021",
+      "kind": "generic",
+      "expected_count": 17,
+      "original_count": 17,
+      "found_count": 17,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2018",
+      "kind": "generic",
+      "expected_count": 24,
+      "original_count": 24,
+      "found_count": 24,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "4",
+      "kind": "generic",
+      "expected_count": 9,
+      "original_count": 9,
+      "found_count": 9,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2004",
+      "kind": "generic",
+      "expected_count": 9,
+      "original_count": 9,
+      "found_count": 9,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2007",
+      "kind": "generic",
+      "expected_count": 4,
+      "original_count": 4,
+      "found_count": 4,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2013",
+      "kind": "generic",
+      "expected_count": 6,
+      "original_count": 6,
+      "found_count": 6,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2020",
+      "kind": "generic",
+      "expected_count": 10,
+      "original_count": 10,
+      "found_count": 10,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2023",
+      "kind": "generic",
+      "expected_count": 25,
+      "original_count": 25,
+      "found_count": 25,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.02",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "12",
+      "kind": "generic",
+      "expected_count": 12,
+      "original_count": 12,
+      "found_count": 12,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "+1",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-1",
+      "kind": "generic",
+      "expected_count": 10,
+      "original_count": 10,
+      "found_count": 10,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1",
+      "kind": "generic",
+      "expected_count": 4,
+      "original_count": 4,
+      "found_count": 4,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "10%",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1938",
+      "kind": "generic",
+      "expected_count": 4,
+      "original_count": 4,
+      "found_count": 4,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2016",
+      "kind": "generic",
+      "expected_count": 4,
+      "original_count": 4,
+      "found_count": 4,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2014",
+      "kind": "generic",
+      "expected_count": 4,
+      "original_count": 4,
+      "found_count": 4,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1.0",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.5",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "240",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "100",
+      "kind": "generic",
+      "expected_count": 6,
+      "original_count": 6,
+      "found_count": 6,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "720x",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1280",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "30",
+      "kind": "generic",
+      "expected_count": 9,
+      "original_count": 9,
+      "found_count": 9,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "216",
+      "kind": "generic",
+      "expected_count": 5,
+      "original_count": 5,
+      "found_count": 5,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1920",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1960",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "29",
+      "kind": "generic",
+      "expected_count": 4,
+      "original_count": 4,
+      "found_count": 4,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "256",
+      "kind": "generic",
+      "expected_count": 5,
+      "original_count": 5,
+      "found_count": 5,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2012",
+      "kind": "generic",
+      "expected_count": 6,
+      "original_count": 6,
+      "found_count": 6,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2015",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "50",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "150",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "200",
+      "kind": "generic",
+      "expected_count": 6,
+      "original_count": 6,
+      "found_count": 6,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "80",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "7",
+      "kind": "generic",
+      "expected_count": 7,
+      "original_count": 7,
+      "found_count": 7,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2.7",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "12.4",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-15",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "27.86",
+      "kind": "generic",
+      "expected_count": 5,
+      "original_count": 5,
+      "found_count": 5,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "+1.02dB",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "21.48",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.8234",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.2030",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1303",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "22.39",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.8631",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1750",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1087",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "22.43",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.8710",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1655",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1078",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "23.22",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.8923",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.2775",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1260",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "24.15",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9006",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1082",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0668",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "24.62",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.8524",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.2252",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1144",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "25.06",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9185",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1108",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0895",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "25.85",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.8869",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1214",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0862",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "26.84",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9153",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0719",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0733",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9255",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0600",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0656",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "3.73e-9",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1.73e-6",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1.86e-9",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1.92e-6",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "5.71",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "42.82",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.3975",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "5.66",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "42.73",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.3985",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "5.72",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "42.64",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.4013",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "41.61",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.3768",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "5.67",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "32.86",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.3969",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "6.56",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "30.45",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.4503",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "5.99",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "40.62",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.3991",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "5.17",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "19.00",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.4163",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "5.34",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "29.79",
+      "kind": "generic",
+      "expected_count": 5,
+      "original_count": 5,
+      "found_count": 5,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.4351",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "5.12",
+      "kind": "generic",
+      "expected_count": 6,
+      "original_count": 6,
+      "found_count": 6,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "24.79",
+      "kind": "generic",
+      "expected_count": 6,
+      "original_count": 6,
+      "found_count": 6,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.4092",
+      "kind": "generic",
+      "expected_count": 5,
+      "original_count": 5,
+      "found_count": 5,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1.21",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "+5",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1.18",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "5",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "27.75",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9219",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0651",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0702",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "27.72",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9246",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0646",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0696",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "27.17",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9168",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0740",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0773",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.99",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "6",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "27.95",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9263",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.2153",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1554",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "27.49",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9211",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.2162",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1557",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "16",
+      "kind": "generic",
+      "expected_count": 7,
+      "original_count": 7,
+      "found_count": 7,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "27.53",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9197",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.2169",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.1565",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.05",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "26.87",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9177",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0672",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0717",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "27.61",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9234",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0627",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0694",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "27.55",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9223",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0679",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0730",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "26.4473",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.9067",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0963",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.0952",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "5.0988",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "26.1518",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.4268",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "40",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "32",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "9.8781",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "914.0",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "17.9",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "391.6",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.35",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "5.7351",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2184.7",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "169.5",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "41.3",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.24",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "7.0503",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2782.2",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "298.4",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "23.5",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.75",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "8.2984",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2832.8",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "404.8",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "17.3",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.60",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "8.7540",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "3107.8",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "488.5",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "14.3",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.61",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.012",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "8.754",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "8.742",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "14.094",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "3107.781",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "3093.687",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.98",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-200",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.863",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.006",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.261",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.846",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-0.896",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0.226",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1.02",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "7.6%",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "999",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "38",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "10.1145",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "3355089.3356570",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "18",
+      "kind": "generic",
+      "expected_count": 4,
+      "original_count": 4,
+      "found_count": 4,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-24",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "17694",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "10.1109",
+      "kind": "generic",
+      "expected_count": 26,
+      "original_count": 26,
+      "found_count": 26,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-8",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "6704",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-17",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "4622",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-9",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "10.48550",
+      "kind": "generic",
+      "expected_count": 5,
+      "original_count": 5,
+      "found_count": 5,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-4",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "222",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "10.1007",
+      "kind": "generic",
+      "expected_count": 4,
+      "original_count": 4,
+      "found_count": 4,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "978",
+      "kind": "generic",
+      "expected_count": 4,
+      "original_count": 4,
+      "found_count": 4,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "031",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "72649",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "13",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "21",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-26",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "936",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "43",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "3349",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "480",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "030",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "01225",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "274",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "3240508.3240552",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "397",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2080",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "35",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1397",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1954",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-25",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "4945",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "5962",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "33",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2171",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "378",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "10.52202",
+      "kind": "generic",
+      "expected_count": 3,
+      "original_count": 3,
+      "found_count": 3,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "068431",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "0028",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "73202",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "25",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-22",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "25669",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "25456",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-29",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "103089",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "079017",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "3273",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "19",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "45",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1934",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "72895",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "075280",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2149",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "79389",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "10.1117",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-7",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "10.1609",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1.11671",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "81",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "10.2307",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2332226",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "47",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "694",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "319",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "46475",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2672",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "1996",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "600",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "-23",
+      "kind": "generic",
+      "expected_count": 2,
+      "original_count": 2,
+      "found_count": 2,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "586",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "44",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2567",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "209",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "4695",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2555",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "37",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2.25353",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "8748",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "17",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "9822",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "2071",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    },
+    {
+      "literal": "6228",
+      "kind": "generic",
+      "expected_count": 1,
+      "original_count": 1,
+      "found_count": 1,
+      "allow_extra": false,
+      "pass": true
+    }
+  ],
+  "rules": {
+    "forbidden": [],
+    "do_not_unify": [],
+    "adjacency": [],
+    "highlight": []
+  },
+  "failures": []
+}

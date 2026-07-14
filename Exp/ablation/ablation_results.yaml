@@ -1,0 +1,147 @@
+synthetic:
+  A0_baseline:
+    variant: A0_baseline
+    source: A100_22_aliyun_same_protocol_split_logs
+    psnr: 26.8403
+    ssim: 0.9153
+    lpips: 0.0719
+    dists: 0.0733
+  F1_fusion_avg:
+    variant: F1_fusion_avg
+    psnr: 27.8615
+    ssim: 0.9255
+    lpips: 0.06
+    dists: 0.0656
+  D1_diversity_branch_decorrelation:
+    variant: D1_diversity_branch_decorrelation
+    psnr: 27.6083
+    ssim: 0.9208
+    lpips: 0.0642
+    dists: 0.0684
+  A1_mgfe:
+    variant: A1_mgfe
+    psnr: 27.7451
+    ssim: 0.9219
+    lpips: 0.0651
+    dists: 0.0702
+  A2_ratr:
+    variant: A2_ratr
+    psnr: 27.7176
+    ssim: 0.9246
+    lpips: 0.0646
+    dists: 0.0696
+  A3_full:
+    variant: A3_full
+    psnr: 27.1696
+    ssim: 0.9168
+    lpips: 0.074
+    dists: 0.0773
+  M1_ranking_metric_pearson:
+    variant: M1_ranking_metric_pearson
+    psnr: 27.3726
+    ssim: 0.9206
+    lpips: 0.0669
+    dists: 0.0708
+  B1_mgfrofr_b1_4branches:
+    variant: B1_mgfrofr_b1_4branches
+    psnr: 27.3207
+    ssim: 0.9212
+    lpips: 0.0696
+    dists: 0.0748
+  T1_mgfrofr_t1_24tokens:
+    variant: T1_mgfrofr_t1_24tokens
+    psnr: 27.2079
+    ssim: 0.9149
+    lpips: 0.0727
+    dists: 0.0774
+  G1_mgfrofr_g1_4t1b:
+    variant: G1_mgfrofr_g1_4t1b
+    psnr: 27.9485
+    ssim: 0.9263
+    lpips: 0.2153
+    dists: 0.1554
+  G2_mgfrofr_g2_8t2b:
+    variant: G2_mgfrofr_g2_8t2b
+    psnr: 27.4874
+    ssim: 0.9211
+    lpips: 0.2162
+    dists: 0.1557
+  G4_mgfrofr_g4_16t4b:
+    variant: G4_mgfrofr_g4_16t4b
+    psnr: 27.5312
+    ssim: 0.9197
+    lpips: 0.2169
+    dists: 0.1565
+  R1_mgfrofr_r1_tau005:
+    variant: R1_mgfrofr_r1_tau005
+    psnr: 26.8685
+    ssim: 0.9177
+    lpips: 0.0672
+    dists: 0.0717
+realworld:
+  A0_baseline:
+    variant: A0_baseline
+    source: shared
+    niqe: 5.3381
+    brisque: 29.7853
+    clipiqa: 0.4351
+  F1_fusion_avg:
+    variant: F1_fusion_avg
+    niqe: 5.1233
+    brisque: 24.7942
+    clipiqa: 0.4092
+  D1_diversity_branch_decorrelation:
+    variant: D1_diversity_branch_decorrelation
+    niqe: 5.1623
+    brisque: 24.8182
+    clipiqa: 0.4145
+  A1_mgfe:
+    variant: A1_mgfe
+    niqe: 5.366
+    brisque: 24.6559
+    clipiqa: 0.4303
+  A2_ratr:
+    variant: A2_ratr
+    niqe: 5.1951
+    brisque: 27.1824
+    clipiqa: 0.4298
+  A3_full:
+    variant: A3_full
+    niqe: 5.3626
+    brisque: 29.2816
+    clipiqa: 0.4433
+  M1_ranking_metric_pearson:
+    variant: M1_ranking_metric_pearson
+    niqe: 5.1213
+    brisque: 25.3925
+    clipiqa: 0.4207
+  B1_mgfrofr_b1_4branches:
+    variant: B1_mgfrofr_b1_4branches
+    niqe: 5.2689
+    brisque: 27.4512
+    clipiqa: 0.4256
+  T1_mgfrofr_t1_24tokens:
+    variant: T1_mgfrofr_t1_24tokens
+    niqe: 5.3104
+    brisque: 25.5897
+    clipiqa: 0.4405
+  G1_mgfrofr_g1_4t1b:
+    variant: G1_mgfrofr_g1_4t1b
+    niqe: 5.3346
+    brisque: 27.4808
+    clipiqa: 0.3996
+  G2_mgfrofr_g2_8t2b:
+    variant: G2_mgfrofr_g2_8t2b
+    niqe: 5.3170
+    brisque: 23.7837
+    clipiqa: 0.4115
+  G4_mgfrofr_g4_16t4b:
+    variant: G4_mgfrofr_g4_16t4b
+    niqe: 5.2675
+    brisque: 25.3134
+    clipiqa: 0.4083
+  R1_mgfrofr_r1_tau005:
+    variant: R1_mgfrofr_r1_tau005
+    niqe: 5.2385
+    brisque: 25.5482
+    clipiqa: 0.4113

@@ -1,0 +1,36 @@
+# Data profile: projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/evidence/fig9a_branch_similarity_realdata_plotdata.csv
+
+**Shape:** 8 rows × 6 cols
+
+## Columns
+
+| Column | Type | n | missing | summary |
+|---|---|---|---|---|
+| `variant` | categorical | 8 | 0 | 2 levels: MGFE-only(4), MgfrOFR full(4); min_group_n=4 |
+| `iteration` | ordinal | 8 | 0 | 4 levels: 50000(2), 100000(2), 150000(2), 200000(2); min_group_n=2 |
+| `checkpoint_k` | ordinal | 8 | 0 | 4 levels: 50(2), 100(2), 150(2), 200(2); min_group_n=2 |
+| `mean_offdiag_cosine` | continuous | 8 | 0 | mean=0.569, sd=0.31, range=[0.261, 0.865], skew=-0.00 (approximately symmetric) |
+| `sd_offdiag_cosine` | continuous | 8 | 0 | mean=0.0826, sd=0.0831, range=[0.0043, 0.195], skew=0.11 (approximately symmetric) |
+| `clips` | ordinal | 8 | 0 | 1 levels: 30(8); min_group_n=8 |
+
+## Group structure
+- Grouped by: `variant`
+- Number of groups: 2
+- Group size: min=4, median=4, max=4
+- **WARN**: at least one group has n<10 — use box/violin + stripplot rather than mean-only bar chart.
+
+## Correlations (Pearson, sorted by |r|)
+- `mean_offdiag_cosine` ↔ `sd_offdiag_cosine` : r = -0.975 (very strong)
+
+## Warnings
+- 列 'variant' 至少有一个类别 n<10 — 小样本必须展示原始数据点，不要只画均值柱状图。
+- 列 'iteration' 至少有一个类别 n<10 — 小样本必须展示原始数据点，不要只画均值柱状图。
+- 列 'checkpoint_k' 至少有一个类别 n<10 — 小样本必须展示原始数据点，不要只画均值柱状图。
+- 列 'clips' 至少有一个类别 n<10 — 小样本必须展示原始数据点，不要只画均值柱状图。
+
+## Chart suggestions (preliminary)
+- 分类 vs 连续，小样本（每组 n<10）→ **箱线图/小提琴图 + stripplot 叠加原始点**；**避免**只画均值柱状图，会掩盖分布。
+- 两连续变量 mean_offdiag_cosine vs sd_offdiag_cosine → 散点图（含回归拟合 + r 值）
+- 分类维度组合数 = 32（variant, iteration, checkpoint_k, clips 全交叉），**一张图塞不下**——建议按某一维拆成多面板，或选择子集。
+
+> 这是基于数据形态的**初步建议**。最终图型选择必须结合**论证目标**（你想说什么）—— 详见 `references/chart_selection.md`。

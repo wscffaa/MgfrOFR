@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{hyperref}
+\setstretch{1.08}
+\begin{document}
+\begin{flushright}
+July 8, 2026
+\end{flushright}
+
+Dear Editors,
+
+We thank you and the reviewer for the careful second-round assessment of our manuscript. We are submitting the second revised version of manuscript \texttt{symmetry-4339980}, entitled ``Multi-Granularity Feature Decomposition with Ranking-Aware Regularization for Old Film Restoration.'' The remaining comments were minor and focused on making the RATR evidence more direct, clarifying the ablation interpretation, improving the readability of Figures 4 and 5, and completing final language polishing. We have addressed these points in the revised manuscript and in the accompanying response to Reviewer 2.
+
+\textbf{Manuscript title:} Multi-Granularity Feature Decomposition with Ranking-Aware Regularization for Old Film Restoration
+
+\textbf{Manuscript ID:} symmetry-4339980
+
+\textbf{Revision stage:} Second revised manuscript
+
+\section*{Summary of Round-2 Revisions}
+
+\begin{enumerate}
+\item \textbf{Direct evidence for branch complementarity.} We strengthened the branch-balance analysis with real 30-clip branch-similarity statistics. The revised Figure 7 compares the final 200K pairwise branch cosine-similarity matrices for MGFE-only and full MgfrOFR, and also reports the mean off-diagonal similarity with standard deviation across the 50K--200K checkpoints. The discussion now states explicitly that RATR reduces redundant temporal-ranking behavior and keeps the granularity branches functionally distinct.
+
+\item \textbf{Additional visual evidence.} We added pixel-wise absolute-error maps to connect the lower branch correlation with spatial restoration gains. This supports the revised explanation that branch decorrelation produces broader restoration improvements rather than isolated local changes.
+
+\item \textbf{Expanded ablation interpretation.} We revised the ablation and sensitivity discussion to clarify that the LPIPS/DISTS gain is not caused by the branch number alone. The manuscript now attributes the perceptual improvement to the interaction among multi-granularity branch decomposition, restoration-token grouping, average fusion, and RATR's ranking-diversity regularization.
+
+\item \textbf{Improved qualitative figures.} We rebuilt Figures 4 and 5 with larger ROI-based comparison layouts. Figure 4 now presents full degraded REDS-synthetic input frames with colored ROI boxes and enlarged ROI crops for each method and the ground truth. Figure 5 uses the same ROI-based format for three RealFilm-SRWOV real-world clips and explicitly avoids ground-truth wording because no ground truth is available.
+
+\item \textbf{Updated method illustrations and final proofreading.} We replaced the MGFE module illustration with the updated, cropped Figure 2 source and proofread the affected figure captions and discussion text. The submitted clean manuscript, highlighted-changes manuscript, and LaTeX source package were regenerated from the same round-2 source tree.
+\end{enumerate}
+
+\section*{Submitted Files}
+
+The upload package contains the clean manuscript PDF, the highlighted-changes PDF generated from the first revised manuscript to the second revised manuscript, the LaTeX source package, the response to Reviewer 2 for Round 2, this updated cover letter, and Supplementary Video S1.
+
+\section*{Declarations}
+
+We confirm that neither the manuscript nor any part of its content is currently under consideration for publication with, or published in, another journal. All authors have approved this second revised manuscript and agree with its resubmission to \emph{Symmetry}. Code, configurations, and evaluation scripts are publicly available at \url{https://github.com/wscffaa/MgfrOFR}.
+
+Sincerely,
+
+Youdong Ding \\
+(on behalf of all authors)
+
+\end{document}

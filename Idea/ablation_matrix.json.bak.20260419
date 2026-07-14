@@ -1,0 +1,89 @@
+{
+  "project": "reidmamba",
+  "baseline": "MambaOFR",
+  "method_name": "MGFROFR",
+  "arch_class": "MgfrOFR",
+  "axes": [
+    {
+      "id": "MGFE",
+      "name": "Multi-Granularity Feature Extractor",
+      "description": "在 MambaOFR body 后引入 restoration token 多分支头。"
+    },
+    {
+      "id": "RATR",
+      "name": "Ranking-Aware Triplet Regularization",
+      "description": "对多分支特征施加可微 Kendall's Tau 排序多样性约束。"
+    }
+  ],
+  "variants": [
+    {
+      "id": "A0",
+      "name": "baseline_mambaofr",
+      "enabled": {
+        "MGFE": false,
+        "RATR": false
+      },
+      "config": {
+        "network_g.type": "MambaOFRNet"
+      },
+      "objective": "提供纯 MambaOFR 基线参照。",
+      "risk": "low"
+    },
+    {
+      "id": "A1",
+      "name": "plus_mgfe",
+      "enabled": {
+        "MGFE": true,
+        "RATR": false
+      },
+      "config": {
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "train.use_ratr": false
+      },
+      "objective": "隔离验证 MGFE 的结构收益。",
+      "risk": "medium"
+    },
+    {
+      "id": "A2",
+      "name": "plus_ratr",
+      "enabled": {
+        "MGFE": false,
+        "RATR": true
+      },
+      "config": {
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": false,
+        "train.use_ratr": true
+      },
+      "objective": "隔离验证 RATR 的训练期正则收益。",
+      "risk": "medium"
+    },
+    {
+      "id": "A3",
+      "name": "full_mgfrofr",
+      "enabled": {
+        "MGFE": true,
+        "RATR": true
+      },
+      "config": {
+        "network_g.type": "MgfrOFR",
+        "network_g.use_mgfe": true,
+        "train.use_ratr": true
+      },
+      "objective": "验证 MGFE 与 RATR 的组合收益，是完整方法配置。",
+      "risk": "medium"
+    }
+  ],
+  "ordering": [
+    "A0",
+    "A1",
+    "A2",
+    "A3"
+  ],
+  "gates": [
+    "A1/A3 必须验证 `MGFE` 接入后 `B,T,C,H,W` 输入输出合同不变。",
+    "A2/A3 必须验证 `RATR` 标量 loss 有限且可反向传播。",
+    "A3 必须额外记录多分支排序相关性是否低于 A1，避免多分支退化成重复特征。"
+  ]
+}

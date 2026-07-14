@@ -1,0 +1,12 @@
+project: 001-reidmamba
+baseline: MambaOFR
+targets:
+  synthetic:
+    psnr: 26.8403
+    ssim: 0.9153
+    lpips: 0.0719
+    dists: 0.0733
+  realworld:
+    niqe: 5.3381
+    brisque: 29.7853
+    clipiqa: 0.4351

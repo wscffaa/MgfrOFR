@@ -1,0 +1,85 @@
+{
+  "schema": "vis_interface/v1",
+  "project_id": "001-reidmamba",
+  "method_name": "MGFROFR",
+  "generated_at": "2026-04-13",
+  "interfaces": [
+    {
+      "method": "visualize_mgfe",
+      "class": "MgfrOFR",
+      "file": "projects/001-reidmamba/archs/mgfrofr_arch.py",
+      "description": "MGFE core innovation visualization: recalibration spatial maps, branch diversity, feature delta per frame. Runs full forward with intermediate capture at every MGFE call site (backward + forward propagation).",
+      "outputs": {
+        "mgfe_scale_map_bwd": {"shape": "(B, T, 1, H, W)", "desc": "后向传播 MGFE recalibration scale 通道均值空间分布"},
+        "mgfe_scale_map_fwd": {"shape": "(B, T, 1, H, W)", "desc": "前向传播 MGFE recalibration scale 通道均值空间分布"},
+        "mgfe_shift_map_bwd": {"shape": "(B, T, 1, H, W)", "desc": "后向传播 MGFE recalibration shift 通道均值空间分布"},
+        "mgfe_shift_map_fwd": {"shape": "(B, T, 1, H, W)", "desc": "前向传播 MGFE recalibration shift 通道均值空间分布"},
+        "recalibration_delta_bwd": {"shape": "(B, T, 1, H, W)", "desc": "后向传播 MGFE 前后特征差异 L1 空间图"},
+        "recalibration_delta_fwd": {"shape": "(B, T, 1, H, W)", "desc": "前向传播 MGFE 前后特征差异 L1 空间图"},
+        "branch_sim_bwd": {"shape": "(B, T, G, G)", "desc": "后向传播逐帧分支间余弦相似度矩阵"},
+        "branch_sim_fwd": {"shape": "(B, T, G, G)", "desc": "前向传播逐帧分支间余弦相似度矩阵"},
+        "branch_feats_cache": {"shape": "(B, T, G, C)", "desc": "前后向平均的分支描述向量时序 (来自 _branch_feats_cache)"}
+      }
+    },
+    {
+      "method": "visualize_mask (inherited)",
+      "class": "MgfrOFR → MambaOFRNet",
+      "file": "framework/basicofr/archs/mambaofr_arch.py",
+      "description": "Aggregation mask from bidirectional propagation (baseline method, inherited via visualiza_mask)",
+      "outputs": {
+        "backward_mask": {"shape": "(B, T, 1, H, W)", "desc": "后向传播聚合掩码"},
+        "forward_mask": {"shape": "(B, T, 1, H, W)", "desc": "前向传播聚合掩码"}
+      }
+    },
+    {
+      "method": "visualize_feature (inherited)",
+      "class": "MgfrOFR → MambaOFRNet",
+      "file": "framework/basicofr/archs/mambaofr_arch.py",
+      "description": "Feature energy maps from bidirectional propagation (baseline method, inherited via visualiza_feature)",
+      "outputs": {
+        "backward_feat_energy": {"shape": "(B, T, 1, H, W)", "desc": "后向特征能量"},
+        "backward_state_energy": {"shape": "(B, T, 1, H, W)", "desc": "后向状态能量"},
+        "forward_feat_energy": {"shape": "(B, T, 1, H, W)", "desc": "前向特征能量"},
+        "forward_state_energy": {"shape": "(B, T, 1, H, W)", "desc": "前向状态能量"}
+      }
+    }
+  ],
+  "component_intermediates": [
+    {
+      "component": "MGFE",
+      "method": "forward_with_intermediates",
+      "file": "archs/mgfe.py",
+      "outputs": {
+        "output": {"shape": "(B, C, H, W)", "desc": "recalibrated features (same as forward()[0])"},
+        "branch_descriptors": {"shape": "(B, G, C)", "desc": "各分支 restoration token 聚合后的描述向量"},
+        "branch_similarity": {"shape": "(B, G, G)", "desc": "分支间余弦相似度矩阵"},
+        "scale_map": {"shape": "(B, 1, H, W)", "desc": "recalibration scale 通道均值空间分布"},
+        "shift_map": {"shape": "(B, 1, H, W)", "desc": "recalibration shift 通道均值空间分布"},
+        "recalibration_magnitude": {"shape": "(B, 1, H, W)", "desc": "recalibration 总增强强度 L1 空间图"},
+        "token_positions": {"shape": "list[list[int]]", "desc": "各分支 restoration token 的序列插入位置索引"},
+        "per_branch_token_energy": {"shape": "list of (B, num_tokens_fused)", "desc": "各分支 fused token 的 L1 能量"}
+      }
+    }
+  ],
+  "model_class": {
+    "class": "MGFROFRModel",
+    "file": "models/mgfrofr_model.py",
+    "extends": "RTNGANModel",
+    "collects": [
+      "_last_visual_masks (baseline mask via visualiza_mask)",
+      "_last_visual_features (baseline feature energy via visualiza_feature)",
+      "_last_mgfe_data (MGFE innovation via visualize_mgfe)"
+    ],
+    "save_method": "_save_mgfe_images",
+    "output_structure": "mgfe/{key}/{frame}_{key}.png"
+  },
+  "downstream_consumers": [
+    "ofr-exp-analysis --type innovation",
+    "ofr-exp-test HTML report Innovation Analysis tab",
+    "ofr-paper-chart/visual for paper figures"
+  ],
+  "baseline_interfaces_preserved": [
+    "visualiza_mask(lrs) → (backward_mask, forward_mask)",
+    "visualiza_feature(lrs) → (b_feat, b_state, f_feat, f_state)"
+  ]
+}

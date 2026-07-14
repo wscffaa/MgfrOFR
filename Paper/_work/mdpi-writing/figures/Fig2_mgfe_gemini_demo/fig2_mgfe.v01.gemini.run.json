@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-07-01T00:51:12",
+  "backend": "gemini",
+  "model": null,
+  "aspect_ratio": "16:9",
+  "image_size": "4K",
+  "input_image": null,
+  "output_path": "projects/001-reidmamba/Paper/_work/mdpi-writing/figures/Fig2_mgfe_gemini_demo/fig2_mgfe.v01.gemini.png",
+  "prompt_path": "projects/001-reidmamba/Paper/_work/mdpi-writing/figures/Fig2_mgfe_gemini_demo/fig2_mgfe.v01.gemini.prompt.txt",
+  "prompt_type": "text"
+}

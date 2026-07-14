@@ -1,0 +1,22 @@
+Title:           Multi-Granularity Feature Decomposition with Ranking-Aware Regularization for Old Film Restoration
+Subject:         Old film restoration remains challenging because archival footage often contains scratches, blotches, flicker, blur, and temporal artifacts that disturb the balance between structural recovery, regional texture repair, and fine artifact suppression. To address this problem, we propose MgfrOFR, a multi-granularity extension of a Mamba-based old film restoration backbone. First, MgfrOFR decomposes propagated features into coarse-to-fine restoration branches and feeds branch summaries back through channel-wise recalibration, allowing different degradation scales to be represented without competing in a single feature stream. Second, it introduces a ranking-aware triplet regularizer that penalizes correlated temporal-similarity rankings across branches during training while preserving the baseline inference interface. Experiments on the SRWOV benchmark show statistically significant fidelity gains on synthetic clips, strong no-reference naturalness on real-world archival footage, and a bounded perceptual-quality trade-off. These results indicate that representation-level branch balance provides an effective inductive bias for old film restoration under heterogeneous and asymmetric degradation.
+Keywords:        old film restoration; multi-granularity feature decomposition; ranking-aware regularization; state space models; feature-space symmetry
+Author:          Feifan Cai, Qi Zhang, Kun Yang, Lei Chen and Youdong Ding
+Creator:         LaTeX with hyperref
+Producer:        pdfTeX-1.40.25
+CreationDate:    Wed Jul  8 15:12:43 2026 CST
+ModDate:         Wed Jul  8 15:12:43 2026 CST
+Custom Metadata: yes
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           27
+Encrypted:       no
+Page size:       595.276 x 841.89 pts (A4)
+Page rot:        0
+File size:       13315200 bytes
+Optimized:       no
+PDF version:     1.7

@@ -1,0 +1,82 @@
+{
+  "packet_type": "paper-polish-pack",
+  "schema_version": 2,
+  "generated_at": "2026-07-08T20:26:23+08:00",
+  "scope": "gptpro-final-mdpi-cv-polish-round2",
+  "project": {
+    "root": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework",
+    "name": "001-reidmamba"
+  },
+  "artifact": {
+    "output_dir": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/evidence/gptpro-final-mdpi-cv-polish-20260708/packet"
+  },
+  "review": {
+    "scope_key": "gptpro-final-mdpi-cv-polish-round2",
+    "round": "round2",
+    "mode": "polish"
+  },
+  "prompt": {
+    "path": "PROMPT.md",
+    "source": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/evidence/gptpro-final-mdpi-cv-polish-20260708/00_GPTPro_prompt.md",
+    "sha256": "34eaa6058a05d79c872b5540099107364514c13333db80b0fd7ae8ad158013e7"
+  },
+  "limits": {
+    "max_file_bytes": 2097152,
+    "max_total_bytes": 20971520,
+    "allow_binary": false,
+    "ack_sensitive_risk": false,
+    "budget_check": true
+  },
+  "files": [
+    {
+      "path": "files/evidence/gptpro-final-mdpi-cv-polish-20260708/01_manuscript_current_full.tex",
+      "source_relpath": "evidence/gptpro-final-mdpi-cv-polish-20260708/01_manuscript_current_full.tex",
+      "bytes": 81283,
+      "sha256": "2d494c48f8e7d1f18dc43d0c195951a939a987cfc7ddff05c8d4f1a158313dee",
+      "binary": false
+    },
+    {
+      "path": "files/evidence/gptpro-final-mdpi-cv-polish-20260708/04_FROZEN_numbers.md",
+      "source_relpath": "evidence/gptpro-final-mdpi-cv-polish-20260708/04_FROZEN_numbers.md",
+      "bytes": 21079,
+      "sha256": "be24c78864d731e5883506a8a667e231f74d88ce6b3af8b48e3d7c4a1c3ba60c",
+      "binary": false
+    },
+    {
+      "path": "files/evidence/gptpro-final-mdpi-cv-polish-20260708/02_reference_citation_report.md",
+      "source_relpath": "evidence/gptpro-final-mdpi-cv-polish-20260708/02_reference_citation_report.md",
+      "bytes": 131,
+      "sha256": "9004e0f32034da0bffbe8f6ec6173517cca58c74657ccfee307340902ebf8bc5",
+      "binary": false
+    },
+    {
+      "path": "files/evidence/response-to-reviewer2-round2.md",
+      "source_relpath": "evidence/response-to-reviewer2-round2.md",
+      "bytes": 9752,
+      "sha256": "4d4b6d19a22d85fd9699422c942dcccb8ecfab12ca680331596f13213a4ea452",
+      "binary": false
+    },
+    {
+      "path": "files/evidence/susy-reviewer2-round2-web-check.md",
+      "source_relpath": "evidence/susy-reviewer2-round2-web-check.md",
+      "bytes": 1710,
+      "sha256": "b25b25103ff1f031df7760fdb4d3c4db3e97ace4131c299635dc3daa287ace1f",
+      "binary": false
+    },
+    {
+      "path": "files/evidence/submission-checklist.md",
+      "source_relpath": "evidence/submission-checklist.md",
+      "bytes": 4189,
+      "sha256": "9e10c95dd832b195b4479416612bc37d63b22c662734fcbc95bef40f0f63431a",
+      "binary": false
+    },
+    {
+      "path": "files/source/references.bib",
+      "source_relpath": "source/references.bib",
+      "bytes": 20348,
+      "sha256": "0bd46b8da0a04287edb4aba0b6ab5b73e6fdefee28398d6f30133788a504e74a",
+      "binary": false
+    }
+  ],
+  "sensitive_findings": []
+}

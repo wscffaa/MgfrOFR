@@ -1,0 +1,53 @@
+{
+  "segments": [
+    {
+      "id": "abstract",
+      "source_path": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/source/sections/abstract.tex",
+      "start_line": 2,
+      "end_line": 2,
+      "sha256": "b74b80130941cd4bcc12a2772c75326cccc8543dca82b332f21965a86378903e"
+    },
+    {
+      "id": "introduction",
+      "source_path": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/source/sections/introduction.tex",
+      "start_line": 5,
+      "end_line": 22,
+      "sha256": "db34ac3a0dde65c8988cb45d7cee087bfd3955d03562b85f56ea485d50400be9"
+    },
+    {
+      "id": "related_work",
+      "source_path": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/source/sections/related_work.tex",
+      "start_line": 25,
+      "end_line": 57,
+      "sha256": "f72fe8ad693edbc2d2806dc74a409ec8ff727b474a1ff5031296ade40b722ee1"
+    },
+    {
+      "id": "method",
+      "source_path": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/source/sections/method.tex",
+      "start_line": 60,
+      "end_line": 420,
+      "sha256": "f06d4df19dcacfffef9ad0708604becd523aff4af1ccdb5312c15095ac51662f"
+    },
+    {
+      "id": "results",
+      "source_path": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/source/sections/results.tex",
+      "start_line": 423,
+      "end_line": 649,
+      "sha256": "d92408b65c8a74bed8a03b14e326d7f13fdf88e73c48c7a8280c2d041c08e903"
+    },
+    {
+      "id": "discussion",
+      "source_path": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/source/sections/discussion.tex",
+      "start_line": 652,
+      "end_line": 712,
+      "sha256": "6d4e5ba261118a67e7c060c3cb04c9387bf2b9b188db07eccf65f9188cbba56e"
+    },
+    {
+      "id": "conclusion",
+      "source_path": "/Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/03_revision_round2_rework/source/sections/conclusion.tex",
+      "start_line": 715,
+      "end_line": 722,
+      "sha256": "848760bf239a37401a9e19a3a6ce147881a84e9f7875de142d5297d6e29f8056"
+    }
+  ]
+}

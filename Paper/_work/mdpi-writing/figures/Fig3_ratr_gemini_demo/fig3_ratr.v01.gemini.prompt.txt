@@ -1,0 +1,34 @@
+A flat-vector publication scientific loss-module diagram in the CVPR / ICCV computer-vision paper style. White canvas. Clean sans-serif labels. Thin strokes. Rounded rectangles. Minimal red accent for training-only loss. No 3D, no shadows, no gradients, no watermark.
+
+HARD PROHIBITIONS
+No full network overview, no MGFE internals, no reconstruction head, no photos, no complicated equations, no long paragraphs. Do not invent extra losses. This figure is only the RATR training regularizer.
+
+LAYOUT
+Horizontal 16 by 9. Compact left-to-right flow with one red dashed outer container labeled "training only". Use a clean scientific pipeline, not a poster.
+
+THUMBNAIL SPECS
+Branch descriptors: three colored rows or stacked tokens labeled Coarse, Medium, Fine. Temporal samples: small nodes arranged along t-1, t, t+1. Ranking matrix: small flat heatmap grid. Loss outputs: two small boxes L_intra and L_inter merging into L_RATR.
+
+MAIN STRUCTURE LEFT TO RIGHT
+1. Box "Branch descriptors B_t" with three rows labeled Coarse, Medium, Fine.
+2. Arrow to "Temporal pairs" showing anchor t, positive neighbors t-1 and t+1, and negative samples.
+3. Arrow to "Branch-wise ranking" showing three short ranked lists.
+4. Arrow to "DiffKendall" represented as a small correlation heatmap.
+5. Split into two outputs: "intra-branch ranking loss L_intra" and "inter-video ranking loss L_inter".
+6. Merge with a plus operator into "RATR loss L_RATR".
+7. Add a clear note: "disabled at inference".
+
+SUB-PANELS
+No multiple subpanels. One clean training-loss flow. Use red dashed border around the whole RATR process.
+
+COLOR PALETTE
+Pale red for the RATR container and loss blocks. Pale purple for branch descriptors. Pale blue/green/orange for Coarse/Medium/Fine rows. Near-black solid arrows inside the RATR process. Dashed red border only for training-only status.
+
+TYPOGRAPHY
+Large readable labels. Bold: Branch descriptors, Temporal pairs, Branch-wise ranking, DiffKendall, RATR loss. Minimal math: B_t, L_intra, L_inter, L_RATR.
+
+VOCABULARY WHITELIST
+Branch descriptors B_t, Coarse, Medium, Fine, Temporal pairs, anchor, positives, negatives, Branch-wise ranking, DiffKendall, L_intra, L_inter, RATR loss L_RATR, training only, disabled at inference.
+
+NEGATIVE PROMPT
+No 3D diagrams. No dense formula derivation. No random matrix labels. No full model blocks. No decorative icons. No tiny unreadable text.

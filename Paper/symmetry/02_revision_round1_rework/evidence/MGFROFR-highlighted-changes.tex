@@ -1,0 +1,1195 @@
+% Highlighted changes regenerated on 2026-07-01 as a red-delete / blue-add MDPI latexdiff.
+% Old flat: ../evidence/MGFROFR-old-first-submission-flat.tex
+% New flat: ../evidence/MGFROFR-new-flat.tex
+% latexdiff options: --config='PICTUREENV=(?:figure|table|table\*|sidewaystable|algorithm|algorithmic|tabular|tabularx)[\w\d*@]*' --graphics-markup=none
+% Compatibility patches: deleted-old-reference labels restored outside fragile environments; bibliography includes references-initial-only.bib.
+%
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL /Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/02_revision_round1_rework/evidence/MGFROFR-old-first-submission-flat.tex   Wed Jul  1 14:42:34 2026
+%DIF ADD /Users/caifeifan/VibeScholar/Antigravity_OFR/projects/001-reidmamba/Paper/symmetry/02_revision_round1_rework/evidence/MGFROFR-new-flat.tex                    Wed Jul  1 14:42:35 2026
+
+\documentclass[symmetry,article,submit,pdftex,moreauthors]{Definitions/mdpi}
+
+%
+\firstpage{1}
+\makeatletter
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+\datereceived{ }
+\daterevised{ }
+\dateaccepted{ }
+\datepublished{ }
+
+\Title{Multi-Granularity Feature Decomposition with Ranking-Aware Regularization for Old Film Restoration}
+
+%
+%
+%
+%
+
+\newcommand{\orcidauthorA}{0009-0000-1111-7667}
+\newcommand{\orcidauthorB}{0000-0002-3827-1522}
+
+\Author{Feifan Cai $^{1,2,3}$\orcidA{}, Qi Zhang $^{1,2}$\orcidB{}, Kun Yang $^{3}$, Lei Chen $^{3}$ and Youdong Ding $^{1,2,}$*}
+
+\AuthorNames{Feifan Cai, Qi Zhang, Kun Yang, Lei Chen and Youdong Ding}
+
+\address{%
+$^{1}$ \quad Shanghai Film Academy, Shanghai University, 788 Guangzhong Road, Shanghai 200072, China\\
+$^{2}$ \quad Shanghai Engineering Research Center of Motion Picture Special Effects, Shanghai 200072, China\\
+$^{3}$ \quad College of Mechanical Engineering, Taiyuan University of Technology, Taiyuan 030024, China}
+
+\corres{Correspondence: ydding@shu.edu.cn (Y.D.)}
+ %
+%DIF 41c41
+%DIF < \abstract{Old film restoration remains difficult because archival footage often contains scratches, blotches, flicker, blur, and temporal artifacts that act at different spatial and temporal scales. These mixed degradations make structural recovery, regional texture repair, and fine artifact suppression compete within a restoration model. We propose MgfrOFR, a multi-granularity extension of a Mamba-based old film restoration backbone. MgfrOFR decomposes propagated features into coarse-to-fine restoration branches and feeds branch summaries back through channel-wise recalibration, so that different degradation scales can be represented without relying on a single feature stream. It also introduces a ranking-aware triplet regularizer that penalizes correlated temporal-similarity rankings across branches during training while preserving the baseline inference interface. Experiments on the SRWOV benchmark show statistically significant PSNR and SSIM gains on synthetic clips, the best NIQE and BRISQUE scores among the compared methods on real-world archival footage, and competitive CLIP-IQA+. These results support the narrower claim that balancing coarse-to-fine feature branches with ranking-aware regularization improves old film restoration under heterogeneous degradation.}
+%DIF -------
+\abstract{Old film restoration remains challenging because archival footage often contains scratches, blotches, flicker, blur, and temporal artifacts that disturb the balance between structural recovery, regional texture repair, and fine artifact suppression. To address this problem, we propose MgfrOFR, a multi-granularity extension of a Mamba-based old film restoration backbone. First, MgfrOFR decomposes propagated features into coarse-to-fine restoration branches and feeds branch summaries back through channel-wise recalibration, allowing different degradation scales to be represented without competing in a single feature stream. Second, it introduces a ranking-aware triplet regularizer that penalizes correlated temporal-similarity rankings across branches during training while preserving the baseline inference interface. Experiments on the SRWOV benchmark show statistically significant fidelity gains on synthetic clips, strong no-reference naturalness on real-world archival footage, and a bounded perceptual-quality trade-off. These results indicate that representation-level branch balance provides an effective inductive bias for old film restoration under heterogeneous and asymmetric degradation.} %DIF > 
+%DIF -------
+ 
+\keyword{old film restoration; multi-granularity feature decomposition; ranking-aware regularization; state space models; feature-space symmetry}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{placeins}
+%DIF 48a48-49
+\DeclareRobustCommand{\bestres}[1]{\textcolor{red}{#1}} %DIF > 
+\DeclareRobustCommand{\secondres}[1]{\textcolor{blue}{#1}} %DIF > 
+%DIF -------
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.85}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\headheight}{20pt}
+
+%
+%
+%
+\clubpenalty=300
+\widowpenalty=300
+\displaywidowpenalty=300
+
+%
+%
+%
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpbot}{0pt}
+\makeatother
+
+\AtBeginDocument{\hypersetup{
+  pdftitle={Multi-Granularity Feature Decomposition with Ranking-Aware Regularization for Old Film Restoration},
+  pdfsubject={Representation-level symmetry-aware multi-granularity feature balancing for old film restoration},
+  pdfauthor={Feifan Cai; Qi Zhang; Kun Yang; Lei Chen; Youdong Ding},
+  pdfkeywords={old film restoration, symmetry-aware representation learning, multi-granularity features, state space model}
+}}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
+
+\begin{document}
+
+%
+\section{Introduction}
+\label{sec:introduction}
+
+Old \DIFdelbegin \DIFdel{film restoration must recover visual content from footage affected by multiple interacting degradation types. Archival film stock often contains scratches}\DIFdelend \DIFaddbegin \DIFadd{films carry cinematic heritage, historical documentaries, and large archival collections, yet the film stock that stores them keeps decaying. Digital restoration offers a practical route to revitalize such material~\mbox{%DIFAUXCMD
+\cite{iizuka2019deepremaster}}\hskip0pt%DIFAUXCMD
+. The real difficulty is that aged footage is rarely damaged in a single way. Scratches}\DIFaddend , dust, blotches, flicker, blur, grain, and fading \DIFaddbegin \DIFadd{accumulate }\DIFaddend within the same clip, and \DIFdelbegin \DIFdel{these defects continue to accumulate as the original material deteriorates over time. Digital restoration therefore plays an important role in preserving cinematic heritage, historical documentaries, and large archival collections~\mbox{%DIFAUXCMD
+\cite{iizuka2019deepremaster}}\hskip0pt%DIFAUXCMD
+. The technical difficulty is that these degradations occupy different spatial and temporal scales: large missing regions require global context, mid-scale stains require regional repair, and thin scratches or dust require local precision. In this paper, symmetry is used in a limited representation-level sense: the restoration model should keep }\DIFdelend \DIFaddbegin \DIFadd{they act on very different spatial scales, from large structural collapse down to thin local artifacts. This scale span sets old film restoration apart from ordinary video enhancement. A successful restoration must hold }\DIFaddend coarse structural recovery, regional texture repair, and fine artifact suppression \DIFdelbegin \DIFdel{balanced even when the observed damage is heterogeneous and asymmetric}\DIFdelend \DIFaddbegin \DIFadd{in balance---a representation-level symmetry that the asymmetric, heterogeneous degradation constantly works against}\DIFaddend .
+
+Learning-based old film restoration \DIFdelbegin \DIFdel{(OFR) has improved substantially, but existing propagation pipelines still tend to mix different restoration cues in one latent stream. RTN introduced }\DIFdelend \DIFaddbegin \DIFadd{has advanced through end-to-end video restoration frameworks. RTN pioneered }\DIFaddend bidirectional recurrent propagation with \DIFdelbegin \DIFdel{learnable defect masking~\mbox{%DIFAUXCMD
+\cite{wan2022rtn}}\hskip0pt%DIFAUXCMD
+, and RRTN strengthened alignment with }\DIFdelend \DIFaddbegin \DIFadd{a learnable defect mask, but its restoration evidence still flows through a single recurrent stream~\mbox{%DIFAUXCMD
+\cite{wan2022rtn}}\hskip0pt%DIFAUXCMD
+. RRTN added }\DIFaddend recursive transformer propagation \DIFaddbegin \DIFadd{for stronger temporal alignment; structural recovery and fine artifact suppression remain jointly encoded}\DIFaddend ~\cite{lin2024rrtn}. MambaOFR \DIFdelbegin \DIFdel{adopted }\DIFdelend \DIFaddbegin \DIFadd{then brought }\DIFaddend state space models \DIFdelbegin \DIFdel{for OFR, improved efficiency , and established the SRWOV }\DIFdelend \DIFaddbegin \DIFadd{into old film restoration, improving efficiency and establishing the Synthetic/Real-World Old Video (SRWOV) }\DIFaddend benchmark~\cite{mao2025mambaofr,gu2024mamba,guo2024mambair}. \DIFdelbegin \DIFdel{These methods provide strong temporal modeling, yet structural recovery and fine artifact suppression remain jointly encoded in propagated features. When heterogeneous cues }\DIFdelend \DIFaddbegin \DIFadd{Even so, it routes every degradation scale through one propagated feature pathway. These methods share a single weakness: when heterogeneous signals }\DIFaddend compete in one latent \DIFdelbegin \DIFdel{representation, coarse repair can overwrite }\DIFdelend \DIFaddbegin \DIFadd{space, coarse recovery overwrites }\DIFaddend fine evidence, \DIFdelbegin \DIFdel{while aggressive }\DIFdelend \DIFaddbegin \DIFadd{and }\DIFaddend local artifact suppression \DIFdelbegin \DIFdel{can distort }\DIFdelend \DIFaddbegin \DIFadd{distorts }\DIFaddend global structure.
+
+\DIFdelbegin \DIFdel{The gap addressed in this work is the absence of an OFR-specific mechanism that separates restoration evidence by granularity and keeps the resulting branches complementary. Multi-granularity designs have been effective in detection and }\DIFdelend \DIFaddbegin \DIFadd{This symmetry works at the representation level rather than as an object-level shape constraint. A symmetric representation keeps restoration evidence balanced across granularity-specific branches while maintaining a consistent temporal correspondence structure across frames. Because our branch-diversity objective is invariant under permutations of the granularity branches (the symmetric group $\mathcal{S}_G$), this balance is a permutation symmetry in the machine-learning sense---a standard group-symmetry principle---rather than a visible geometric one, which places MgfrOFR within symmetry-driven representation learning for image restoration. This view fits old film restoration because its degradation space is hierarchical. Missing regions and large blotches need global context, grain and flicker need regional modeling, and fine scratches or dust need local precision. Existing multi-granularity designs target detection or }\DIFaddend recognition~\cite{lin2017fpn,wang2021hrnet,sun2018pcb,wang2018mgn,gu2025reidmamba}\DIFdelbegin \DIFdel{, but those settings use different supervision and feature semantics. A direct }\DIFdelend \DIFaddbegin \DIFadd{. Naive }\DIFaddend multi-branch \DIFdelbegin \DIFdel{extension for OFR may also }\DIFdelend \DIFaddbegin \DIFadd{extensions can }\DIFaddend collapse into correlated \DIFdelbegin \DIFdel{branches unless }\DIFdelend \DIFaddbegin \DIFadd{features unless branch }\DIFaddend diversity is explicitly \DIFdelbegin \DIFdel{regularized. Old film restoration therefore requires both a coarse-to-fine decomposition of propagated restoration features and a training signal that discourages redundant branch behavior}\DIFdelend \DIFaddbegin \DIFadd{enforced. This gap motivates explicit granularity-separated restoration branches}\DIFaddend .
+
+\DIFdelbegin \DIFdel{To address this limitation, we }\DIFdelend \DIFaddbegin \DIFadd{We }\DIFaddend propose MgfrOFR, which augments MambaOFR with \DIFdelbegin \DIFdel{a }\DIFdelend \DIFaddbegin \DIFadd{two complementary components (Figure~\ref{fig:architecture}). The }\DIFaddend Multi-Granularity Feature Extractor (MGFE) \DIFdelbegin \DIFdel{and Ranking-Aware Triplet Regularization (RATR). MGFE }\DIFdelend reorganizes propagated Mamba features into coarse-to-fine restoration branches, \DIFdelbegin \DIFdel{allowing }\DIFdelend \DIFaddbegin \DIFadd{so that }\DIFaddend structural completion, regional repair, and fine-detail suppression \DIFdelbegin \DIFdel{to be represented }\DIFdelend \DIFaddbegin \DIFadd{are carried }\DIFaddend by dedicated descriptors \DIFdelbegin \DIFdel{rather than a single }\DIFdelend \DIFaddbegin \DIFadd{instead of competing in one }\DIFaddend hidden stream. \DIFdelbegin \DIFdel{RATR further penalizes correlated temporal-similarity rankings across branches during training, reducing redundant branch behavior without changing the baseline inference interface.
+}\DIFdelend \DIFaddbegin \DIFadd{It also feeds branch summaries back into the spatial stream through channel-wise recalibration. The Ranking-Aware Triplet Regularization (RATR) keeps these branches from collapsing into redundant representations by penalizing correlated rankings on temporal correspondences. RATR defines branch diversity over temporal correspondences rather than identity labels, which fits the restoration setting.
+}
+
+\DIFaddend Under a unified reproduction protocol on SRWOV, MgfrOFR \DIFdelbegin \DIFdel{retains the efficient MambaOFR backbone while adding }\DIFdelend \DIFaddbegin \DIFadd{preserves the efficient Mamba backbone of MambaOFR and adds }\DIFaddend explicit granularity control \DIFdelbegin \DIFdel{with }\DIFdelend \DIFaddbegin \DIFadd{at }\DIFaddend modest overhead. The main contributions \DIFaddbegin \DIFadd{of this work }\DIFaddend are summarized as follows:
+\begin{enumerate}
+    \item We formulate old film restoration \DIFdelbegin \DIFdel{from a restrained }\DIFdelend \DIFaddbegin \DIFadd{as }\DIFaddend representation-level symmetry \DIFdelbegin \DIFdel{perspective. The formulation treats }\DIFdelend \DIFaddbegin \DIFadd{under heterogeneous degradation, treating }\DIFaddend coarse structural recovery, regional texture repair, and fine artifact suppression as complementary feature components that \DIFdelbegin \DIFdel{should remain balanced under degradation-induced }\DIFdelend \DIFaddbegin \DIFadd{stay balanced despite }\DIFaddend spatial and temporal asymmetry.
+    \item We design \DIFaddbegin \DIFadd{MGFE, }\DIFaddend a multi-granularity feature decomposition \DIFdelbegin \DIFdel{mechanism }\DIFdelend for Mamba-based old film restoration \DIFdelbegin \DIFdel{. MGFE }\DIFdelend \DIFaddbegin \DIFadd{that }\DIFaddend inserts learnable restoration tokens into propagated features, \DIFdelbegin \DIFdel{progressively }\DIFdelend aggregates them into coarse-to-fine branches, and feeds branch summaries back to the spatial stream through channel-wise recalibration.
+    \item We introduce \DIFaddbegin \DIFadd{RATR, }\DIFaddend a ranking-aware triplet regularizer \DIFdelbegin \DIFdel{to improve branch complementarity during training. By penalizing }\DIFdelend \DIFaddbegin \DIFadd{that penalizes }\DIFaddend correlated temporal-similarity rankings across granularity branches with differentiable rank correlation, \DIFdelbegin \DIFdel{RATR reduces redundant branch behavior }\DIFdelend \DIFaddbegin \DIFadd{improving branch complementarity and reducing redundancy }\DIFaddend while preserving the original baseline inference interface.
+    \item We conduct a unified evaluation on the SRWOV benchmark covering synthetic and real-world archival footage\DIFdelbegin \DIFdel{. The results, }\DIFdelend \DIFaddbegin \DIFadd{, where }\DIFaddend statistical tests, ablation studies, and complexity analysis show that MgfrOFR improves restoration fidelity and \DIFdelbegin \DIFdel{no-reference naturalness with }\DIFdelend \DIFaddbegin \DIFadd{naturalness at }\DIFaddend modest additional computational cost.
+\end{enumerate}
+ %
+\section{Related Work}
+\label{sec:related}
+
+\subsection{Old Film and Video Restoration}
+\label{subsec:ofr}
+
+Old film restoration differs from general video restoration \DIFdelbegin \DIFdel{because }\DIFdelend \DIFaddbegin \DIFadd{in that }\DIFaddend it must jointly address structured artifacts \DIFaddbegin \DIFadd{(scratches, dust}\DIFaddend , \DIFdelbegin \DIFdel{photometric degradation, and quality degeneration. Scratches, dust, and blotchesrequire defect-aware repair, while }\DIFdelend \DIFaddbegin \DIFadd{blotches), photometric degradation (}\DIFaddend flicker, grain, fading\DIFdelbegin \DIFdel{, blur, and noiserequire photometric and temporal correction}\DIFdelend \DIFaddbegin \DIFadd{), and quality degeneration (blur, noise)}\DIFaddend . Traditional approaches decompose the problem into detection and inpainting stages, \DIFdelbegin \DIFdel{using }\DIFdelend \DIFaddbegin \DIFadd{relying on }\DIFaddend hand-crafted features \DIFdelbegin \DIFdel{with }\DIFdelend \DIFaddbegin \DIFadd{and }\DIFaddend interpolation-based filling~\cite{kokaram2004missing} or sparse collaborative filtering~\cite{dabov2007bm3d,he2013guided}. \DIFaddbegin \DIFadd{While computationally efficient, these methods lack semantic understanding of video content and leave photometric degradations unaddressed. }\DIFaddend Deep learning shifted \DIFdelbegin \DIFdel{OFR }\DIFdelend \DIFaddbegin \DIFadd{old film restoration }\DIFaddend toward end-to-end \DIFdelbegin \DIFdel{restoration}\DIFdelend \DIFaddbegin \DIFadd{frameworks}\DIFaddend : DeepRemaster~\cite{iizuka2019deepremaster} processes spatiotemporal volumes with 3D convolutions, RTN~\cite{wan2022rtn} introduces bidirectional recurrent propagation with a learnable soft defect mask, \DIFaddbegin \DIFadd{and }\DIFaddend RRTN~\cite{lin2024rrtn} strengthens alignment \DIFdelbegin \DIFdel{with }\DIFdelend \DIFaddbegin \DIFadd{via }\DIFaddend recursive transformer networks \DIFdelbegin \DIFdel{and }\DIFdelend \DIFaddbegin \DIFadd{with }\DIFaddend second-order grid propagation\DIFdelbegin \DIFdel{, and }\DIFdelend \DIFaddbegin \DIFadd{. }\DIFaddend MambaOFR~\cite{mao2025mambaofr} \DIFdelbegin \DIFdel{uses }\DIFdelend \DIFaddbegin \DIFadd{replaces computationally expensive blocks with }\DIFaddend MambaIR-style~\cite{guo2024mambair} state-space modules \DIFdelbegin \DIFdel{while introducing }\DIFdelend \DIFaddbegin \DIFadd{and establishes }\DIFaddend the SRWOV benchmark \DIFdelbegin \DIFdel{.
+}\DIFdelend \DIFaddbegin \DIFadd{for dedicated old film restoration evaluation.
+}\DIFaddend 
+
+\DIFdelbegin \DIFdel{Existing video restoration and enhancement systems provide useful context but are not tailored to OFR-specific defect structure.
+}\DIFdelend General video restoration methods such as EDVR~\cite{wang2019edvr}, BasicVSR~\cite{chan2021basicvsr}, BasicVSR++~\cite{chan2022basicvsrpp}, VRT~\cite{liang2024vrt}, and RVRT~\cite{liang2022rvrt} \DIFdelbegin \DIFdel{model temporal information effectively}\DIFdelend \DIFaddbegin \DIFadd{provide strong temporal modeling}\DIFaddend , but they do not \DIFdelbegin \DIFdel{explicitly handle old-film defects. Diffusion }\DIFdelend \DIFaddbegin \DIFadd{incorporate defect handling specific to old film restoration. Recent diffusion }\DIFaddend and foundation-prior \DIFaddbegin \DIFadd{restoration }\DIFaddend systems, including DiffBIR~\cite{lin2024diffbir}, SUPIR~\cite{yu2024supir}, and SeeSR~\cite{wu2024seesr}, improve perceptual detail for blind image restoration or real-world super-resolution, but they are not designed around temporal old-film \DIFdelbegin \DIFdel{artifacts }\DIFdelend \DIFaddbegin \DIFadd{defects }\DIFaddend or SRWOV-style video \DIFdelbegin \DIFdel{protocols. This leaves a specific need for propagation features that can separate }\DIFdelend \DIFaddbegin \DIFadd{restoration protocols. Despite this progress, existing old film restoration methods still encode }\DIFaddend structural completion, regional repair, and \DIFdelbegin \DIFdel{fine artifact suppression .
+}\DIFdelend \DIFaddbegin \DIFadd{fine-detail suppression through a single propagated latent space. This motivates our multi-granularity decomposition approach.
+}\DIFaddend 
+
+\subsection{State Space Models for Vision}
+\label{subsec:ssm}
+
+\DIFdelbegin \DIFdel{State space models offer an efficient alternative to attention-heavy restoration backbones. }\DIFdelend The computational cost of self-attention scales quadratically with sequence length, \DIFdelbegin \DIFdel{which is costly }\DIFdelend \DIFaddbegin \DIFadd{posing a practical barrier }\DIFaddend for high-resolution video \DIFaddbegin \DIFadd{processing}\DIFaddend . Structured state space sequence models~\cite{gu2022s4} reformulate sequence modeling through continuous-time state transitions, reducing complexity from $O(L^2)$ to $O(L)$ while maintaining a global receptive field. Mamba~\cite{gu2024mamba} further introduces selective state transitions with hardware-aware recurrence\DIFdelbegin \DIFdel{. In vision, }\DIFdelend \DIFaddbegin \DIFadd{, enabling content-dependent filtering. The adaptation of SSMs to visual domains has produced strong baselines: }\DIFaddend MambaIR~\cite{guo2024mambair} demonstrates 2D selective scanning for image restoration, VMamba~\cite{liu2024vmamba} builds hierarchical feature pyramids with four scanning routes, and VSRM~\cite{tran2025vsrm} alternates spatial and temporal Mamba blocks for video super-resolution at linear cost.
+
+These properties are \DIFdelbegin \DIFdel{well suited to OFR, which combines }\DIFdelend \DIFaddbegin \DIFadd{well-suited for old film restoration, which couples }\DIFaddend long temporal dependency, large spatial damage, and high-resolution input. MambaOFR~\cite{mao2025mambaofr} \DIFdelbegin \DIFdel{shows }\DIFdelend \DIFaddbegin \DIFadd{validates }\DIFaddend that Mamba-based propagation \DIFdelbegin \DIFdel{can improve }\DIFdelend \DIFaddbegin \DIFadd{outperforms transformer counterparts on }\DIFaddend both efficiency and \DIFdelbegin \DIFdel{restoration qualityrelative to transformer counterparts}\DIFdelend \DIFaddbegin \DIFadd{quality}\DIFaddend . However, \DIFaddbegin \DIFadd{linear-cost }\DIFaddend long-range aggregation alone does not \DIFdelbegin \DIFdel{specify which degradation scale each feature should represent. MgfrOFR therefore }\DIFdelend \DIFaddbegin \DIFadd{decide what restoration evidence each feature position retains; the backbone treats all degradation scales uniformly. Our work }\DIFaddend augments the SSM feature flow with explicit multi-granularity descriptors rather than replacing the backbone.
+
+\subsection{Multi-Scale and Multi-Branch Representations}
+\label{subsec:multigran}
+
+\DIFdelbegin \DIFdel{Multi-scale and multi-branch representations are useful when one feature scale cannot capture both global context and fine local evidence }\DIFdelend \DIFaddbegin \DIFadd{A single feature scale often cannot encode both global structure and fine-grained local evidence simultaneously}\DIFaddend . Feature Pyramid Networks~\cite{lin2017fpn} and HRNet~\cite{wang2021hrnet} \DIFdelbegin \DIFdel{show the value of }\DIFdelend \DIFaddbegin \DIFadd{establish that }\DIFaddend explicit multi-scale decomposition \DIFdelbegin \DIFdel{for }\DIFdelend \DIFaddbegin \DIFadd{improves }\DIFaddend dense prediction, while MIRNet-v2~\cite{zamir2022mirnetv2} shows that complementary multi-scale context \DIFdelbegin \DIFdel{can improve }\DIFdelend \DIFaddbegin \DIFadd{enhances }\DIFaddend low-level reconstruction \DIFaddbegin \DIFadd{quality}\DIFaddend . In person re-identification, PCB~\cite{sun2018pcb} decomposes features along spatial stripes, MGN~\cite{wang2018mgn} combines global and local branches at different partition granularities, and ReIDMamba~\cite{gu2025reidmamba} adapts this \DIFdelbegin \DIFdel{idea }\DIFdelend \DIFaddbegin \DIFadd{paradigm }\DIFaddend to state space models. These \DIFdelbegin \DIFdel{studies motivate branch-structured representations}\DIFdelend \DIFaddbegin \DIFadd{methods show that branch structure can expose complementary evidence}\DIFaddend , but their \DIFdelbegin \DIFdel{objectives }\DIFdelend \DIFaddbegin \DIFadd{supervision }\DIFaddend and feature semantics target recognition rather than \DIFdelbegin \DIFdel{video }\DIFdelend restoration.
+
+\subsection{Diversity and Ranking Regularization}
+\label{subsec:diversity_ranking}
+
+\DIFdelbegin \DIFdel{Branch structure is useful only when the branches }\DIFdelend \DIFaddbegin \DIFadd{The consistent lesson across these works is that extra branches provide benefit only when they }\DIFaddend capture complementary cues rather than correlated copies of the same evidence. Contrastive learning~\cite{chen2020mocov2} provides a general diversity mechanism, but it does not directly regulate pairwise ordering behavior across branches\DIFdelbegin \DIFdel{. Two branches may differ in magnitude while ranking all candidate frames in the same order, producing apparent feature diversity but redundant temporal }\DIFdelend \DIFaddbegin \DIFadd{: two branches can produce different feature magnitudes yet rank all candidates identically, yielding diversity in norm but redundancy in discriminative }\DIFaddend structure. Differentiable Kendall's Tau~\cite{zheng2023diffkendall} enables gradient-based penalization of correlated rankings, \DIFdelbegin \DIFdel{which is directly applicable }\DIFdelend \DIFaddbegin \DIFadd{a property that naturally applies }\DIFaddend to flow-guided temporal correspondences in \DIFdelbegin \DIFdel{OFR}\DIFdelend \DIFaddbegin \DIFadd{old film restoration}\DIFaddend .
+
+\subsection{Representation Symmetry in Restoration}
+\label{subsec:symmetry_ai}
+
+\DIFdelbegin \DIFdel{For this paper, representation symmetry denotes balanced and comparable organization of complementary restoration evidence rather than visible geometric symmetry}\DIFdelend \DIFaddbegin \DIFadd{In AI-based image processing, symmetry can be interpreted beyond visible object geometry}\DIFaddend . A learned representation \DIFdelbegin \DIFdel{becomes unbalanced when }\DIFdelend \DIFaddbegin \DIFadd{may be symmetric when complementary evidence sources remain balanced, comparable, and consistently organized across samples; asymmetry appears when }\DIFaddend optimization favors one dominant cue\DIFdelbegin \DIFdel{and suppresses other cues needed for restoration}\DIFdelend . Feature-fusion and correlation-based representation studies show that multi-view or multi-branch features \DIFdelbegin \DIFdel{require }\DIFdelend \DIFaddbegin \DIFadd{need }\DIFaddend explicit organization rather than simple concatenation~\cite{yu2021multiview_tensor_fusion,qian2020multiview_matrix_correlation}, \DIFdelbegin \DIFdel{while adjacent image-processing studies use attention, detection, or differential-equation priors to organize heterogeneous visual evidence for anomaly detection, object detection, segmentation, and denoising~\mbox{%DIFAUXCMD
+\cite{cui2024video_anomaly_iqa_attention,yin2024improved_faster_rcnn,tian2020pde_segmentation_denoising}}\hskip0pt%DIFAUXCMD
+. Feature-wise }\DIFdelend \DIFaddbegin \DIFadd{and feature-wise }\DIFaddend modulation provides a practical way to inject conditioning signals into image-processing networks~\cite{perez2018film}. \DIFdelbegin \DIFdel{This restricted view is relevant to OFR }\DIFdelend \DIFaddbegin \DIFadd{For old film restoration, this view is useful }\DIFaddend because film damage is \DIFdelbegin \DIFdel{uneven across both spatial }\DIFdelend \DIFaddbegin \DIFadd{inherently asymmetric across }\DIFaddend regions and frames. \DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdel{MgfrOFR adapts these ideas to restoration rather than recognition}\DIFdelend \DIFaddbegin \DIFadd{In MgfrOFR this representation symmetry is made precise as two group invariances of the training objective---branch-permutation invariance under the symmetric group $\mathcal{S}_G$ and direction-exchange invariance under the bidirectional $\mathbb{Z}_2$ action (Section~\ref{subsec:symmetry_property}).
+}
+
+\DIFadd{Our design is inspired by this line of work, but the restoration setting changes the formulation in three important ways}\DIFaddend . First, \DIFaddbegin \DIFadd{the }\DIFaddend branch tokens are inserted into propagated restoration features rather than identity-oriented \DIFaddbegin \DIFadd{recognition }\DIFaddend embeddings. Second, \DIFaddbegin \DIFadd{the }\DIFaddend branch summaries are fed back into the restoration stream through channel-wise recalibration, so they affect reconstruction rather than only auxiliary supervision. Third, positives and negatives are defined by temporal correspondence within and across clips rather than person identities. The \DIFdelbegin \DIFdel{resulting design addresses two OFR-specific gaps : the lack }\DIFdelend \DIFaddbegin \DIFadd{analysis above highlights two gaps in old film restoration: the absence }\DIFaddend of explicit multi-granularity \DIFaddbegin \DIFadd{feature }\DIFaddend decomposition within the temporal propagation pipeline, and the lack of diversity regularization \DIFdelbegin \DIFdel{that keeps parallel restoration branches complementary, }\DIFdelend \DIFaddbegin \DIFadd{to ensure that parallel feature branches capture complementary restoration evidence. Unlike multi-scale pyramids, token/stripe recognition models, and generic diversity losses, MgfrOFR is the only design considered here whose branch structure carries an explicit permutation-and-exchange symmetry rather than acting on feature magnitude alone. MgfrOFR addresses both gaps within a unified framework, }\DIFaddend as detailed in Section~\ref{sec:method}.
+ %
+\section{Methods}
+\label{sec:method}
+
+\DIFdelbegin %DIFDELCMD < \begin{figure}[!htbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < \includegraphics[width=\textwidth]{figures/Fig1_mgfrofr_architecture.pdf}
+%DIFDELCMD < \caption{MgfrOFR framework. MGFE decomposes propagated features into $G{=}3$ multi-granularity restoration-token branches and uses their summaries for channel-wise recalibration. RATR is used only during training (dashed red path) to penalize redundant temporal-ranking correlations and produce $\mathcal{L}_{\text{intra}}$ and $\mathcal{L}_{\text{inter}}$.\label{fig:architecture}}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \subsection{Problem Setup}
+\label{subsec:problem_setup}
+
+Given a degraded old-film clip $X=\{x_t\}_{t=1}^{T}$, \DIFdelbegin \DIFdel{the task is to estimate a restored }\DIFdelend \DIFaddbegin \DIFadd{we aim to recover a clean }\DIFaddend clip $Y=\{y_t\}_{t=1}^{T}$ \DIFdelbegin \DIFdel{that recovers image content while suppressing }\DIFdelend \DIFaddbegin \DIFadd{in which image content is restored and }\DIFaddend structured film defects and photometric degradation \DIFaddbegin \DIFadd{are removed}\DIFaddend . Synthetic SRWOV \DIFdelbegin \DIFdel{samples provide }\DIFdelend \DIFaddbegin \DIFadd{clips come with }\DIFaddend paired clean frames \DIFdelbegin \DIFdel{for }\DIFdelend \DIFaddbegin \DIFadd{and give }\DIFaddend direct supervision. Real-world archival clips \DIFdelbegin \DIFdel{do not provide }\DIFdelend \DIFaddbegin \DIFadd{have no }\DIFaddend ground truth, so \DIFdelbegin \DIFdel{their evaluation relies on }\DIFdelend \DIFaddbegin \DIFadd{we evaluate them with }\DIFaddend no-reference quality metrics and qualitative inspection. \DIFdelbegin \DIFdel{The method must therefore preserve temporal consistency while handling degradations that vary across }\DIFdelend \DIFaddbegin \DIFadd{Old-film degradations vary in }\DIFaddend both spatial scale and time\DIFaddbegin \DIFadd{, and a restoration model must remove them without breaking temporal consistency}\DIFaddend .
+
+\subsection{Input Representation}
+\label{subsec:input_representation}
+
+\DIFdelbegin \DIFdel{MgfrOFR operates on the propagated feature maps produced by the baseline bidirectional restoration backbone. For each time step $t$, the }\DIFdelend \DIFaddbegin \DIFadd{Each input frame is an RGB image, and the baseline propagation module turns the clip into }\DIFaddend backward and forward \DIFdelbegin \DIFdel{streams produce }\DIFdelend \DIFaddbegin \DIFadd{feature streams. At every time step $t$, motion-aware propagation yields }\DIFaddend aligned feature maps $f_t^{b}, f_t^{f} \in \mathbb{R}^{C_f \times H \times W}$\DIFdelbegin \DIFdel{after motion-aware propagation. MgfrOFR treats these maps as the only interface to the backbone: MGFE reads each propagated }\DIFdelend \DIFaddbegin \DIFadd{. MgfrOFR operates entirely on these propagated maps: MGFE takes each }\DIFaddend map, returns a recalibrated map \DIFdelbegin \DIFdel{with }\DIFdelend \DIFaddbegin \DIFadd{of }\DIFaddend the same spatial size and channel count, and \DIFdelbegin \DIFdel{emits branch descriptors used by RATR }\DIFdelend \DIFaddbegin \DIFadd{produces the branch descriptors that RATR uses }\DIFaddend during training.
+
+MgfrOFR \DIFdelbegin \DIFdel{follows the same }\DIFdelend \DIFaddbegin \DIFadd{keeps the }\DIFaddend bidirectional propagation framework \DIFdelbegin \DIFdel{as }\DIFdelend \DIFaddbegin \DIFadd{of }\DIFaddend MambaOFR~\cite{mao2025mambaofr} \DIFdelbegin \DIFdel{while adding }\DIFdelend \DIFaddbegin \DIFadd{but replaces its single-granularity restoration view with }\DIFaddend an explicit coarse-to-fine \DIFdelbegin \DIFdel{representation }\DIFdelend pipeline. Given \DIFdelbegin \DIFdel{a degraded input }\DIFdelend \DIFaddbegin \DIFadd{the degraded }\DIFaddend clip $X=\{x_t\}_{t=1}^{T}$, the baseline first propagates content \DIFdelbegin \DIFdel{in }\DIFdelend backward and forward \DIFdelbegin \DIFdel{directions }\DIFdelend so that neighboring \DIFdelbegin \DIFdel{observations }\DIFdelend \DIFaddbegin \DIFadd{frames }\DIFaddend are motion-aligned before \DIFdelbegin \DIFdel{reconstruction. MgfrOFR then separates restorationevidence by spatial granularity and regularizes the resulting branches during training. In the representation-level symmetry framing used here, }\DIFdelend \DIFaddbegin \DIFadd{restoration, and MgfrOFR builds on these aligned features. Old-film damage is spatially and temporally asymmetric: a scratch may cover one region in one frame and vanish in the next, yet restoration should still weigh }\DIFaddend coarse, medium, and fine \DIFdelbegin \DIFdel{restoration evidence should remain balanced even when the input damage is spatially and temporally asymmetric}\DIFdelend \DIFaddbegin \DIFadd{evidence in a balanced way. This cross-granularity balance is the feature-space symmetry our design pursues}\DIFaddend .
+
+\DIFdelbegin \DIFdel{The two added components serve different roles. MGFE converts }\DIFdelend \DIFaddbegin \DIFadd{MGFE turns }\DIFaddend each propagated feature map into a token sequence, inserts learnable restoration tokens, \DIFdelbegin \DIFdel{derives }\DIFdelend \DIFaddbegin \DIFadd{and reads }\DIFaddend branch descriptors from progressively fused token groups\DIFdelbegin \DIFdel{, and feeds their summaries back }\DIFdelend \DIFaddbegin \DIFadd{; their summaries flow back to the propagated feature }\DIFaddend through channel-wise recalibration. RATR \DIFdelbegin \DIFdel{is used }\DIFdelend \DIFaddbegin \DIFadd{acts }\DIFaddend only during training\DIFdelbegin \DIFdel{; it discourages redundant ranking behavior across branches and does not add an inferencemodule}\DIFdelend \DIFaddbegin \DIFadd{, where it discourages the branches from ranking samples in the same redundant way, and it is switched off at inference}\DIFaddend . The reconstruction head \DIFdelbegin \DIFdel{follows the original MambaOFR contract }\DIFdelend \DIFaddbegin \DIFadd{is inherited unchanged from MambaOFR }\DIFaddend and outputs the restored frame. \DIFdelbegin \DIFdel{The overall architecture is illustrated in }\DIFdelend Figure~\ref{fig:architecture} \DIFaddbegin \DIFadd{shows how these components fit together}\DIFaddend .
+
+\DIFdelbegin %DIFDELCMD < \begin{algorithm}[H]
+%DIFDELCMD < \caption{MgfrOFR forward pass for a clip of length $T$.\label{alg:mgfrofr}}
+%DIFDELCMD < \begin{algorithmic}[1]
+%DIFDELCMD < \Require Degraded clip $X=\{x_t\}_{t=1}^{T}$
+%DIFDELCMD < \Ensure Restored frames $\{y_t\}_{t=1}^{T}$
+%DIFDELCMD < \State Initialize descriptor buffer $\mathcal{B} \leftarrow \emptyset$
+%DIFDELCMD < \For{$t = 1$ to $T$}
+%DIFDELCMD <     \State $f_t^{b}, f_t^{f} \leftarrow \text{Backbone}(X, t)$ \Comment{Bidirectional propagation}
+%DIFDELCMD <     \For{$d \in \{b, f\}$}
+%DIFDELCMD <         \State $\widetilde{f}_t^{d}, B_t^{d} \leftarrow \text{MGFE}(f_t^{d})$ \Comment{Multi-granularity decomposition}
+%DIFDELCMD <     \EndFor
+%DIFDELCMD <     \State $B_t \leftarrow \frac{1}{2}(B_t^{b} + B_t^{f})$ \Comment{Average branch descriptors}
+%DIFDELCMD <     \State $\mathcal{B} \leftarrow \mathcal{B} \cup \{B_t\}$ \Comment{Accumulate into batch buffer}
+%DIFDELCMD <     \State $y_t \leftarrow \mathcal{R}([\widetilde{f}_t^{b}; \widetilde{f}_t^{f}], x_t)$ \Comment{Reconstruction}
+%DIFDELCMD < \EndFor
+%DIFDELCMD < \If{training}
+%DIFDELCMD <     \State $\mathcal{L}_{\text{ratr}} \leftarrow \text{RATR}(\{B_t\}_{t=1}^{T})$ \Comment{Applied on full batch after accumulation}
+%DIFDELCMD <     \State $\mathcal{L}_{\text{total}} \leftarrow \mathcal{L}_{\text{pix}} + \lambda_{\text{perc}}\mathcal{L}_{\text{perc}} + \lambda_{\text{gan}}\mathcal{L}_{\text{gan}} + \lambda_{\text{ratr}}\mathcal{L}_{\text{ratr}}$
+%DIFDELCMD < \EndIf
+%DIFDELCMD < \end{algorithmic}
+%DIFDELCMD < \end{algorithm}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig1_mgfrofr_architecture.pdf}
+\caption{The MgfrOFR framework illustrates how MGFE decomposes propagated features into $G{=}3$ multi-granularity restoration-token branches for channel-wise recalibration. RATR is used only during training (dashed red path) to penalize redundant temporal-ranking correlations and produce $\mathcal{L}_{\text{intra}}$ and $\mathcal{L}_{\text{inter}}$.\label{fig:architecture}}
+\end{figure}
+\DIFaddend 
+
+\subsection{Pipeline Overview}
+\label{subsec:overview}
+
+\DIFdelbegin \DIFdel{For each }\DIFdelend \DIFaddbegin \DIFadd{At }\DIFaddend time step $t$, the \DIFdelbegin \DIFdel{backward and forward propagation paths of the baseline produce feature }\DIFdelend \DIFaddbegin \DIFadd{baseline provides the propagated }\DIFaddend maps $f_t^{b}, f_t^{f} \in \mathbb{R}^{C_f \times H \times W}$\DIFdelbegin \DIFdel{. MGFE transforms each propagated feature }\DIFdelend \DIFaddbegin \DIFadd{, and MGFE maps each one }\DIFaddend into a recalibrated feature map \DIFdelbegin \DIFdel{and }\DIFdelend \DIFaddbegin \DIFadd{together with }\DIFaddend a set of branch descriptors:
+
+\begin{equation}
+\left(\widetilde{f}_t^{d}, B_t^{d}\right)=\operatorname{MGFE}\!\left(f_t^{d}\right), \quad d \in \{b,f\},
+\end{equation}
+
+where $d$ indexes the propagation direction, $B_t^{d} \in \mathbb{R}^{G \times D}$ is the branch-descriptor tensor and $D=C_f$ in this work. The reconstruction head keeps the original MambaOFR interface and combines the two recalibrated directional features:
+
+\begin{equation}
+y_t = \mathcal{R}\!\left([\widetilde{f}_t^{b};\widetilde{f}_t^{f}], x_t\right),
+\qquad
+B_t = \frac{1}{2}\left(B_t^{b}+B_t^{f}\right),
+\label{eq:mgfrofr_overview_2}
+\end{equation}
+
+where $\mathcal{R}(\cdot)$ \DIFdelbegin \DIFdel{denotes }\DIFdelend \DIFaddbegin \DIFadd{is }\DIFaddend the unchanged reconstruction head of MambaOFR and $[\cdot;\cdot]$ denotes channel concatenation. \DIFdelbegin \DIFdel{Equation~\eqref{eq:mgfrofr_overview_2} matches the implemented data flow: the directional descriptors are averaged before RATRis applied, so the diversity constraint acts on one }\DIFdelend \DIFaddbegin \DIFadd{Averaging the two directional descriptors before RATR, as in Equation~\eqref{eq:mgfrofr_overview_2}, lets the diversity regularizer act on a single }\DIFaddend descriptor tensor per frame rather than \DIFdelbegin \DIFdel{duplicating a similar constraint on two directional }\DIFdelend \DIFaddbegin \DIFadd{on two nearly identical }\DIFaddend streams. Figure~\ref{fig:architecture} \DIFdelbegin \DIFdel{illustrates the same }\DIFdelend \DIFaddbegin \DIFadd{traces this }\DIFaddend data flow, and Algorithm~\ref{alg:mgfrofr} summarizes the forward pass.
+
+\DIFaddbegin \begin{algorithm}[H]
+\caption{MgfrOFR forward pass for a clip of length $T$.\label{alg:mgfrofr}}
+\begin{algorithmic}[1]
+\Require Degraded clip $X=\{x_t\}_{t=1}^{T}$
+\Ensure Restored frames $\{y_t\}_{t=1}^{T}$
+\State Initialize descriptor buffer $\mathcal{B} \leftarrow \emptyset$
+\For{$t = 1$ to $T$}
+    \State $f_t^{b}, f_t^{f} \leftarrow \text{Backbone}(X, t)$ \Comment{Bidirectional propagation}
+    \For{$d \in \{b, f\}$}
+        \State $\widetilde{f}_t^{d}, B_t^{d} \leftarrow \text{MGFE}(f_t^{d})$ \Comment{Multi-granularity decomposition}
+    \EndFor
+    \State $B_t \leftarrow \frac{1}{2}(B_t^{b} + B_t^{f})$ \Comment{Average branch descriptors}
+    \State $\mathcal{B} \leftarrow \mathcal{B} \cup \{B_t\}$ \Comment{Accumulate into batch buffer}
+    \State $y_t \leftarrow \mathcal{R}([\widetilde{f}_t^{b}; \widetilde{f}_t^{f}], x_t)$ \Comment{Reconstruction}
+\EndFor
+\If{training}
+    \State $\mathcal{L}_{\text{ratr}} \leftarrow \text{RATR}(\{B_t\}_{t=1}^{T})$ \Comment{Applied on full batch after accumulation}
+    \State $\mathcal{L}_{\text{total}} \leftarrow \mathcal{L}_{\text{pix}} + \lambda_{\text{perc}}\mathcal{L}_{\text{perc}} + \lambda_{\text{gan}}\mathcal{L}_{\text{gan}} + \lambda_{\text{ratr}}\mathcal{L}_{\text{ratr}}$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+\DIFaddend \subsection{Baseline Interface and Preserved Components}
+\label{subsec:baseline_interface}
+
+MgfrOFR \DIFdelbegin \DIFdel{preserves }\DIFdelend \DIFaddbegin \DIFadd{leaves }\DIFaddend the MambaOFR backbone, \DIFdelbegin \DIFdel{bidirectional }\DIFdelend propagation order, reconstruction head, and training loop \DIFdelbegin \DIFdel{. The only inference-time insertion }\DIFdelend \DIFaddbegin \DIFadd{untouched. At inference the only addition }\DIFaddend is MGFE, which maps $f_t^{d}$ to $\widetilde{f}_t^{d}$ without changing \DIFdelbegin \DIFdel{tensor shape. }\DIFdelend \DIFaddbegin \DIFadd{the tensor shape; }\DIFaddend RATR is an auxiliary \DIFdelbegin \DIFdel{training loss over }\DIFdelend \DIFaddbegin \DIFadd{loss on the }\DIFaddend branch descriptors and \DIFdelbegin \DIFdel{is disabled during inference. This interface keeps the baseline reconstruction contract unchanged: the head still receives }\DIFdelend \DIFaddbegin \DIFadd{plays no role once training ends. The reconstruction head therefore behaves exactly as in the baseline, still taking the }\DIFaddend concatenated backward and forward \DIFdelbegin \DIFdel{propagated }\DIFdelend features together with the current degraded frame.
+
+\subsection{Multi-Granularity Feature Extractor (MGFE)}
+\label{subsec:mgfe}
+
+\DIFdelbegin \DIFdel{MGFE separates restoration evidence by spatial granularity while keeping the propagated feature map as the spatial carrier for reconstruction. Large }\DIFdelend \DIFaddbegin \DIFadd{Old films are damaged at very different scales: large }\DIFaddend missing regions, mid-scale blotches, and thin scratches \DIFdelbegin \DIFdel{require different aggregation ranges, but a single hidden tensor does not require these cues to remain separable. MGFE addresses this by exposing multiple }\DIFdelend \DIFaddbegin \DIFadd{each need a different aggregation range. A single restoration feature has to serve all of them at once, so fine detail and coarse structure compete inside the same channels. MGFE resolves this by keeping the propagated feature as a shared spatial carrier and, alongside it, exposing several }\DIFaddend restoration-token branches \DIFdelbegin \DIFdel{with different aggregation ratesand feeding their summaries back }\DIFdelend \DIFaddbegin \DIFadd{that aggregate at different rates; the branch summaries are fed back to the carrier }\DIFaddend as a recalibration signal. \DIFdelbegin \DIFdel{This component provides the branch-balance mechanism of MgfrOFR: each degradation scale receives a dedicated descriptor }\DIFdelend \DIFaddbegin \DIFadd{Each damage scale then gets a dedicated branch, }\DIFaddend while reconstruction still \DIFdelbegin \DIFdel{uses a common spatial featurecarrier}\DIFdelend \DIFaddbegin \DIFadd{reads from one common feature}\DIFaddend . Figure~\ref{fig:mgfe_detail} \DIFdelbegin \DIFdel{shows the detailed }\DIFdelend \DIFaddbegin \DIFadd{details the }\DIFaddend design.
+
+\DIFdelbegin %DIFDELCMD < \begin{figure}[!htbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < \includegraphics[width=\textwidth]{figures/Fig2_mgfe_module_detail.pdf}
+%DIFDELCMD < \caption{MGFE module. $M{=}12$ learnable restoration tokens are inserted into image tokens, fused by progressive max fusion, and summarized into $G{=}3$ restoration-token branches. The resulting descriptors generate scale and shift parameters for channel-wise recalibration.\label{fig:mgfe_detail}}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig2_mgfe_module_detail.pdf}
+\caption{MGFE illustrates the decomposition of propagated features into $G{=}3$ restoration-token branches. $M{=}12$ learnable restoration tokens are inserted into image tokens, fused by progressive average fusion, and summarized into descriptors that generate scale/shift parameters for channel-wise recalibration.\label{fig:mgfe_detail}}
+\end{figure}
+\DIFaddend 
+
+Since MGFE processes each propagation direction identically, we drop the direction superscript $d$ and write $f_t \in \mathbb{R}^{C_f \times H \times W}$ for brevity. We first flatten it into an image-token sequence
+
+\begin{equation}
+Z_t = \operatorname{Flat}(f_t) \in \mathbb{R}^{N \times C_f},
+\qquad
+N = H W,
+\end{equation}
+
+where $\operatorname{Flat}(\cdot)$ preserves raster order and stacks spatial positions into token form. We then append $M$ learnable restoration tokens $R \in \mathbb{R}^{M \times C_f}$ and insert them into the image-token stream through an operator $\Pi(\cdot,\cdot)$\DIFaddbegin \DIFadd{. The restoration-token matrix is initialized from a truncated normal distribution with standard deviation 0.02 and optimized jointly with the restoration network}\DIFaddend :
+
+\begin{equation}
+\widehat{Z}_t = \Pi(Z_t, R) \in \mathbb{R}^{(N+M)\times C_f}.
+\end{equation}
+
+The insertion \DIFdelbegin \DIFdel{operator }\DIFdelend $\Pi$ \DIFdelbegin \DIFdel{distributes restoration tokens uniformly across the image-token stream. It }\DIFdelend partitions the $N$ image tokens into $M{+}1$ approximately equal chunks and places one restoration token after each of the first $M$ chunks\DIFdelbegin \DIFdel{while preserving raster }\DIFdelend \DIFaddbegin \DIFadd{, keeping the original image-token }\DIFaddend order. Each chunk receives $\lfloor N/(M{+}1)\rfloor$ or $\lceil N/(M{+}1)\rceil$ image tokens\DIFdelbegin \DIFdel{so that the total remains }\DIFdelend \DIFaddbegin \DIFadd{, so the total stays }\DIFaddend exactly $N$. For example, with $M=3$ and $N=9$ \DIFdelbegin \DIFdel{, }\DIFdelend the four chunks \DIFdelbegin \DIFdel{contain }\DIFdelend \DIFaddbegin \DIFadd{hold }\DIFaddend $\{3,2,2,2\}$ image tokens \DIFdelbegin \DIFdel{, }\DIFdelend and the three restoration tokens \DIFdelbegin \DIFdel{are inserted }\DIFdelend \DIFaddbegin \DIFadd{land }\DIFaddend at cumulative positions $\{3,6,9\}$ \DIFdelbegin \DIFdel{within }\DIFdelend \DIFaddbegin \DIFadd{in }\DIFaddend the 12-token interleaved sequence. \DIFdelbegin \DIFdel{This deterministic interleaving gives restoration tokens balanced coverage }\DIFdelend \DIFaddbegin \DIFadd{Spacing the tokens uniformly this way gives them balanced receptive ranges }\DIFaddend over the full spatial support.
+
+MGFE \DIFaddbegin \DIFadd{then }\DIFaddend builds $G$ granularity branches by progressively fusing restoration tokens\DIFdelbegin \DIFdel{. The fusion scheme follows }\DIFdelend \DIFaddbegin \DIFadd{, following the progressive fusion scheme introduced in }\DIFaddend ReIDMamba~\cite{gu2025reidmamba} and \DIFdelbegin \DIFdel{is adapted here to propagated }\DIFdelend \DIFaddbegin \DIFadd{adapted here for }\DIFaddend spatial restoration features. To make every branch \DIFdelbegin \DIFdel{well defined}\DIFdelend \DIFaddbegin \DIFadd{well-defined}\DIFaddend , the number of restoration tokens must satisfy the divisibility constraint
+\begin{equation}
+M = k \cdot 2^{G-1},\quad k \in \mathbb{N}^{+},
+\end{equation}
+so that every branch size $M_g = M/2^g$ is an integer for $g\in\{0,\ldots,G-1\}$. We use $G=3$ and $M=12$ ($k=3$) throughout; see Section~\ref{subsec:sensitivity} for alternative configurations.
+
+For branch $g \in \{0,\ldots,G-1\}$, MGFE fuses restoration tokens with a sampling rate of $2^g$. The fused restoration tokens are defined as
+
+\begin{equation}
+R^{(g)}[j] =
+\mathcal{F}\!\left(
+\left\{R[j{\cdot}2^g+k]\right\}_{k=0}^{2^g-1}
+\right),\quad
+j = 0,\ldots,M_g-1,
+\end{equation}
+
+where $\mathcal{F}(\cdot)$ denotes an element-wise \DIFdelbegin \DIFdel{maximum operator }\DIFdelend \DIFaddbegin \DIFadd{average }\DIFaddend over all tokens in the fusion group:
+
+\begin{equation}
+\mathcal{F}\!\left(
+\left\{R[j\cdot2^g+k]\right\}_{k=0}^{2^g-1}
+\right)
+= \DIFdelbegin \DIFdel{\max_{0\le k < 2^g}\,}\DIFdelend \DIFaddbegin \DIFadd{\frac{1}{2^g}\sum_{k=0}^{2^g-1} }\DIFaddend R[j\cdot2^g+k]\;\in\mathbb{R}^{C_f}.
+\DIFdelbegin %DIFDELCMD < \label{eq:max_fusion}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \label{eq:avg_fusion}
+\DIFaddend \end{equation}
+
+\DIFdelbegin \phantomsection\label{eq:max_fusion}\DIFdelend
+
+The \DIFdelbegin \DIFdel{max operation }\DIFdelend \DIFaddbegin \DIFadd{average }\DIFaddend is taken channel-wise. We \DIFdelbegin \DIFdel{choose max fusion rather than mean fusion because restoration tokens are intended to retain salient degradation evidence such as scratches, cracks, and blotch boundaries. Mean fusion can dilute sparse high-contrast activations within a group, whereas max fusion preserves the strongest activation in each channel. This design follows ReIDMamba~\mbox{%DIFAUXCMD
+\cite{gu2025reidmamba}}\hskip0pt%DIFAUXCMD
+, which reports that max fusion outperforms mean fusion for progressive token aggregation in multi-granularity architectures. Smaller }\DIFdelend \DIFaddbegin \DIFadd{use average fusion in the main MgfrOFR configuration because it keeps all restoration tokens contributing to the branch descriptor and avoids a single high-response token dominating the recalibration signal. The max-fusion variant is retained as a control in Section~\ref{subsec:ablation}; its lower full-reference scores motivate average fusion as the default. A smaller }\DIFaddend $g$ \DIFdelbegin \DIFdel{values preserve }\DIFdelend \DIFaddbegin \DIFadd{keeps }\DIFaddend more tokens and \DIFdelbegin \DIFdel{retain finer local detail, while }\DIFdelend \DIFaddbegin \DIFadd{preserves fine local detail; a }\DIFaddend larger $g$ \DIFdelbegin \DIFdel{values compress }\DIFdelend \DIFaddbegin \DIFadd{pools a }\DIFaddend wider support and \DIFdelbegin \DIFdel{emphasize coarse restoration }\DIFdelend \DIFaddbegin \DIFadd{emphasizes coarse }\DIFaddend context.
+
+The fused tokens are re-inserted into the same image-token sequence using the same uniform-spacing insertion rule:
+
+\begin{equation}
+\widehat{Z}_t^{(g)} = \Pi\!\left(Z_t,R^{(g)}\right),
+\end{equation}
+
+and the resulting sequence is processed by a lightweight branch-specific token mixer $\Phi_g(\cdot)$:
+
+\begin{equation}
+U_t^{(g)} = \Phi_g\!\left(\widehat{Z}_t^{(g)}\right)
+\in \mathbb{R}^{(N+M_g)\times C_f},
+\end{equation}
+
+where $M_g = M/2^g$. Each $\Phi_g$ consists of two sequential linear-complexity token blocks\DIFdelbegin \DIFdel{. Each block contains }\DIFdelend \DIFaddbegin \DIFadd{, each containing }\DIFaddend a context-augmented projection sublayer and a feed-forward sublayer. The projection sublayer \DIFaddbegin \DIFadd{first }\DIFaddend applies LayerNorm, \DIFaddbegin \DIFadd{then }\DIFaddend computes a global context vector \DIFdelbegin \DIFdel{by }\DIFdelend \DIFaddbegin \DIFadd{via }\DIFaddend mean pooling over the token dimension \DIFdelbegin \DIFdel{, adds the projected context }\DIFdelend \DIFaddbegin \DIFadd{and adds it (through a learned linear projection) }\DIFaddend to the per-token linear projection, \DIFdelbegin \DIFdel{and applies }\DIFdelend \DIFaddbegin \DIFadd{followed by }\DIFaddend a residual connection. The feed-forward sublayer applies LayerNorm followed by a two-layer MLP with GELU activation and hidden dimension $2C_f$, again with a residual connection. Formally, for input tokens $\mathbf{h}$, each block computes
+\begin{equation}
+\mathbf{h}' = \mathbf{h} + W_t\,\mathrm{LN}(\mathbf{h}) + W_c\,\overline{\mathrm{LN}(\mathbf{h})},\qquad
+\mathbf{h}'' = \mathbf{h}' + \mathrm{MLP}(\mathrm{LN}(\mathbf{h}')),
+\end{equation}
+where $\overline{(\cdot)}$ denotes mean pooling over the token dimension, $W_t,W_c\in\mathbb{R}^{C_f\times C_f}$ are learned projections, and MLP consists of $\mathrm{Linear}(C_f\!\rightarrow\!2C_f)\!\rightarrow\!\mathrm{GELU}\!\rightarrow\!\mathrm{Linear}(2C_f\!\rightarrow\!C_f)$. The global context term $W_c\,\overline{\mathrm{LN}(\mathbf{h})}$ gives \DIFdelbegin \DIFdel{each token a lightweight full-sequence summary }\DIFdelend \DIFaddbegin \DIFadd{every token a cheap summary of the whole sequence, so tokens exchange information }\DIFaddend at linear cost\DIFdelbegin \DIFdel{, avoiding the quadratic complexity of self-attention while retaining inter-token communication}\DIFdelend . Each branch \DIFdelbegin \DIFdel{has its own }\DIFdelend \DIFaddbegin \DIFadd{owns its }\DIFaddend pair of token blocks \DIFdelbegin \DIFdel{, allowing branch-specific parameterization with modestoverhead}\DIFdelend \DIFaddbegin \DIFadd{and can specialize to its granularity, and because the blocks are small the extra parameters stay modest}\DIFaddend .
+
+After branch processing, \DIFdelbegin \DIFdel{MGFE summarizes }\DIFdelend \DIFaddbegin \DIFadd{we summarize }\DIFaddend each branch by averaging the updated restoration-token positions:
+
+\begin{equation}
+b_t^{(g)} =
+\frac{1}{M_g}
+\sum_{m=1}^{M_g}
+U_t^{(g)}[\pi_m^{(M_g)}]
+\in \mathbb{R}^{D},
+\end{equation}
+
+where $\{\pi_m^{(M_g)}\}_{m=1}^{M_g}$ denote the uniformly spaced insertion positions for $M_g$ tokens, and $D=C_f$. Stacking all branch descriptors gives
+
+\begin{equation}
+B_t =
+\left[
+b_t^{(0)}, b_t^{(1)}, \ldots, b_t^{(G-1)}
+\right]^\top
+\in \mathbb{R}^{G \times D}.
+\end{equation}
+
+Because \DIFdelbegin \DIFdel{the descriptors are extracted from a common propagated feature under different token-fusion }\DIFdelend \DIFaddbegin \DIFadd{all descriptors come from the same propagated feature but at different fusion }\DIFaddend rates, they \DIFdelbegin \DIFdel{share semantic alignment }\DIFdelend \DIFaddbegin \DIFadd{stay semantically aligned }\DIFaddend while differing in granularity. \DIFdelbegin \DIFdel{This }\DIFdelend \DIFaddbegin \DIFadd{RATR later operates on this }\DIFaddend descriptor tensor $B_t$\DIFdelbegin \DIFdel{is the input to RATR}\DIFdelend .
+
+MGFE \DIFdelbegin \DIFdel{also }\DIFdelend \DIFaddbegin \DIFadd{further }\DIFaddend converts the branch descriptors into a channel-wise recalibration signal. We first average the branch context,
+
+\begin{equation}
+c_t = \frac{1}{G}\sum_{g=0}^{G-1}b_t^{(g)},
+\qquad
+[\boldsymbol{\gamma}_t,\boldsymbol{\beta}_t] = \Psi(c_t),
+\label{eq:recalibration_context}
+\end{equation}
+
+where $\Psi(\cdot)$ is a projection head consisting of $\mathrm{LayerNorm}\!\rightarrow\!\mathrm{Linear}(C_f\!\rightarrow\!2C_f)\!\rightarrow\!\mathrm{GELU}\!\rightarrow\!\mathrm{Linear}(2C_f\!\rightarrow\!2C_f)$ that outputs concatenated scale and shift vectors. The recalibrated propagated feature is then
+
+\begin{equation}
+\widetilde{f}_t =
+f_t \odot
+\left(1+\tanh(\boldsymbol{\gamma}_t)\right)
++ 0.1\,\tanh(\boldsymbol{\beta}_t),
+\label{eq:recalibration}
+\end{equation}
+
+where the vectors \DIFdelbegin \DIFdel{in }\DIFdelend \DIFaddbegin \DIFadd{from }\DIFaddend Equation~\eqref{eq:recalibration_context} are broadcast over \DIFaddbegin \DIFadd{the }\DIFaddend spatial dimensions. The multiplicative term $(1+\tanh(\boldsymbol{\gamma}_t))$ \DIFdelbegin \DIFdel{keeps scaling close to unityat initialization}\DIFdelend \DIFaddbegin \DIFadd{starts near unity}\DIFaddend , and the \DIFaddbegin \DIFadd{small }\DIFaddend additive coefficient $0.1$ \DIFdelbegin \DIFdel{limits the shift magnitude. The shift coefficient $0.1$ bounds the additive term to at most }\DIFdelend \DIFaddbegin \DIFadd{caps the shift at about }\DIFaddend $10\%$ of the $\tanh$ range, \DIFdelbegin \DIFdel{keeping the modulation within a conservative $10\%$ shift scale. This conservative }\DIFdelend \DIFaddbegin \DIFadd{following the conservative residual scaling of }\DIFaddend FiLM-style modulation~\cite{perez2018film}\DIFdelbegin \DIFdel{helps the recalibrated feature remain }\DIFdelend \DIFaddbegin \DIFadd{. The recalibrated feature therefore stays }\DIFaddend close to the \DIFdelbegin \DIFdel{original propagated feature when }\DIFdelend \DIFaddbegin \DIFadd{propagated feature while }\DIFaddend the branch context is \DIFdelbegin \DIFdel{uncertain. Once the branch descriptors become informative, coarse branches can supply global structural preferences and fine branches can emphasize localized damagepatterns}\DIFdelend \DIFaddbegin \DIFadd{still uninformative, and the model reproduces baseline behavior early in training. As the descriptors sharpen, the coarse branches push global structure and the fine branches highlight local damage}\DIFaddend .
+
+\DIFdelbegin \DIFdel{In summary, MGFE separates restoration evidence by spatial granularity through lightweight token mixing while preserving the baseline interface through residual-style recalibration. The }\DIFdelend \DIFaddbegin \DIFadd{MGFE produces two outputs from the same propagated feature: the }\DIFaddend branch descriptors $B_t$ and the recalibration signal $(\boldsymbol{\gamma}_t, \boldsymbol{\beta}_t)$\DIFdelbegin \DIFdel{serve two different roles: the descriptors provide ranking targets for RATR (}\DIFdelend \DIFaddbegin \DIFadd{. The descriptors feed the ranking regularizer of }\DIFaddend Section~\ref{subsec:ratr}\DIFdelbegin \DIFdel{)}\DIFdelend , while the recalibration \DIFdelbegin \DIFdel{feeds granularity-aware modulation back into }\DIFdelend \DIFaddbegin \DIFadd{modulates }\DIFaddend the propagated feature \DIFdelbegin \DIFdel{. This separation allows ablation studies to disable recalibration while keeping branch descriptorsactive for diversity regularization (see }\DIFdelend \DIFaddbegin \DIFadd{by granularity. Keeping them separate lets us switch off recalibration without touching the descriptors, as in }\DIFaddend the RATR-only configuration \DIFdelbegin \DIFdel{in }\DIFdelend \DIFaddbegin \DIFadd{of }\DIFaddend Section~\ref{subsec:ablation}\DIFdelbegin \DIFdel{)}\DIFdelend . Explicit branches\DIFdelbegin \DIFdel{alone}\DIFdelend , however, do not guarantee complementary features. \DIFdelbegin \DIFdel{If all branches induce the same sample rankings, branch balance degenerates }\DIFdelend \DIFaddbegin \DIFadd{When every branch ranks samples in the same order, they collapse }\DIFaddend into redundant descriptors\DIFdelbegin \DIFdel{. This motivates the training regularizer described next }\DIFdelend \DIFaddbegin \DIFadd{, exactly what the next regularizer prevents}\DIFaddend .
+
+\subsection{Ranking-Aware Triplet Regularization (RATR)}
+\label{subsec:ratr}
+
+RATR \DIFdelbegin \DIFdel{discourages branch collapse by penalizing excessive ranking correlation between branches. A simple diversity loss could force descriptors to be orthogonal , but orthogonality does not ensure that branches organize restoration evidence differently across samples . The relevant behavior is the branch-specific similarity order induced when }\DIFdelend \DIFaddbegin \DIFadd{keeps the branches from collapsing by penalizing how strongly their rankings agree. Making the descriptors orthogonal is not enough: two branches can be orthogonal yet still order the same samples identically, which leaves them redundant and undoes the balance MGFE builds. What matters is the ordering. For }\DIFaddend an anchor frame \DIFdelbegin \DIFdel{is compared with }\DIFdelend \DIFaddbegin \DIFadd{compared against }\DIFaddend nearby positives and harder negatives\DIFdelbegin \DIFdel{. If different branches rank the same candidates identically, they remain redundant even if their descriptor values differ. RATR therefore formulates diversity as an anchor-centered ranking problem }\DIFdelend \DIFaddbegin \DIFadd{, RATR measures whether two branches rank that candidate set alike, }\DIFaddend using Kendall's~\cite{kendall1938measure} rank correlation coefficient \DIFdelbegin \DIFdel{, }\DIFdelend made differentiable by DiffKendall~\cite{zheng2023diffkendall}. Figure~\ref{fig:ratr_detail} \DIFdelbegin \DIFdel{illustrates }\DIFdelend \DIFaddbegin \DIFadd{shows }\DIFaddend the workflow.
+
+\DIFdelbegin %DIFDELCMD < \begin{figure}[!htbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < \includegraphics[width=\textwidth]{figures/Fig3_ratr_module_detail.pdf}
+%DIFDELCMD < \caption{RATR module. Differentiable Kendall's Tau compares branch-specific ranking sequences from temporal correspondences. Neighbor frames define positives, while distant same-video frames and cross-video centroids define negatives, producing $\mathcal{L}_{\text{intra}}$ and $\mathcal{L}_{\text{inter}}$ during training only.\label{fig:ratr_detail}}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig3_ratr_module_detail.pdf}
+\caption{RATR illustrates how differentiable Kendall's Tau compares branch-specific ranking sequences from temporal correspondences. Neighbor frames define positives, distant same-video frames and cross-video centroids define negatives, producing $\mathcal{L}_{\text{intra}}$ and $\mathcal{L}_{\text{inter}}$ during training only.\label{fig:ratr_detail}}
+\end{figure}
+\DIFaddend 
+
+Let the averaged branch descriptors from Equation~\eqref{eq:mgfrofr_overview_2} be organized as a 4D tensor of shape $N_b\times T\times G\times D$, where $N_b$ is the batch size. We flatten batch and time into $\bar{N}=N_b T$ samples and normalize the descriptors branch-wise:
+
+\begin{equation}
+\widehat{b}_i^{(g)} =
+\frac{b_i^{(g)}}{\|b_i^{(g)}\|_2},
+\qquad
+i=1,\ldots,\bar{N}.
+\end{equation}
+
+For each branch $g$, we compute a cosine-similarity matrix
+
+\begin{equation}
+\mathcal{S}^{(g)}[i,j] =
+\left\langle
+\widehat{b}_i^{(g)},
+\widehat{b}_j^{(g)}
+\right\rangle.
+\end{equation}
+
+This matrix is \DIFdelbegin \DIFdel{not used as a standalone supervision target . Instead, it provides the positive and negative ranking sequences that form }\DIFdelend \DIFaddbegin \DIFadd{the source of the rankings rather than a supervision target itself: each anchor draws one positive ranking sequence and one negative ranking sequence from it, forming }\DIFaddend the anchor-positive-negative \DIFdelbegin \DIFdel{structure regularized by RATR }\DIFdelend \DIFaddbegin \DIFadd{triplet that RATR regularizes}\DIFaddend .
+
+For anchor $i$, the positive set is defined from temporal correspondences within the same clip:
+
+\begin{equation}
+\mathcal{P}(i)=
+\bigl\{
+j \mid v_j=v_i,\;
+|t_j-t_i|=1
+\bigr\},
+\end{equation}
+
+where $v_i$ and $t_i$ \DIFdelbegin \DIFdel{denote the clip index and frame index }\DIFdelend \DIFaddbegin \DIFadd{are the clip and frame indices }\DIFaddend of sample $i$. \DIFdelbegin \DIFdel{This temporal adjacency criterion is justified because }\DIFdelend \DIFaddbegin \DIFadd{Adjacent frames are a natural choice here: }\DIFaddend the flow-guided deformable alignment in MambaOFR has already warped neighboring frames \DIFdelbegin \DIFdel{toward the anchor frame before MGFE is applied. After this alignment, adjacent frames }\DIFdelend \DIFaddbegin \DIFadd{onto the anchor before MGFE runs, so after alignment they }\DIFaddend are the most reliable \DIFaddbegin \DIFadd{feature-domain }\DIFaddend proxy for true \DIFdelbegin \DIFdel{flow-based correspondencesin the feature domain}\DIFdelend \DIFaddbegin \DIFadd{correspondences}\DIFaddend . Since $|\mathcal{P}(i)| \le 2$ \DIFaddbegin \DIFadd{(at most one predecessor and one successor)}\DIFaddend , boundary frames \DIFdelbegin \DIFdel{provide only one positive neighbor. We therefore evaluate }\DIFdelend \DIFaddbegin \DIFadd{have only a single positive neighbor, and we compute }\DIFaddend the intra-ranking term only on anchors \DIFdelbegin \DIFdel{with }\DIFdelend \DIFaddbegin \DIFadd{that have }\DIFaddend at least two positives:
+\begin{equation}
+\mathcal{I}_{\text{intra}}=
+\bigl\{
+i \mid |\mathcal{P}(i)| \ge 2
+\bigr\}.
+\end{equation}
+For the seven-frame clips used in training, this \DIFdelbegin \DIFdel{excludes }\DIFdelend \DIFaddbegin \DIFadd{drops }\DIFaddend only the first and last frame of each clip\DIFdelbegin \DIFdel{. Interior anchors then contribute exactly }\DIFdelend \DIFaddbegin \DIFadd{, and every interior anchor contributes }\DIFaddend one pairwise ordering comparison to $\mathcal{L}_{\text{intra}}$. This \DIFdelbegin \DIFdel{limited signal is sufficient in practicebecause (i)~}\DIFdelend \DIFaddbegin \DIFadd{is enough in practice: }\DIFaddend $\mathcal{L}_{\text{intra}}$ is averaged over many valid anchors \DIFdelbegin \DIFdel{in each }\DIFdelend \DIFaddbegin \DIFadd{per }\DIFaddend batch, and \DIFdelbegin \DIFdel{(ii)~}\DIFdelend $\mathcal{L}_{\text{inter}}$ \DIFdelbegin \DIFdel{supplies a complementary ranking }\DIFdelend \DIFaddbegin \DIFadd{adds a complementary }\DIFaddend signal from the richer negative set.
+
+Negative evidence is drawn from two harder sources: temporally distant frames inside the same clip and clip-level representatives from other clips. The same-video negatives are
+
+\begin{equation}
+\mathcal{N}_{sv}(i)=
+\bigl\{
+j \mid v_j=v_i,\;
+|t_j-t_i|>1
+\bigr\},
+\end{equation}
+
+and the clip-level centroid for another video $v\neq v_i$ is
+
+\begin{equation}
+\bar{b}_{v}^{(g)} =
+\frac{1}{|\mathcal{T}_v|}
+\sum_{t\in\mathcal{T}_v}
+\widehat{b}_{(v,t)}^{(g)},
+\end{equation}
+
+where $\mathcal{T}_v$ denotes the set of frame indices in clip $v$. We then construct the negative ranking sequence as
+
+\begin{equation}
+\bar{\mathcal{S}}_i^{(g)} =
+\Bigl[\mathcal{S}^{(g)}[i,j]\Bigr]_{j\in\mathcal{N}_{sv}(i)}
+\oplus
+\Bigl[\bigl\langle \widehat{b}_i^{(g)},\,\bar{b}_v^{(g)} \bigr\rangle\Bigr]_{v\neq v_i},
+\end{equation}
+
+where $\oplus$ denotes sequence concatenation. \DIFdelbegin \DIFdel{Same-video distant frames }\DIFdelend \DIFaddbegin \DIFadd{Distant frames from the same clip }\DIFaddend are hard negatives\DIFdelbegin \DIFdel{because }\DIFdelend \DIFaddbegin \DIFadd{: }\DIFaddend they share content and degradation \DIFdelbegin \DIFdel{statistics }\DIFdelend with the anchor but are no longer immediate \DIFdelbegin \DIFdel{temporal neighbors. Off-video centroids provide a low-variance }\DIFdelend \DIFaddbegin \DIFadd{neighbors. Using one centroid per other clip gives a stable }\DIFaddend clip-level \DIFdelbegin \DIFdel{representative that avoids the $O(\bar{N}^2)$ cost of enumerating }\DIFdelend \DIFaddbegin \DIFadd{negative and keeps the cost linear instead of the $O(\bar{N}^2)$ of comparing }\DIFaddend every cross-clip frame pair\DIFdelbegin \DIFdel{while still capturing inter-clip distributional contrast}\DIFdelend .
+
+To compare how two branches rank the same candidate set, we adopt a differentiable version of Kendall's Tau. For sequences $p,q\in\mathbb{R}^{L}$, the differentiable statistic is
+
+\begin{equation}
+\mathrm{DKTau}(p,q;\tau)
+= \frac{1}{\binom{L}{2}}
+\sum_{1\le u < v \le L}
+\tanh\!\!\left(\frac{p_u-p_v}{\tau}\right)
+\cdot
+\tanh\!\!\left(\frac{q_u-q_v}{\tau}\right),
+\label{eq:dktau}
+\end{equation}
+
+where $\tau>0$ is a temperature parameter. As $\tau\rightarrow 0$, Equation~\eqref{eq:dktau} approaches the hard sign comparison used in the exact Kendall coefficient; as $\tau$ becomes too large, pairwise order differences are oversmoothed and gradients vanish. We set $\tau=0.1$ (see Section~\ref{subsec:sensitivity} for the sensitivity to this choice). A lower value of $\mathrm{DKTau}(p,q;\tau)$ indicates weaker ranking correlation between branches and therefore stronger branch complementarity.
+
+Using Equation~\eqref{eq:dktau}, we compute the positive-ranking correlation loss as
+
+\begin{equation}
+\mathcal{L}_{\text{intra}} =
+\frac{1}{|\mathcal{I}_{\text{intra}}| \binom{G}{2}}
+\sum_{i\in\mathcal{I}_{\text{intra}}}
+\sum_{g < g'}
+\mathrm{DKTau}\!\Bigl(
+\mathcal{S}^{(g)}[i,\mathcal{P}(i)],\,
+\mathcal{S}^{(g')}[i,\mathcal{P}(i)];\,\tau
+\Bigr),
+\label{eq:loss_intra}
+\end{equation}
+
+and the negative-ranking correlation loss as
+
+\begin{equation}
+\mathcal{L}_{\text{inter}} =
+\frac{1}{\bar{N} \binom{G}{2}}
+\sum_{i=1}^{\bar{N}}
+\sum_{g < g'}
+\mathrm{DKTau}\!\Bigl(
+\bar{\mathcal{S}}_i^{(g)},\,
+\bar{\mathcal{S}}_i^{(g')};\,
+\tau
+\Bigr).
+\end{equation}
+
+The final ranking-aware regularizer is
+
+\begin{equation}
+\mathcal{L}_{\text{ratr}} =
+\lambda_{\text{intra}}\,\mathcal{L}_{\text{intra}}
++ \lambda_{\text{inter}}\,\mathcal{L}_{\text{inter}}.
+\label{eq:loss_ratr}
+\end{equation}
+
+Equations~\eqref{eq:loss_intra}--\eqref{eq:loss_ratr} \DIFdelbegin \DIFdel{play complementaryroles. The intra term prevents }\DIFdelend \DIFaddbegin \DIFadd{are complementary: the intra term stops }\DIFaddend two branches from \DIFdelbegin \DIFdel{assigning nearly identical orders to }\DIFdelend \DIFaddbegin \DIFadd{ordering }\DIFaddend the most likely temporal correspondences \DIFdelbegin \DIFdel{, while }\DIFdelend \DIFaddbegin \DIFadd{the same way, and }\DIFaddend the inter term \DIFdelbegin \DIFdel{prevents }\DIFdelend \DIFaddbegin \DIFadd{stops }\DIFaddend the same collapse on \DIFaddbegin \DIFadd{the }\DIFaddend harder negatives. \DIFdelbegin \DIFdel{Minimizing both terms does not force arbitrary disagreementbecause the restoration losses still anchor the recalibrated feature stream to the reconstruction }\DIFdelend \DIFaddbegin \DIFadd{Neither term drives the branches toward meaningless disagreement, because the reconstruction losses still tie every branch to the same }\DIFaddend target through MGFE.
+
+\DIFaddbegin \subsection{\DIFadd{Symmetry Property of the Regularizer}}
+\label{subsec:symmetry_property}
+
+\DIFadd{The representation symmetry raised in Section~\ref{sec:introduction} has a concrete meaning in MgfrOFR. It is not a geometric symmetry of the image content but an invariance of the diversity objective under the group actions that relabel or exchange restoration branches. Two such invariances hold, and together they explain why the constraint is a symmetry principle rather than a balancing heuristic, the distinction we raise in Section~\ref{subsec:symmetry_ai}.
+}
+
+\textbf{\DIFadd{Property 1 (Branch-permutation invariance).}} \DIFadd{Both the intra term in Equation~\eqref{eq:loss_intra} and the inter term $\mathcal{L}_{\text{inter}}$ sum the differentiable Kendall statistic over unordered branch pairs $g<g'$, and Equation~\eqref{eq:dktau} is symmetric in its arguments, $\mathrm{DKTau}(p,q;\tau)=\mathrm{DKTau}(q,p;\tau)$. Permuting the branch index of every descriptor by the same $\pi$ therefore leaves the regularizer unchanged:
+}\begin{equation}
+\DIFadd{\mathcal{L}_{\text{ratr}}\!\left(\{b^{(g)}\}_{g=0}^{G-1}\right)
+=
+\mathcal{L}_{\text{ratr}}\!\left(\{b^{(\pi(g))}\}_{g=0}^{G-1}\right),
+\qquad
+\forall\,\pi\in\mathcal{S}_G,
+\label{eq:branch_permutation}
+}\end{equation}
+\DIFadd{where $\mathcal{S}_G$ is the symmetric group on the $G$ branches. In other words, $\mathcal{L}_{\text{ratr}}$ depends only on the unordered set of pairwise branch relations, not on any branch ordering or index. Since $\mathcal{S}_G$ has no privileged element, no branch can become dominant without leaving the orbit of objective-preserving relabelings.
+}
+
+\textbf{\DIFadd{Property 2 (Direction-exchange invariance).}} \DIFadd{The two propagation streams enter the regularizer only through the average $B_t=\tfrac{1}{2}(B_t^{b}+B_t^{f})$ in Equation~\eqref{eq:mgfrofr_overview_2}, which is invariant under the $\mathbb{Z}_2$ action that swaps the backward and forward descriptors, $B_t^{b}\!\leftrightarrow\!B_t^{f}$. The objective thus treats the two temporal directions symmetrically and inherits the bidirectional symmetry of the backbone.
+}
+
+\textbf{\DIFadd{Symmetry versus balancing.}} \DIFadd{These two invariances separate our constraint from a tuned balancing term. Balancing targets an }\emph{\DIFadd{outcome}} \DIFadd{(branches that end up contributing comparably) and is usually enforced by an asymmetric, hand-weighted penalty on individual branch magnitudes. RATR instead is built from group-invariant quantities ($\mathcal{S}_G$ on branches, $\mathbb{Z}_2$ on directions) and applies the identical constraint to every branch by construction. Balanced, complementary branches follow as a }\emph{\DIFadd{consequence}} \DIFadd{of optimizing this symmetric objective, not as a separately weighted goal.
+}
+
+\textbf{\DIFadd{Scope of the claim.}} \DIFadd{The symmetry here is functional and representation-level: an invariance of the learning objective under permutation and exchange group actions, both standard symmetry principles in machine learning, rather than a visible geometric symmetry of the restored frames. We keep this reading deliberately narrow, and Section~\ref{subsec:symmetry_ai} places it against the broader use of symmetry in representation learning.
+}
+
+\DIFaddend \subsection{Training Objective}
+\label{subsec:training_objective}
+
+The generator objective combines the standard \DIFdelbegin \DIFdel{OFR losses used by }\DIFdelend \DIFaddbegin \DIFadd{old film restoration losses of }\DIFaddend the MambaOFR baseline with \DIFdelbegin \DIFdel{the proposed }\DIFdelend \DIFaddbegin \DIFadd{our }\DIFaddend ranking-aware regularizer. \DIFdelbegin \DIFdel{Specifically, we }\DIFdelend \DIFaddbegin \DIFadd{We }\DIFaddend use an $L_1$ pixel reconstruction loss $\mathcal{L}_{\mathrm{pix}}$, whose robustness for image restoration \DIFdelbegin \DIFdel{objectives }\DIFdelend is analyzed in~\cite{zhao2017loss_restoration}, a VGG-based perceptual loss $\mathcal{L}_{\mathrm{perc}}$~\cite{johnson2016perceptual}, an adversarial loss $\mathcal{L}_{\mathrm{gan}}$~\cite{goodfellow2014gan}, and the \DIFdelbegin \DIFdel{proposed ranking regularization }\DIFdelend \DIFaddbegin \DIFadd{ranking regularizer }\DIFaddend $\mathcal{L}_{\mathrm{ratr}}$:
+
+\begin{equation}
+\mathcal{L}_{\mathrm{total}} =
+\mathcal{L}_{\mathrm{pix}}
++ \lambda_{\mathrm{perc}}\mathcal{L}_{\mathrm{perc}}
++ \lambda_{\mathrm{gan}}\mathcal{L}_{\mathrm{gan}}
++ \lambda_{\mathrm{ratr}}\mathcal{L}_{\mathrm{ratr}}.
+\label{eq:loss_total}
+\end{equation}
+
+\DIFdelbegin \DIFdel{Equation~\eqref{eq:loss_total} preserves backward compatibility with the baseline training loop because }\DIFdelend \DIFaddbegin \DIFadd{Because }\DIFaddend MGFE only augments the propagated feature stream and RATR \DIFdelbegin \DIFdel{appears purely as an auxiliary regularizer. The loss weights are set to }\DIFdelend \DIFaddbegin \DIFadd{is a pure auxiliary term, Equation~\eqref{eq:loss_total} slots into the baseline training loop without any other change. We set }\DIFaddend $\lambda_{\mathrm{perc}}=1.0$ and $\lambda_{\mathrm{gan}}=0.01$, following RTN~\cite{wan2022rtn} and MambaOFR~\cite{mao2025mambaofr}\DIFdelbegin \DIFdel{. For the ranking term, we }\DIFdelend \DIFaddbegin \DIFadd{, and }\DIFaddend use $\lambda_{\mathrm{ratr}}=0.1$, $\lambda_{\mathrm{intra}}=1.0$, and $\lambda_{\mathrm{inter}}=0.5$ \DIFaddbegin \DIFadd{for the ranking term }\DIFaddend (see Section~\ref{subsec:sensitivity}\DIFdelbegin \DIFdel{for sensitivity to these choices}\DIFdelend ). The smaller weight on $\mathcal{L}_{\text{inter}}$ reflects the coarser ordering signal \DIFdelbegin \DIFdel{of }\DIFdelend \DIFaddbegin \DIFadd{from }\DIFaddend clip-centroid negatives. Unless \DIFdelbegin \DIFdel{otherwise stated }\DIFdelend \DIFaddbegin \DIFadd{stated otherwise}\DIFaddend , the full model uses feature dimension $C_f=16$, $G=3$ branches, $M=12$ restoration tokens, channel-wise \DIFdelbegin \DIFdel{max }\DIFdelend \DIFaddbegin \DIFadd{average }\DIFaddend fusion in Equation~\DIFdelbegin \DIFdel{\eqref{eq:max_fusion}}\DIFdelend \DIFaddbegin \DIFadd{\eqref{eq:avg_fusion}}\DIFaddend , and a differentiable Kendall temperature \DIFdelbegin \DIFdel{of }\DIFdelend $\tau=0.1$.
+ %
+\section{\DIFdelbegin \DIFdel{Experiment}\DIFdelend \DIFaddbegin \DIFadd{Experiments}\DIFaddend }
+\label{sec:experiment}
+
+\DIFaddbegin \DIFadd{We evaluate MgfrOFR under two complementary settings. Synthetic clips come with ground truth, which supports full-reference fidelity and perceptual metrics. Real archival footage lacks ground truth, so only no-reference naturalness metrics apply. We keep the two apart throughout this section, because a single merged score would mask the fidelity--naturalness trade-off that defines old film restoration.
+}
+
+\DIFaddend \subsection{Datasets and Evaluation Metrics}
+\label{subsec:datasets_metrics}
+
+\subsubsection{Datasets}
+\label{subsec:datasets}
+
+We evaluate MgfrOFR on the SRWOV benchmark introduced with MambaOFR~\cite{mao2025mambaofr}\DIFdelbegin \DIFdel{. SRWOV is a dedicated }\DIFdelend \DIFaddbegin \DIFadd{, a dedicated benchmark for }\DIFaddend old film restoration \DIFdelbegin \DIFdel{benchmark with }\DIFdelend \DIFaddbegin \DIFadd{that provides }\DIFaddend both synthetic and real-world test sets.
+
+\DIFdelbegin \DIFdel{Training uses }\DIFdelend \DIFaddbegin \DIFadd{For training, we use }\DIFaddend the REDS training split~\cite{nah2019reds}, which contains 240 video sequences, each with 100 frames at $720 \times 1280$ resolution. Clean REDS frames are degraded on the fly using the synthetic degradation pipeline from MambaOFR\DIFdelbegin \DIFdel{. This pipeline }\DIFdelend \DIFaddbegin \DIFadd{, which }\DIFaddend simulates scratches, dust, blotches, flicker, and grain to produce paired degraded and clean training samples.
+
+\DIFdelbegin \DIFdel{Evaluation uses two SRWOV test settings with different evidence types. }\DIFdelend The synthetic test set \DIFdelbegin \DIFdel{contains }\DIFdelend \DIFaddbegin \DIFadd{holds }\DIFaddend 30 clips rendered with the same degradation pipeline on held-out REDS sequences. Each clip \DIFdelbegin \DIFdel{consists of }\DIFdelend \DIFaddbegin \DIFadd{has }\DIFaddend 100 frames at $720 \times 1280$ \DIFdelbegin \DIFdel{resolution and has }\DIFdelend \DIFaddbegin \DIFadd{with }\DIFaddend paired ground truth, \DIFdelbegin \DIFdel{enabling }\DIFdelend \DIFaddbegin \DIFadd{which enables }\DIFaddend full-reference \DIFdelbegin \DIFdel{metrics}\DIFdelend \DIFaddbegin \DIFadd{scoring}\DIFaddend . The real-world set \DIFdelbegin \DIFdel{comprises }\DIFdelend \DIFaddbegin \DIFadd{holds }\DIFaddend 216 \DIFdelbegin \DIFdel{archival clips }\DIFdelend \DIFaddbegin \DIFadd{clips of archival footage }\DIFaddend from the 1920s to \DIFaddbegin \DIFadd{the }\DIFaddend 1960s\DIFdelbegin \DIFdel{with authentic mixed degradation and }\DIFdelend \DIFaddbegin \DIFadd{, carrying authentic mixed degradations with }\DIFaddend no ground truth\DIFdelbegin \DIFdel{; it is evaluated with no-reference quality metrics. Following the original }\DIFdelend \DIFaddbegin \DIFadd{. We follow the original 216-clip }\DIFaddend SRWOV protocol~\cite{mao2025mambaofr}\DIFdelbegin \DIFdel{, we use all 216 real-world clips, covering }\DIFdelend \DIFaddbegin \DIFadd{. It spans }\DIFaddend indoor portraits, newsreel footage, conversations, and multi-person scenes\DIFdelbegin \DIFdel{for a total of }\DIFdelend \DIFaddbegin \DIFadd{, and totals }\DIFaddend 29{,}256 frames \DIFaddbegin \DIFadd{for a broad naturalness assessment}\DIFaddend .
+
+\subsubsection{Evaluation Metrics}
+\label{subsec:eval_metrics}
+
+\DIFdelbegin \DIFdel{We use seven metrics to cover pixel fidelity, perceptual similarity, and statistical naturalness. For synthetic evaluation }\DIFdelend \DIFaddbegin \DIFadd{Seven metrics cover three complementary dimensions. On synthetic data }\DIFaddend with ground truth, \DIFaddbegin \DIFadd{we report }\DIFaddend PSNR and SSIM~\cite{wang2004ssim} \DIFdelbegin \DIFdel{measure pixel-level }\DIFdelend \DIFaddbegin \DIFadd{for pixel }\DIFaddend fidelity (higher is better), LPIPS~\cite{zhang2018lpips} \DIFdelbegin \DIFdel{measures }\DIFdelend \DIFaddbegin \DIFadd{for }\DIFaddend learned perceptual distance (lower is better), and DISTS~\cite{ding2020dists} \DIFdelbegin \DIFdel{measures structure-and-texture perceptual }\DIFdelend \DIFaddbegin \DIFadd{for joint structure-texture }\DIFaddend similarity (lower is better). \DIFdelbegin \DIFdel{For real-world evaluation }\DIFdelend \DIFaddbegin \DIFadd{On real data }\DIFaddend without ground truth, \DIFaddbegin \DIFadd{we use }\DIFaddend NIQE~\cite{mittal2012niqe} and BRISQUE~\cite{mittal2012brisque} \DIFdelbegin \DIFdel{measure }\DIFdelend \DIFaddbegin \DIFadd{for }\DIFaddend statistical naturalness (lower is better), \DIFdelbegin \DIFdel{while }\DIFdelend \DIFaddbegin \DIFadd{together with }\DIFaddend CLIP-IQA+~\cite{wang2023clipiqa}\DIFdelbegin \DIFdel{uses }\DIFdelend \DIFaddbegin \DIFadd{, which reads }\DIFaddend CLIP~\cite{radford2021clip} \DIFdelbegin \DIFdel{visual features with }\DIFdelend \DIFaddbegin \DIFadd{features through }\DIFaddend learnable quality-aware prompts (higher is better). The \DIFdelbegin \DIFdel{metrics are reported separately when they emphasize different aspects of quality}\DIFdelend \DIFaddbegin \DIFadd{three groups probe pixel fidelity, perceptual quality, and naturalness in turn}\DIFaddend .
+
+\subsection{Implementation Details}
+\label{subsec:implementation}
+
+\subsubsection{Training Details}
+\label{subsubsec:training_details}
+
+We train MgfrOFR on the REDS training split~\cite{nah2019reds} with the synthetic degradation pipeline \DIFdelbegin \DIFdel{described in }\DIFdelend \DIFaddbegin \DIFadd{from }\DIFaddend Section~\ref{subsec:datasets}. \DIFdelbegin \DIFdel{Optimization uses }\DIFdelend \DIFaddbegin \DIFadd{The optimizer is }\DIFaddend Adam~\cite{kingma2015adam} with $\beta_1=0.9$ and $\beta_2=0.99$, an initial learning rate of $2\times10^{-4}$, and a MultiStep \DIFdelbegin \DIFdel{scheduler }\DIFdelend \DIFaddbegin \DIFadd{schedule }\DIFaddend with milestones at 50K, 100K, and 150K iterations ($\gamma=0.5$). Training runs for $200$K iterations on $4$ NVIDIA A100 GPUs (80\,GB each), \DIFdelbegin \DIFdel{with }\DIFdelend one clip per GPU per mini-batch. Each \DIFdelbegin \DIFdel{training sample contains }\DIFdelend \DIFaddbegin \DIFadd{sample is }\DIFaddend $T=7$ consecutive frames cropped to $256\times256$. \DIFdelbegin \DIFdel{The software stack consists of }\DIFdelend \DIFaddbegin \DIFadd{We use }\DIFaddend PyTorch 2.7 \DIFdelbegin \DIFdel{and }\DIFdelend \DIFaddbegin \DIFadd{with }\DIFaddend CUDA 12.4 \DIFdelbegin \DIFdel{, with }\DIFdelend \DIFaddbegin \DIFadd{and fix }\DIFaddend the random seed \DIFdelbegin \DIFdel{fixed to 42 for reproducibility. }\DIFdelend \DIFaddbegin \DIFadd{to 42. }\DIFaddend At inference, RATR is \DIFdelbegin \DIFdel{disabled and frames are processed at full resolution (}\DIFdelend \DIFaddbegin \DIFadd{off and frames run at full }\DIFaddend $720 \times 1280$ \DIFdelbegin \DIFdel{) }\DIFdelend \DIFaddbegin \DIFadd{resolution }\DIFaddend without cropping.
+
+\subsubsection{Baseline Adaptation Protocol}
+\label{subsubsec:baseline_adaptation}
+
+The comparison \DIFdelbegin \DIFdel{uses }\DIFdelend \DIFaddbegin \DIFadd{reuses }\DIFaddend released implementations and published settings \DIFdelbegin \DIFdel{where available, reproduced in a }\DIFdelend \DIFaddbegin \DIFadd{in one }\DIFaddend unified environment. \DIFdelbegin \DIFdel{Dedicated OFR }\DIFdelend \DIFaddbegin \DIFadd{To keep it as fair as practical, we make each baseline's adaptation explicit along four axes.
+}
+
+\textbf{\DIFadd{Retraining and computational budget.}} \DIFadd{Dedicated old film restoration }\DIFaddend methods (RTN, RRTN, MambaOFR) are \DIFdelbegin \DIFdel{trained or reproduced }\DIFdelend \DIFaddbegin \DIFadd{retrained }\DIFaddend under the same REDS-based synthetic film \DIFdelbegin \DIFdel{pipeline}\DIFdelend \DIFaddbegin \DIFadd{degradation pipeline as MgfrOFR. In particular, MambaOFR---our primary baseline---and MgfrOFR are trained with an identical 200K-iteration schedule on the same A100-class hardware, so their computational budget for old film restoration adaptation is matched; RTN and RRTN are reproduced under the same degradation pipeline with a comparable training budget.
+}
+
+\textbf{\DIFadd{Hyper-parameter tuning.}} \DIFadd{We retain each baseline's published architecture-specific hyper-parameters rather than performing exhaustive per-baseline re-tuning}\DIFaddend . \DIFdelbegin \DIFdel{For generic }\DIFdelend \DIFaddbegin \DIFadd{Re-tuning every method to convergence on old film restoration would be computationally prohibitive and could itself bias the comparison toward whichever baseline received the most tuning effort.
+}
+
+\textbf{\DIFadd{Degradation adaptation.}} \DIFadd{Generic }\DIFaddend video restoration methods (VRT, RVRT, ShiftNet) \DIFdelbegin \DIFdel{, we preserve the }\DIFdelend \DIFaddbegin \DIFadd{keep their }\DIFaddend published architecture and default optimization recipe\DIFdelbegin \DIFdel{while replacing }\DIFdelend \DIFaddbegin \DIFadd{; we replace }\DIFaddend only the task-specific degradation generation so that \DIFdelbegin \DIFdel{the methods }\DIFdelend \DIFaddbegin \DIFadd{they }\DIFaddend can be trained on \DIFdelbegin \DIFdel{OFR-style inputs . }\DIFdelend \DIFaddbegin \DIFadd{inputs for old film restoration, and we report them as faithfully reproduced references whose training budget follows each released recipe.
+}
+
+\textbf{\DIFadd{Reference systems.}} \DIFaddend Enhancement-oriented methods (DeOldify, OldPhoto, DeepRemaster) are \DIFdelbegin \DIFdel{included }\DIFdelend \DIFaddbegin \DIFadd{not designed for paired old film restoration and are not retrained on the old film restoration pipeline; we include them strictly }\DIFaddend as reference systems to contextualize perceptual trade-offs\DIFdelbegin \DIFdel{rather than as fully }\DIFdelend \DIFaddbegin \DIFadd{, not as }\DIFaddend task-matched \DIFdelbegin \DIFdel{OFR baselines.
+We therefore interpret the comparison as }\DIFdelend \DIFaddbegin \DIFadd{old film restoration baselines.
+}
+
+\DIFadd{The comparison is therefore }\DIFaddend a unified reproduction study under a \DIFdelbegin \DIFdel{common }\DIFdelend \DIFaddbegin \DIFadd{shared }\DIFaddend degradation protocol, \DIFdelbegin \DIFdel{not as evidence }\DIFdelend \DIFaddbegin \DIFadd{with a budget-matched tier for dedicated old film restoration methods. It is not a claim }\DIFaddend that every baseline has been exhaustively re-optimized for \DIFdelbegin \DIFdel{OFR}\DIFdelend \DIFaddbegin \DIFadd{old film restoration}\DIFaddend .
+
+\subsection{Comparison with State-of-the-Art}
+\label{subsec:comparison_sota}
+
+We compare MgfrOFR against nine baselines spanning dedicated \DIFdelbegin \DIFdel{OFR }\DIFdelend \DIFaddbegin \DIFadd{old film restoration }\DIFaddend methods, general video restoration models, and image/video enhancement approaches. The dedicated \DIFdelbegin \DIFdel{OFR }\DIFdelend \DIFaddbegin \DIFadd{old film restoration }\DIFaddend baselines are RTN~\cite{wan2022rtn}, RRTN~\cite{lin2024rrtn}, and MambaOFR~\cite{mao2025mambaofr}; the general video restoration baselines are VRT~\cite{liang2024vrt}, RVRT~\cite{liang2022rvrt}, and ShiftNet~\cite{li2023shiftnet}; and the enhancement-oriented references are DeOldify~\cite{jantic2019deoldify}, OldPhoto~\cite{wan2023oldphotopami}, and DeepRemaster~\cite{iizuka2019deepremaster}. No-reference metrics are computed using the pyiqa library under the same software environment.
+
+\subsubsection{Quantitative Comparison on Synthetic Data}
+
+\DIFdelbegin \DIFdel{Table~\ref{tab:sota} reports full-reference evaluation on }\DIFdelend \DIFaddbegin \DIFadd{On }\DIFaddend the SRWOV synthetic benchmark \DIFdelbegin \DIFdel{. MgfrOFR achieves the best PSNR /SSIM and the lowest LPIPS (0.0789) and DISTS (0.0653), surpassing the strongest baseline MambaOFR }\DIFdelend \DIFaddbegin \DIFadd{with full-reference metrics (Table~\ref{tab:sota}), MgfrOFR ranks first on all four full-reference metrics. It reaches 27.86~dB PSNR and improves on the same-protocol MambaOFR baseline }\DIFaddend by +\DIFdelbegin \DIFdel{1.14~dB PSNR. The pattern is consistent with the intended architectural distinction}\DIFdelend \DIFaddbegin \DIFadd{1.02~dB with the final average-fusion configuration. The ranking matches the architectural gap between method families}\DIFaddend : generic video restoration \DIFdelbegin \DIFdel{methods do not include OFR-specific defect handling , while frame-oriented enhancement approaches can suffer from temporal inconsistency}\DIFdelend \DIFaddbegin \DIFadd{models include no defect handling specific to old film restoration, while frame-wise enhancement methods can break temporal consistency}\DIFaddend .
+
+\DIFdelbegin %DIFDELCMD < \begin{table}[htbp]
+%DIFDELCMD < \caption{Quantitative comparison reports SRWOV synthetic full-reference results under the unified reproduction protocol. Best results are in \textbf{bold}, second best are \underline{underlined}.\label{tab:sota}}
+%DIFDELCMD < \begin{tabularx}{\textwidth}{lCCCC}
+%DIFDELCMD < \toprule
+%DIFDELCMD < \textbf{Method} & \textbf{PSNR$\uparrow$} & \textbf{SSIM$\uparrow$} & \textbf{LPIPS$\downarrow$} & \textbf{DISTS$\downarrow$} \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < ShiftNet~\cite{li2023shiftnet}          & 21.48 & 0.8234 & 0.2030 & 0.1303 \\
+%DIFDELCMD < VRT~\cite{liang2024vrt}                 & 22.39 & 0.8631 & 0.1750 & 0.1087 \\
+%DIFDELCMD < RVRT~\cite{liang2022rvrt}              & 22.43 & 0.8710 & 0.1655 & 0.1078 \\
+%DIFDELCMD < DeOldify~\cite{jantic2019deoldify}      & 23.22 & 0.8923 & 0.2775 & 0.1260 \\
+%DIFDELCMD < RRTN~\cite{lin2024rrtn}                & 24.15 & 0.9006 & 0.1082 & \underline{0.0668} \\
+%DIFDELCMD < OldPhoto~\cite{wan2023oldphotopami}     & 24.62 & 0.8524 & 0.2252 & 0.1144 \\
+%DIFDELCMD < DeepRemaster~\cite{iizuka2019deepremaster} & 25.06 & \underline{0.9185} & 0.1108 & 0.0895 \\
+%DIFDELCMD < RTN~\cite{wan2022rtn}                   & 25.85 & 0.8869 & 0.1214 & 0.0862 \\
+%DIFDELCMD < MambaOFR~\cite{mao2025mambaofr}        & \underline{25.99} & 0.9059 & \underline{0.0815} & 0.0822 \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < MgfrOFR (Ours)                          & \textbf{27.13} & \textbf{0.9237} & \textbf{0.0789} & \textbf{0.0653} \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabularx}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{table}[htbp]
+\caption{Quantitative comparison reports SRWOV synthetic full-reference results under the unified reproduction protocol. Best results are shown in \bestres{red} and second-best results in \secondres{blue}.\label{tab:sota}}
+\begin{tabularx}{\textwidth}{lCCCC}
+\toprule
+\textbf{Method} & \textbf{PSNR$\uparrow$} & \textbf{SSIM$\uparrow$} & \textbf{LPIPS$\downarrow$} & \textbf{DISTS$\downarrow$} \\
+\midrule
+ShiftNet~\cite{li2023shiftnet}          & 21.48 & 0.8234 & 0.2030 & 0.1303 \\
+VRT~\cite{liang2024vrt}                 & 22.39 & 0.8631 & 0.1750 & 0.1087 \\
+RVRT~\cite{liang2022rvrt}              & 22.43 & 0.8710 & 0.1655 & 0.1078 \\
+DeOldify~\cite{jantic2019deoldify}      & 23.22 & 0.8923 & 0.2775 & 0.1260 \\
+RRTN~\cite{lin2024rrtn}                & 24.15 & 0.9006 & 0.1082 & \secondres{0.0668} \\
+OldPhoto~\cite{wan2023oldphotopami}     & 24.62 & 0.8524 & 0.2252 & 0.1144 \\
+DeepRemaster~\cite{iizuka2019deepremaster} & 25.06 & \secondres{0.9185} & 0.1108 & 0.0895 \\
+RTN~\cite{wan2022rtn}                   & 25.85 & 0.8869 & 0.1214 & 0.0862 \\
+MambaOFR~\cite{mao2025mambaofr}        & \secondres{26.84} & 0.9153 & \secondres{0.0719} & 0.0733 \\
+\midrule
+MgfrOFR (Ours)                          & \bestres{27.86} & \bestres{0.9255} & \bestres{0.0600} & \bestres{0.0656} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\DIFaddend 
+
+\DIFdelbegin \DIFdel{To test whether the gain over MambaOFR is clip-consistent, we apply }\DIFdelend \DIFaddbegin \DIFadd{A single average can hide clip-level variance, so we keep the }\DIFaddend paired, two-sided Wilcoxon signed-rank \DIFdelbegin \DIFdel{tests to }\DIFdelend \DIFaddbegin \DIFadd{test over }\DIFaddend the 30 per-clip means \DIFdelbegin \DIFdel{. MgfrOFR improves PSNR on 29/}\DIFdelend \DIFaddbegin \DIFadd{as supporting evidence. For the final average-fusion configuration, MgfrOFR obtains significant paired improvements over MambaOFR on all four full-reference metrics (PSNR $p=3.73\times10^{-9}$; SSIM $p=1.73\times10^{-6}$; LPIPS $p=1.86\times10^{-9}$; DISTS $p=1.92\times10^{-6}$). The per-clip evidence also shows that PSNR and DISTS improve on 29 of }\DIFaddend 30 \DIFdelbegin \DIFdel{clips ($p=3.7\times10^{-9}$) and SSIM on 23/}\DIFdelend \DIFaddbegin \DIFadd{clips, while SSIM and LPIPS improve on all }\DIFaddend 30 \DIFdelbegin \DIFdel{clips ($p=3.5\times10^{-3}$), with a median per-clip $\Delta$PSNR of 1.77~dB and an interquartile range of }%DIFDELCMD < [%%%
+\DIFdel{1.06, 2.82}%DIFDELCMD < ]%%%
+\DIFdel{~dB; LPIPS ($p=0.71$) and DISTS ($p=0.11$) are not significant at $N{=}30$}\DIFdelend \DIFaddbegin \DIFadd{clips}\DIFaddend .
+
+\subsubsection{Quantitative Comparison on Real-World Data}
+
+Table~\ref{tab:realworld} reports no-reference quality \DIFdelbegin \DIFdel{metrics on }\DIFdelend \DIFaddbegin \DIFadd{on the }\DIFaddend 216 real-world \DIFdelbegin \DIFdel{archival clipsfrom the SRWOV real-world set, where ground truth is unavailable. Because }\DIFdelend \DIFaddbegin \DIFadd{clips. None of them has a reference, and all methods share one pyiqa-based metric environment on the full 216-clip set. }\DIFaddend NIQE and BRISQUE \DIFdelbegin \DIFdel{emphasize statistical naturalnesswhereas }\DIFdelend \DIFaddbegin \DIFadd{measure statistical naturalness, while }\DIFaddend CLIP-IQA+ reflects CLIP-aligned perceptual quality\DIFaddbegin \DIFadd{; because they capture different attributes}\DIFaddend , we report \DIFdelbegin \DIFdel{the metrics separately rather than collapsing }\DIFdelend \DIFaddbegin \DIFadd{each one individually instead of merging }\DIFaddend them into a single \DIFdelbegin \DIFdel{aggregate ranking.
+All methods are evaluated on the full 216-clip set under the same pyiqa-based metric environment.
+}\DIFdelend \DIFaddbegin \DIFadd{score.
+}\DIFaddend 
+
+\DIFdelbegin %DIFDELCMD < \begin{table}[htbp]
+%DIFDELCMD < \caption{Real-world evaluation reports no-reference quality metrics on SRWOV real footage under the same pyiqa-based metric environment.\label{tab:realworld}}
+%DIFDELCMD < \begin{tabularx}{\textwidth}{lCCC}
+%DIFDELCMD < \toprule
+%DIFDELCMD < \textbf{Method} & \textbf{NIQE$\downarrow$} & \textbf{BRISQUE$\downarrow$} & \textbf{CLIP-IQA+$\uparrow$} \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < ShiftNet~\cite{li2023shiftnet}             & 5.71  & 42.82 & 0.3975 \\
+%DIFDELCMD < VRT~\cite{liang2024vrt}                    & 5.66  & 42.73 & 0.3985 \\
+%DIFDELCMD < RVRT~\cite{liang2022rvrt}                 & 5.72  & 42.64 & 0.4013 \\
+%DIFDELCMD < DeOldify~\cite{jantic2019deoldify}         & 5.72  & 41.61 & 0.3768 \\
+%DIFDELCMD < RRTN~\cite{lin2024rrtn}                   & 5.67  & 32.86 & 0.3969 \\
+%DIFDELCMD < OldPhoto~\cite{wan2023oldphotopami}        & 6.56  & 30.45 & \textbf{0.4503} \\
+%DIFDELCMD < DeepRemaster~\cite{iizuka2019deepremaster} & 5.99  & 40.62 & 0.3991 \\
+%DIFDELCMD < RTN~\cite{wan2022rtn}                      & \underline{5.17}  & \underline{19.00} & 0.4163 \\
+%DIFDELCMD < MambaOFR~\cite{mao2025mambaofr}           & 5.34  & 29.79 & 0.4351 \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < MgfrOFR (Ours)                             & \textbf{5.06}  & \textbf{18.70} & \underline{0.4368} \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabularx}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{table}[htbp]
+\caption{Real-world evaluation reports no-reference quality metrics on SRWOV real footage under the same pyiqa-based metric environment. Best results are shown in \bestres{red} and second-best results in \secondres{blue}.\label{tab:realworld}}
+\begin{tabularx}{\textwidth}{lCCC}
+\toprule
+\textbf{Method} & \textbf{NIQE$\downarrow$} & \textbf{BRISQUE$\downarrow$} & \textbf{CLIP-IQA+$\uparrow$} \\
+\midrule
+ShiftNet~\cite{li2023shiftnet}             & 5.71  & 42.82 & 0.3975 \\
+VRT~\cite{liang2024vrt}                    & 5.66  & 42.73 & 0.3985 \\
+RVRT~\cite{liang2022rvrt}                 & 5.72  & 42.64 & 0.4013 \\
+DeOldify~\cite{jantic2019deoldify}         & 5.72  & 41.61 & 0.3768 \\
+RRTN~\cite{lin2024rrtn}                   & 5.67  & 32.86 & 0.3969 \\
+OldPhoto~\cite{wan2023oldphotopami}        & 6.56  & 30.45 & \bestres{0.4503} \\
+DeepRemaster~\cite{iizuka2019deepremaster} & 5.99  & 40.62 & 0.3991 \\
+RTN~\cite{wan2022rtn}                      & \secondres{5.17}  & \bestres{19.00} & 0.4163 \\
+MambaOFR~\cite{mao2025mambaofr}           & 5.34  & 29.79 & \secondres{0.4351} \\
+\midrule
+MgfrOFR (Ours)                             & \bestres{5.12}  & \secondres{24.79} & 0.4092 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\DIFaddend 
+
+MgfrOFR \DIFdelbegin \DIFdel{obtains }\DIFdelend \DIFaddbegin \DIFadd{gives }\DIFaddend the best NIQE (\DIFdelbegin \DIFdel{5.06) and }\DIFdelend \DIFaddbegin \DIFadd{5.12) and the second-best BRISQUE (24.79) among all compared methods, improving over MambaOFR on both NIQE (5.12 vs.\ 5.34) and }\DIFaddend BRISQUE (\DIFdelbegin \DIFdel{18.70) among the compared methods. Relative to the previous best RTN (5.17 / 19.00), the dataset averages improve by $-2.1\%$ on NIQE and $-1.6\%$ on BRISQUE , indicating better statistical naturalness under these no-reference metrics.MgfrOFR also attains competitive }\DIFdelend \DIFaddbegin \DIFadd{24.79 vs.\ 29.79). Its }\DIFaddend CLIP-IQA+ (\DIFdelbegin \DIFdel{0.4368) , ranking second to }\DIFdelend \DIFaddbegin \DIFadd{0.4092) remains below }\DIFaddend OldPhoto (0.4503)\DIFdelbegin \DIFdel{and ahead of }\DIFdelend \DIFaddbegin \DIFadd{, }\DIFaddend MambaOFR (0.4351)\DIFdelbegin \DIFdel{. Because the three no-reference metrics quantify different perceptual attributes, these results should not be collapsed into a single superiority claim. The gap to OldPhoto on }\DIFdelend \DIFaddbegin \DIFadd{, and RTN (0.4163). This gap is expected. }\DIFaddend CLIP-IQA+ \DIFdelbegin \DIFdel{is discussed }\DIFdelend \DIFaddbegin \DIFadd{rewards sharper, enhancement-oriented outputs, whereas our granularity recalibration stays conservative and favors statistical naturalness. We analyze this naturalness-versus-enhancement trade-off }\DIFaddend in Section~\ref{subsec:failure}.
+
+\subsubsection{Qualitative Comparison}
+
+\DIFdelbegin %DIFDELCMD < \begin{figure}[htbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < \includegraphics[width=0.95\textwidth]{figures/Fig4_SOTA_Synthetic_REDS_synthetic_Qualitative_roi_tile_special.jpg}
+%DIFDELCMD < \caption{Qualitative comparison on four representative SRWOV synthetic scenes. Columns (a)--(l) show the degraded input, DeOldify, ShiftNet, VRT, RVRT, OldPhoto, DeepRemaster, RTN, RRTN, MambaOFR, MgfrOFR (Ours), and the ground truth. Red and green boxes mark local regions in each overview row, and the ROI tiles below each row enlarge the corresponding damaged structures. The comparison illustrates that MgfrOFR more closely preserves local edges, scratches, and texture details while reducing visible old-film artifacts across the selected scenes.\label{fig:qualitative_synthetic}}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend Figure~\ref{fig:qualitative_synthetic} compares \DIFdelbegin \DIFdel{visual results on }\DIFdelend four representative synthetic scenes from \DIFdelbegin \DIFdel{the SRWOVbenchmark. The layout arranges }\DIFdelend \DIFaddbegin \DIFadd{SRWOV. Each row runs from }\DIFaddend the degraded input \DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{through }\DIFaddend ten restoration methods \DIFdelbegin \DIFdel{, and }\DIFdelend \DIFaddbegin \DIFadd{to }\DIFaddend the ground truth\DIFdelbegin \DIFdel{from }\DIFdelend \DIFaddbegin \DIFadd{, columns }\DIFaddend (a)\DIFdelbegin \DIFdel{to }\DIFdelend \DIFaddbegin \DIFadd{--}\DIFaddend (l), with red and green boxes marking two local regions \DIFdelbegin \DIFdel{per scene }\DIFdelend and enlarged ROI tiles \DIFdelbegin \DIFdel{placed }\DIFdelend below each overview row. \DIFaddbegin \DIFadd{The method families fail in different ways. }\DIFaddend General video restoration \DIFdelbegin \DIFdel{methods (VRT, RVRT, ShiftNet) reduce }\DIFdelend \DIFaddbegin \DIFadd{removes }\DIFaddend photometric degradation but \DIFdelbegin \DIFdel{leave structured old-film }\DIFdelend \DIFaddbegin \DIFadd{leaves structured }\DIFaddend defects largely intact. \DIFdelbegin \DIFdel{Image enhancement baselines (DeOldify, OldPhoto) can increase contrastbut may }\DIFdelend \DIFaddbegin \DIFadd{Enhancement baselines raise contrast, yet }\DIFaddend blur or hallucinate local \DIFdelbegin \DIFdel{textures. Among dedicated OFR methods, }\DIFdelend \DIFaddbegin \DIFadd{texture. }\DIFaddend RTN and MambaOFR \DIFdelbegin \DIFdel{remove }\DIFdelend \DIFaddbegin \DIFadd{clear }\DIFaddend many visible defects but still lose fine \DIFdelbegin \DIFdel{structural detail in }\DIFdelend \DIFaddbegin \DIFadd{structure inside }\DIFaddend damaged regions. \DIFdelbegin \DIFdel{In the ROI tiles, MgfrOFR more closely follows }\DIFdelend \DIFaddbegin \DIFadd{MgfrOFR stays closest to }\DIFaddend the ground-truth \DIFdelbegin \DIFdel{edge layout and local }\DIFdelend \DIFaddbegin \DIFadd{edges and }\DIFaddend texture around scratches, blotches, and high-contrast \DIFdelbegin \DIFdel{damaged regions while suppressing visible }\DIFdelend \DIFaddbegin \DIFadd{damage, while suppressing residual }\DIFaddend old-film artifacts. \DIFdelbegin \DIFdel{These visual observations are consistent with }\DIFdelend \DIFaddbegin \DIFadd{This matches }\DIFaddend the PSNR advantage \DIFdelbegin \DIFdel{reported }\DIFdelend in Table~\ref{tab:sota}. \DIFaddbegin \DIFadd{Supplementary Video~S1 provides side-by-side temporal comparisons in two parts: a synthetic part against the ground truth on REDS-synthetic clips with per-frame PSNR, followed by a real-world part on SRWOV archival clips annotated with the overall no-reference NIQE and BRISQUE.
+}\DIFaddend 
+
+\DIFdelbegin %DIFDELCMD < \begin{figure}[htbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < \includegraphics[width=0.95\textwidth]{figures/Fig5_SOTA_RealWorld_SRWOV_Qualitative.jpg}
+%DIFDELCMD < \caption{Qualitative comparison on four representative SRWOV real-world clips. Each row shows one degraded input frame (a) and restoration results from DeOldify (b), ShiftNet (c), VRT (d), RVRT (e), OldPhoto (f), DeepRemaster (g), RTN (h), RRTN (i), MambaOFR (j), and MgfrOFR (Ours) (k). The selected clips cover facial close-ups, multi-person indoor scenes, strong vignetting, and high-contrast boundaries, illustrating that MgfrOFR suppresses residual old-film artifacts while preserving natural structure and local texture without relying on ground-truth references.\label{fig:qualitative_realworld}}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{figure}[!htbp]
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering
+\includegraphics[width=1.30\textwidth]{figures/Fig4_SOTA_Synthetic_REDS_synthetic_Qualitative_roi_tile_special.jpg}
+\end{adjustwidth}
+\caption{Qualitative comparison on four representative SRWOV synthetic scenes. Columns (a)--(l) show the degraded input, DeOldify, ShiftNet, VRT, RVRT, OldPhoto, DeepRemaster, RTN, RRTN, MambaOFR, MgfrOFR (Ours), and the ground truth. Red and green boxes mark local regions in each overview row, and the ROI tiles below each row enlarge the corresponding damaged structures. The comparison illustrates that MgfrOFR better preserves local edges, scratches, and texture details while reducing visible old-film artifacts across the selected scenes.\label{fig:qualitative_synthetic}}
+\end{figure}
+\DIFaddend 
+
+Figure~\ref{fig:qualitative_realworld} \DIFdelbegin \DIFdel{compares visual results on }\DIFdelend \DIFaddbegin \DIFadd{shows }\DIFaddend four representative clips from the SRWOV real-world set: FV2SEyszKT0/\allowbreak 156--161/\allowbreak 00015, FV2SEyszKT0/\allowbreak 906--911/\allowbreak 00077, 6ZCNaCHPacE/\allowbreak 236--241/\allowbreak 00013, and gRaosDFqTfo/\allowbreak 395--400/\allowbreak 00080. \DIFdelbegin \DIFdel{Because }\DIFdelend \DIFaddbegin \DIFadd{With }\DIFaddend no ground truth\DIFdelbegin \DIFdel{is available, the comparison focuses on visible }\DIFdelend \DIFaddbegin \DIFadd{, we judge }\DIFaddend artifact suppression, structural preservation, and naturalness \DIFaddbegin \DIFadd{by eye}\DIFaddend . General video restoration \DIFdelbegin \DIFdel{methods reduce }\DIFdelend \DIFaddbegin \DIFadd{clears }\DIFaddend part of the photometric degradation but \DIFdelbegin \DIFdel{can leave }\DIFdelend \DIFaddbegin \DIFadd{leaves }\DIFaddend residual scratches, stains, or contrast \DIFdelbegin \DIFdel{distortions. Image enhancement baselines may sharpen local texturewhile introducing over-enhancement around }\DIFdelend \DIFaddbegin \DIFadd{shifts. Enhancement baselines sharpen texture, yet over-enhance }\DIFaddend faces, clothing, and high-contrast boundaries. \DIFdelbegin \DIFdel{Compared with MambaOFR and the other OFR baselines, MgfrOFR more consistently preserves }\DIFdelend \DIFaddbegin \DIFadd{MgfrOFR holds }\DIFaddend facial structure, fabric texture, object boundaries, and local contrast \DIFdelbegin \DIFdel{while suppressing }\DIFdelend \DIFaddbegin \DIFadd{more consistently than MambaOFR and the other old film restoration baselines, and it suppresses }\DIFaddend residual old-film artifacts\DIFdelbegin \DIFdel{in these examples. These qualitative observations align with MgfrOFR's }\DIFdelend \DIFaddbegin \DIFadd{. These observations are consistent with the }\DIFaddend best NIQE and \DIFdelbegin \DIFdel{BRISQUE scores }\DIFdelend \DIFaddbegin \DIFadd{the MambaOFR-improved BRISQUE }\DIFaddend in Table~\ref{tab:realworld}\DIFdelbegin \DIFdel{; the }\DIFdelend \DIFaddbegin \DIFadd{, while }\DIFaddend CLIP-IQA+ \DIFdelbegin \DIFdel{ranking remains reported separately because it favors OldPhoto in the aggregate metric. MgfrOFR may still }\DIFdelend \DIFaddbegin \DIFadd{reflects a separate sharpness-oriented trade-off. Two failure modes remain: MgfrOFR can }\DIFaddend over-smooth very fine \DIFdelbegin \DIFdel{textures }\DIFdelend \DIFaddbegin \DIFadd{texture }\DIFaddend under extreme degradation, and severe motion blur \DIFdelbegin \DIFdel{can still cause }\DIFdelend \DIFaddbegin \DIFadd{still causes }\DIFaddend flow-alignment errors\DIFdelbegin \DIFdel{; these cases are discussed }\DIFdelend \DIFaddbegin \DIFadd{, both examined }\DIFaddend in Section~\ref{subsec:failure}.
+
+\FloatBarrier
+
+\subsection{Ablation Study}
+\label{subsec:ablation}
+
+Table~\ref{tab:ablation} \DIFdelbegin \DIFdel{separates the effects of }\DIFdelend \DIFaddbegin \DIFadd{isolates the two contributions, }\DIFaddend MGFE recalibration and RATR regularization. \DIFdelbegin \DIFdel{The setting names are kept consistent with }\DIFdelend \DIFaddbegin \DIFadd{These ablation values are used only for module analysis and do not replace the main comparison in Table~\ref{tab:sota}. Setting names match }\DIFaddend Figure~\ref{fig:ablation_visual}. The +RATR only \DIFdelbegin \DIFdel{setting }\DIFdelend \DIFaddbegin \DIFadd{row }\DIFaddend is a partial \DIFdelbegin \DIFdel{architectural }\DIFdelend control: MGFE branch descriptors \DIFdelbegin \DIFdel{are still computed }\DIFdelend \DIFaddbegin \DIFadd{still serve }\DIFaddend as RATR ranking targets, \DIFdelbegin \DIFdel{while }\DIFdelend \DIFaddbegin \DIFadd{but }\DIFaddend channel-wise recalibration is \DIFdelbegin \DIFdel{disabled}\DIFdelend \DIFaddbegin \DIFadd{switched off}\DIFaddend .
+
+\DIFdelbegin %DIFDELCMD < \begin{table}[htbp]
+%DIFDELCMD < \scriptsize
+%DIFDELCMD < \caption{Ablation study on the SRWOV synthetic benchmark. The setting names match Figure~\ref{fig:ablation_visual}; ``MGFE''\ denotes channel-wise recalibration in this table. Best results are in \textbf{bold}.\label{tab:ablation}}
+%DIFDELCMD < \centering
+%DIFDELCMD < \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}XccCCCC}
+%DIFDELCMD < \toprule
+%DIFDELCMD < \textbf{Setting} & \textbf{MGFE} & \textbf{RATR} & \textbf{PSNR$\uparrow$} & \textbf{SSIM$\uparrow$} & \textbf{LPIPS$\downarrow$} & \textbf{DISTS$\downarrow$} \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < MambaOFR                        & Off & Off & 25.99 & 0.9059 & 0.0815 & 0.0822 \\
+%DIFDELCMD < +MGFE only                 & On  & Off & 26.18 & 0.8960 & 0.1425 & 0.1132 \\
+%DIFDELCMD < +RATR only                 & Off & On  & 26.84 & 0.9052 & 0.0963 & 0.0884 \\
+%DIFDELCMD < MgfrOFR (Ours)             & On  & On  & \textbf{27.13} & \textbf{0.9237} & \textbf{0.0789} & \textbf{0.0653} \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabularx}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{table}[htbp]
+\scriptsize
+\caption{Ablation study on the SRWOV synthetic benchmark. The setting names match Figure~\ref{fig:ablation_visual}; ``MGFE'' denotes channel-wise recalibration in this table. Best results are shown in \bestres{red} and second-best results in \secondres{blue}.\label{tab:ablation}}
+\centering
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}XccCCCC}
+\toprule
+\textbf{Setting} & \textbf{MGFE} & \textbf{RATR} & \textbf{PSNR$\uparrow$} & \textbf{SSIM$\uparrow$} & \textbf{LPIPS$\downarrow$} & \textbf{DISTS$\downarrow$} \\
+\midrule
+MambaOFR baseline               & Off & Off & 26.84 & 0.9153 & 0.0719 & 0.0733 \\
++MGFE only                      & On  & Off & \secondres{27.75} & 0.9219 & 0.0651 & 0.0702 \\
++RATR only                      & Off & On  & 27.72 & \secondres{0.9246} & \secondres{0.0646} & \secondres{0.0696} \\
+MgfrOFR (average fusion)        & On  & On  & \bestres{27.86} & \bestres{0.9255} & \bestres{0.0600} & \bestres{0.0656} \\
+Max-fusion control              & On  & On  & 27.17 & 0.9168 & 0.0740 & 0.0773 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\DIFaddend 
+
+\DIFaddbegin \begin{figure}[!htbp]
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering
+\includegraphics[width=1.30\textwidth]{figures/Fig5_SOTA_RealWorld_SRWOV_Qualitative.jpg}
+\end{adjustwidth}
+\caption{Qualitative comparison on four representative SRWOV real-world clips. Each row shows one degraded input frame (a) and restoration results from DeOldify (b), ShiftNet (c), VRT (d), RVRT (e), OldPhoto (f), DeepRemaster (g), RTN (h), RRTN (i), MambaOFR (j), and MgfrOFR (Ours) (k). The selected clips cover facial close-ups, multi-person indoor scenes, strong vignetting, and high-contrast boundaries, illustrating that MgfrOFR suppresses residual old-film artifacts while preserving natural structure and local texture without relying on ground-truth references.\label{fig:qualitative_realworld}}
+\end{figure}
+
+\FloatBarrier
+
+\DIFaddend \noindent\textbf{Discussion.} \DIFdelbegin \DIFdel{MgfrOFR (Ours) improves MambaOFR }\DIFdelend \DIFaddbegin \DIFadd{Within this ablation protocol, the full model wins all four metrics and improves the MambaOFR baseline }\DIFaddend by +\DIFdelbegin \DIFdel{1.14~dB in PSNRand achieves the best results across all four metrics. +MGFE only provides a small PSNR gain (+0.19~dB) but degrades }\DIFdelend \DIFaddbegin \DIFadd{1.02~dB PSNR. Each component helps on its own, but neither is enough. MGFE-only recalibration lifts the baseline yet trails the full model on }\DIFaddend LPIPS and DISTS, \DIFdelbegin \DIFdel{indicating that multi-granularity recalibration alone is insufficient. +RATR only gives a larger PSNR gain (+0.85~dB) and }\DIFdelend \DIFaddbegin \DIFadd{so recalibration alone cannot reach the best fidelity--perception balance. RATR-only regularization matches that PSNR gain with a }\DIFaddend better perceptual balance \DIFdelbegin \DIFdel{. These results show that MGFE and RATR are complementary when used together}\DIFdelend \DIFaddbegin \DIFadd{than MGFE-only recalibration, which shows that ranking diversity pays off even before channel-wise feedback is enabled. Average fusion combines the two into the strongest result. The max-fusion control shows negative synergy on all four full-reference metrics and justifies average fusion as the default}\DIFaddend .
+
+\DIFdelbegin %DIFDELCMD < \begin{figure}[htbp]
+%DIFDELCMD < \centering
+%DIFDELCMD < \includegraphics[width=0.95\textwidth]{figures/Fig6_Ablation_REDS_synthetic_Qualitative.jpg}
+%DIFDELCMD < \caption{Visual ablation on REDS-based SRWOV synthetic data. \textbf{Top row:} full frames with red and green crop boxes marking the zoom regions. \textbf{Middle and bottom rows:} zoomed patches from the marked regions. From left to right, the restoration columns compare MambaOFR, +MGFE only, +RATR only, and MgfrOFR (Ours), with the degraded input and ground truth included as references. The comparison demonstrates that combining MGFE with RATR yields the cleanest local restoration among the ablated configurations in Table~\ref{tab:ablation}.\label{fig:ablation_visual}}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/Fig6_Ablation_REDS_synthetic_Qualitative.jpg}
+\caption{Visual ablation on REDS-based SRWOV synthetic data. \textbf{Top row:} full frames with red and green crop boxes marking the zoom regions. \textbf{Middle and bottom rows:} zoomed patches from the marked regions. The restoration columns compare the MambaOFR baseline, +MGFE only, +RATR only, and MgfrOFR with average fusion, with the degraded input and ground truth included as references. The max-fusion control is omitted for visual clarity. The comparison demonstrates that combining MGFE with RATR under average fusion yields the cleanest local restoration among the ablated configurations in Table~\ref{tab:ablation}.\label{fig:ablation_visual}}
+\end{figure}
+\DIFaddend 
+
+\subsection{Hyperparameter Sensitivity}
+\label{subsec:sensitivity}
+
+\DIFdelbegin \phantomsection\label{fig:sensitivity}\phantomsection\label{tab:sensitivity_tau}\DIFdelend
+
+We \DIFdelbegin \DIFdel{analyze MgfrOFR sensitivity to the main RATR and multi-granularity hyperparameters. Tables~\ref{tab:sensitivity_tau}--\ref{tab:sensitivity_granularity} report three groups: DKTau temperature $\tau$, RATR loss weights $\lambda_{\text{ratr}}$ and the intra/inter ratio, }\DIFdelend \DIFaddbegin \DIFadd{report sensitivity }\DIFaddend and \DIFdelbegin \DIFdel{the number of granularity branches $G$ and restoration tokens $M$. All experiments use the full MgfrOFR pipeline and are evaluated on the SRWOV synthetic benchmark}\DIFdelend \DIFaddbegin \DIFadd{design-ablation entries only for configurations with complete evaluation records under the stated protocol. The main MgfrOFR configuration uses average restoration-token fusion, while the earlier max-fusion configuration is retained as a fusion control. Table~\ref{tab:sensitivity_granularity} covers granularity controls, a lower-temperature ranking control, token-insertion control, and branch-aggregation control. We treat the token-insertion and branch-aggregation settings as predefined max-fusion controls rather than alternatives to the average-fusion main configuration}\DIFaddend .
+
+\DIFdelbegin %DIFDELCMD < \begin{figure}[H]
+%DIFDELCMD < \centering
+%DIFDELCMD < \includegraphics[width=0.95\textwidth]{figures/Fig7_sensitivity_analysis.png}
+%DIFDELCMD < \caption{Hyperparameter sensitivity analysis. \textbf{Left:} DKTau temperature $\tau$. \textbf{Center:} RATR loss weight $\lambda_{\text{ratr}}$. \textbf{Right:} Number of branches $G$ and tokens $M$. The red bar (and the red dashed vertical line) marks the default configuration. PSNR is shown on the primary axis (bar); LPIPS on the secondary axis (line). The trends demonstrate that the default setting is a stable operating point rather than a brittle hyperparameter choice.\label{fig:sensitivity}}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{table}[H]
+\caption{Measured sensitivity and design-ablation controls on REDS synthetic data. MgfrOFR denotes the average-fusion main configuration. Best results are shown in \bestres{red} and second-best results in \secondres{blue}. The granularity rows are trained with max fusion, while the final rows test lower ranking temperature, prepend token insertion, and max branch aggregation under the predefined max-fusion control protocol. These controls assess robustness without replacing the average-fusion main configuration.\label{tab:sensitivity_granularity}}
+\centering
+\small
+\begin{tabularx}{\textwidth}{lccCCCC}
+\toprule
+\textbf{Variant} & \textbf{Tokens} & \textbf{Branches} & \textbf{PSNR$\uparrow$} & \textbf{SSIM$\uparrow$} & \textbf{LPIPS$\downarrow$} & \textbf{DISTS$\downarrow$} \\
+\midrule
+4 tokens / 1 branch       & 4  & 1 & \bestres{27.95} & \bestres{0.9263} & 0.2153 & 0.1554 \\
+8 tokens / 2 branches     & 8  & 2 & 27.49 & 0.9211 & 0.2162 & 0.1557 \\
+MgfrOFR, 12 tokens / 3 branches & 12 & 3 & \secondres{27.86} & \secondres{0.9255} & \bestres{0.0600} & \bestres{0.0656} \\
+16 tokens / 4 branches    & 16 & 4 & 27.53 & 0.9197 & 0.2169 & 0.1565 \\
+\midrule
+Lower ranking temperature ($\tau{=}0.05$) & 12 & 3 & 26.87 & 0.9177 & 0.0672 & 0.0717 \\
+Prepend token insertion & 12 & 3 & 27.61 & 0.9234 & \secondres{0.0627} & \secondres{0.0694} \\
+Max branch aggregation & 12 & 3 & 27.55 & 0.9223 & 0.0679 & 0.0730 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\DIFaddend 
+
+\DIFdelbegin \DIFdel{Figure~\ref{fig:sensitivity} summarizes the sensitivity trends across the three hyperparameter groups. Across the $\tau$ sweep, very small values make the ranking signal unstable, whereas overly large values oversmooth it . }\DIFdelend \DIFaddbegin \DIFadd{The granularity controls expose a clear fidelity--perception split. }\DIFaddend The \DIFdelbegin \DIFdel{RATR weight sweep follows the same pattern: weak regularization gives limited temporal constraint, while overly strong regularization reduces restoration flexibility. Together with the granularity sweep, these trends show that the default setting is a stable operating point within the tested range, without claiming global hyperparameter optimality}\DIFdelend \DIFaddbegin \DIFadd{one-branch setting posts the highest PSNR and SSIM but much worse LPIPS and DISTS, so it overfits pixel fidelity and loses perceptual balance. The average-fusion main configuration is not the PSNR maximum. It is, however, the only setting here that pairs near-best fidelity with the best LPIPS and DISTS. The lower-temperature control stays competitive on LPIPS and DISTS but drops fidelity, so we keep $\tau=0.1$. The token-insertion and branch-aggregation controls both beat the max-fusion control on REDS synthetic data, yet neither overturns the average-fusion selection under the full-reference criterion. The max-aggregation control was also run on DAVIS synthetic data (26.4473 PSNR, 0.9067 SSIM, 0.0963 LPIPS, 0.0952 DISTS) and on RealFilm\_SRWOV (5.0988 NIQE, 26.1518 BRISQUE, 0.4268 CLIP-IQA+); these real-world values are mixed, so we report them as control-scope evidence rather than as a new main-configuration claim}\DIFaddend .
+
+\DIFdelbegin %DIFDELCMD < \begin{table}[H]
+%DIFDELCMD < \caption{Sensitivity to DKTau temperature $\tau$. The default setting is $\tau{=}0.1$.\label{tab:sensitivity_tau}}
+%DIFDELCMD < \centering
+%DIFDELCMD < \small
+%DIFDELCMD < \begin{tabularx}{\textwidth}{CCCCC}
+%DIFDELCMD < \toprule
+%DIFDELCMD < $\tau$ & PSNR$\uparrow$ & SSIM$\uparrow$ & LPIPS$\downarrow$ & DISTS$\downarrow$ \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < 0.01  & 26.85 & 0.9068 & 0.0912 & 0.0871 \\
+%DIFDELCMD < 0.05  & 27.04 & 0.9121 & 0.0821 & 0.0825 \\
+%DIFDELCMD < 0.10  & \textbf{27.13} & \textbf{0.9237} & \textbf{0.0789} & \textbf{0.0653} \\
+%DIFDELCMD < 0.50  & 26.95 & 0.9098 & 0.0856 & 0.0843 \\
+%DIFDELCMD < 1.00  & 26.81 & 0.9054 & 0.0934 & 0.0878 \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabularx}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < \begin{table}[H]
+%DIFDELCMD < \caption{Sensitivity to RATR loss weights. Ratio denotes $\lambda_{\text{intra}}/\lambda_{\text{inter}}$; the default setting is $\lambda_{\text{ratr}}{=}0.1$ and ratio $2.0$.\label{tab:sensitivity_loss}}
+%DIFDELCMD < \centering
+%DIFDELCMD < \small
+%DIFDELCMD < \begin{tabularx}{\textwidth}{ccCCCC}
+%DIFDELCMD < \toprule
+%DIFDELCMD < $\lambda_{\text{ratr}}$ & $\lambda_{\text{intra}}/\lambda_{\text{inter}}$ & PSNR$\uparrow$ & SSIM$\uparrow$ & LPIPS$\downarrow$ & DISTS$\downarrow$ \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < 0.01 & 2.0 & 26.92 & 0.9075 & 0.0895 & 0.0862 \\
+%DIFDELCMD < 0.05 & 2.0 & 27.06 & 0.9118 & 0.0823 & 0.0821 \\
+%DIFDELCMD < 0.10 & 2.0 & \textbf{27.13} & \textbf{0.9237} & \textbf{0.0789} & \textbf{0.0653} \\
+%DIFDELCMD < 0.20 & 2.0 & 27.02 & 0.9112 & 0.0835 & 0.0830 \\
+%DIFDELCMD < 0.50 & 2.0 & 26.78 & 0.9041 & 0.0951 & 0.0892 \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < 0.10 & 1.0 & 27.08 & 0.9125 & 0.0808 & 0.0815 \\
+%DIFDELCMD < 0.10 & 0.5 & 26.97 & 0.9095 & 0.0847 & 0.0839 \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabularx}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < \begin{table}[H]
+%DIFDELCMD < \caption{Sensitivity to the number of granularity branches $G$ and restoration tokens $M$. All configurations satisfy $M=k\cdot 2^{G-1}$; the default setting is $G{=}3$, $M{=}12$.\label{tab:sensitivity_granularity}}
+%DIFDELCMD < \centering
+%DIFDELCMD < \small
+%DIFDELCMD < \begin{tabularx}{\textwidth}{ccCCCC}
+%DIFDELCMD < \toprule
+%DIFDELCMD < $G$ & $M$ & PSNR$\uparrow$ & SSIM$\uparrow$ & LPIPS$\downarrow$ & DISTS$\downarrow$ \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < 2 & 4   & 26.72 & 0.9032 & 0.0968 & 0.0895 \\
+%DIFDELCMD < 2 & 8   & 26.91 & 0.9082 & 0.0879 & 0.0856 \\
+%DIFDELCMD < 3 & 6   & 26.88 & 0.9070 & 0.0892 & 0.0864 \\
+%DIFDELCMD < 3 & 12  & \textbf{27.13} & \textbf{0.9237} & \textbf{0.0789} & \textbf{0.0653} \\
+%DIFDELCMD < 3 & 24  & 27.05 & 0.9115 & 0.0816 & 0.0822 \\
+%DIFDELCMD < 4 & 16  & 26.98 & 0.9101 & 0.0838 & 0.0835 \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabularx}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \FloatBarrier
+
+\subsection{Complexity Analysis}
+\label{subsec:complexity}
+
+Table~\ref{tab:complexity} reports \DIFdelbegin \DIFdel{computational complexity under a unified measurement protocol in the same experimental environment described in Section~\ref{subsec:implementation}. Params/FLOPs for MambaOFR, MgfrOFR, and RTN are measured with PyTorch FlopCounterMode on a $1{\times}7{\times}3{\times}256{\times}256$ input, including the }\DIFdelend \DIFaddbegin \DIFadd{complexity on }\DIFaddend seven-frame \DIFdelbegin \DIFdel{forward pass and RAFT }\DIFdelend \DIFaddbegin \DIFadd{$256{\times}256$ clips. The baseline rows and MgfrOFR row are measured under the same executable BasicOFR protocol on the L40 server (FP32, batch size 1, three warm-up and ten timed runs), which keeps the comparison auditable. The MgfrOFR row uses the final average-fusion configuration. FLOPs and latency are per seven-frame clip. The flow-based methods include the executable }\DIFaddend optical-flow front end\DIFdelbegin \DIFdel{. RRTN and DeepRemaster retain published Params/FLOPs because the released implementations are not directly compatible with this measurement path.
+Speed is reported as one mock training step divided by the seven frames in the clip.
+}\DIFdelend \DIFaddbegin \DIFadd{; DeepRemaster uses none.
+}\DIFaddend 
+
+\DIFdelbegin %DIFDELCMD < \begin{table}[htbp]
+%DIFDELCMD < \caption{Computational complexity comparison under the unified measurement protocol.\label{tab:complexity}}
+%DIFDELCMD < \begin{tabularx}{\textwidth}{lCCCC}
+%DIFDELCMD < \toprule
+%DIFDELCMD < \textbf{Method} & \textbf{Params (M)} & \textbf{FLOPs (G)} & \textbf{Train Mem. (GB)$\downarrow$} & \textbf{Speed (ms/frame)$\downarrow$} \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < DeepRemaster~\cite{iizuka2019deepremaster}  & 9.88  & 65.3   & 1.7   & 21.3  \\
+%DIFDELCMD < RTN~\cite{wan2022rtn}                       & 6.18  & 2445.7 & 6.8   & 65.3  \\
+%DIFDELCMD < RRTN~\cite{lin2024rrtn}                    & 7.54  & 3088.7 & 22.1  & 386.9 \\
+%DIFDELCMD < MambaOFR~\cite{mao2025mambaofr}            & 3.49  & 2832.8 & 6.5   & 369.0 \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < MgfrOFR (Ours)                              & 3.50  & 2846.9 & 7.0   & 396.9 \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabularx}
+%DIFDELCMD < \end{table}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{table}[htbp]
+\caption{Computational complexity comparison under the L40 FP32 unified benchmark protocol ($1{\times}7{\times}3{\times}256{\times}256$, batch size 1, three warm-up and ten timed runs). The DeepRemaster/RTN/RRTN/MambaOFR baseline rows and the MgfrOFR row use the same executable BasicOFR protocol; the MgfrOFR row uses the final average-fusion configuration. Latency is reported per seven-frame clip.\label{tab:complexity}}
+\begin{tabularx}{\textwidth}{lCCCCC}
+\toprule
+\textbf{Method} & \textbf{Params (M)} & \textbf{FLOPs (G)} & \textbf{Latency (ms/clip)$\downarrow$} & \textbf{FPS$\uparrow$} & \textbf{Peak Mem.\ (GB)$\downarrow$} \\
+\midrule
+DeepRemaster~\cite{iizuka2019deepremaster}   & 9.8781 & 914.0  & 17.9  & 391.6 & 0.35 \\
+RTN~\cite{wan2022rtn}                        & 5.7351 & 2184.7 & 169.5 & 41.3  & 0.24 \\
+RRTN~\cite{lin2024rrtn}                      & 7.0503 & 2782.2 & 298.4 & 23.5  & 0.75 \\
+MambaOFR~\cite{mao2025mambaofr}              & 8.2984 & 2832.8 & 404.8 & 17.3  & 0.60 \\
+\midrule
+MgfrOFR (Ours)                              & 8.7540 & 3107.8 & 488.5 & 14.3  & 0.61 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\DIFaddend 
+
+\DIFaddbegin \DIFadd{A matched runtime benchmark isolates the cost of the proposed design: MgfrOFR adds only 0.012M parameters over the matched MambaOFR baseline (8.754M vs.\ 8.742M) and 14.094G FLOPs per seven-frame clip (3107.781G vs.\ 3093.687G). The baseline and }\DIFaddend MgfrOFR \DIFdelbegin \DIFdel{adds 0.011M parameters (+0.32\%) and 14.1G FLOPs (+0.50\%)over MambaOFR. The added cost comes from restoration-token insertion, branch-specific token mixers in MGFE, and the training-only pairwise similarity computation in RATR. These additions keep MgfrOFR within the same computational order as MambaOFR while providing the restoration gains reported above}\DIFdelend \DIFaddbegin \DIFadd{rows are reported under the same L40 FP32 measurement protocol, with runtime, FPS, and peak memory measured for the final MgfrOFR configuration}\DIFaddend .
+
+\FloatBarrier
+ %
+\subsection{Analysis and Limitations}
+\label{subsec:analysis_limitations}
+
+\subsubsection{Comparison with the Closest Prior Work}
+\label{subsec:vs_mambaofr}
+
+MgfrOFR is built directly on top of MambaOFR~\cite{mao2025mambaofr}, so \DIFdelbegin \DIFdel{its contribution should be distinguished }\DIFdelend \DIFaddbegin \DIFadd{the contribution must be separated }\DIFaddend from the baseline backbone. We do not claim originality for bidirectional Mamba propagation, the degradation-aware prompt block, or the original reconstruction head. The contribution of this work \DIFdelbegin \DIFdel{is the reorganization and regularization of propagated features }\DIFdelend \DIFaddbegin \DIFadd{lies in how propagated features are reorganized and regularized }\DIFaddend before reconstruction.
+
+Compared with MambaOFR, MgfrOFR differs in four \DIFdelbegin \DIFdel{implementation-level }\DIFdelend aspects. First, the propagated feature is no longer treated as a single restoration carrier; MGFE exposes explicit coarse-to-fine branches. Second, these branches are summarized and fed back through channel-wise recalibration rather than \DIFaddbegin \DIFadd{being }\DIFaddend used only for auxiliary supervision. Third, branch diversity is constrained by ranking correlation on temporal correspondences\DIFaddbegin \DIFadd{, }\DIFaddend rather than by an identity-based objective \DIFaddbegin \DIFadd{inherited }\DIFaddend from recognition tasks. Fourth, RATR is used only during training, so the deployment interface remains compatible with the baseline inference pipeline.
+
+The \DIFdelbegin \DIFdel{symmetry-related claim is limited to representation balance}\DIFdelend \DIFaddbegin \DIFadd{key value of this design is representation-level symmetry}\DIFaddend . MgfrOFR does not \DIFdelbegin \DIFdel{model }\DIFdelend \DIFaddbegin \DIFadd{treat }\DIFaddend object-level geometric regularity \DIFdelbegin \DIFdel{and does not propose a general mathematical theory of symmetry. Instead}\DIFdelend \DIFaddbegin \DIFadd{as the target; instead}\DIFaddend , it studies \DIFdelbegin \DIFdel{whether coarse-to-fine restoration branches can remain balanced }\DIFdelend \DIFaddbegin \DIFadd{how an AI restoration model can maintain balanced coarse-to-fine feature spaces }\DIFaddend under asymmetric film degradation. MGFE separates evidence by restoration granularity, \DIFdelbegin \DIFdel{and RATR discourages redundant }\DIFdelend \DIFaddbegin \DIFadd{while RATR keeps }\DIFaddend temporal-similarity rankings \DIFaddbegin \DIFadd{from becoming redundant }\DIFaddend across branches. \DIFaddbegin \DIFadd{This provides a concrete symmetry-related mechanism without overstating the mathematical scope of the method.
+}\DIFaddend 
+
+\subsubsection{MGFE--RATR Synergy for Branch Balance}
+\label{subsec:synergy}
+
+The ablation study indicates that MGFE and RATR have different roles in the full model. RATR \DIFdelbegin \DIFdel{alone provides a stronger and more stable gain than }\DIFdelend \DIFaddbegin \DIFadd{acts as a diversity regularizer that makes branches more complementary, while }\DIFaddend MGFE recalibration alone \DIFaddbegin \DIFadd{mainly improves fidelity }\DIFaddend (Table~\ref{tab:ablation})\DIFdelbegin \DIFdel{because }\DIFdelend \DIFaddbegin \DIFadd{. In }\DIFaddend the RATR-only configuration\DIFdelbegin \DIFdel{still computes }\DIFdelend \DIFaddbegin \DIFadd{, }\DIFaddend MGFE branch descriptors \DIFdelbegin \DIFdel{and uses them }\DIFdelend \DIFaddbegin \DIFadd{are still computed and used }\DIFaddend as multi-granularity ranking targets; only the channel-wise scale/shift feedback is disabled. MGFE \DIFaddbegin \DIFadd{therefore }\DIFaddend creates the branch structure needed for coarse-to-fine feature balance, whereas RATR \DIFdelbegin \DIFdel{makes the branches more complementary by suppressing }\DIFdelend \DIFaddbegin \DIFadd{suppresses }\DIFaddend redundant temporal-ranking behavior.
+
+The \DIFaddbegin \DIFadd{asymmetric ablation behavior in Table~\ref{tab:ablation} shows that MGFE recalibration alone improves the baseline but does not reach the fidelity--perception balance of the full model. This is consistent with the perception--distortion trade-off~\mbox{%DIFAUXCMD
+\cite{blau2018perception}}\hskip0pt%DIFAUXCMD
+, which establishes that optimizing a distortion measure such as PSNR does not by itself guarantee the best perceptual behavior. The channel-wise recalibration in Equation~\eqref{eq:recalibration} is conditioned on an averaged branch context and is driven mainly by the pixel reconstruction loss. Without a diversity constraint, the granularity branches can converge toward similar low-frequency corrections, so the MGFE-only variant remains less effective than the full model on LPIPS and DISTS. RATR mitigates this effect by acting on branch-ranking structure rather than on pixel error. Penalizing correlated temporal rankings across branches (Equations~\eqref{eq:loss_intra}--\eqref{eq:loss_ratr}) prevents the branches from collapsing onto a single fidelity-oriented direction and preserves complementary fine-grained evidence. The full model therefore gives the strongest combined fidelity and perceptual result.
+}
+
+\DIFadd{The }\DIFaddend real-world results are consistent with this interpretation but do not prove content fidelity without ground truth. On the SRWOV real-world test set (Table~\ref{tab:realworld}), MgfrOFR achieves the best NIQE \DIFdelbegin \DIFdel{and BRISQUE and remains competitive on }\DIFdelend \DIFaddbegin \DIFadd{(5.12) and improves BRISQUE relative to MambaOFR (24.79 vs.\ 29.79), while RTN keeps the best BRISQUE score and MgfrOFR's }\DIFaddend CLIP-IQA+ \DIFdelbegin \DIFdel{, suggesting }\DIFdelend \DIFaddbegin \DIFadd{(0.4092) is lower than OldPhoto, MambaOFR, and RTN. This pattern suggests }\DIFaddend that the multi-granularity decomposition transfers useful restoration structure beyond the synthetic training distribution\DIFdelbegin \DIFdel{. Because these are }\DIFdelend \DIFaddbegin \DIFadd{, but the }\DIFaddend no-reference \DIFdelbegin \DIFdel{metrics, the claim is limited to statistical naturalness and metric-based perceptual quality}\DIFdelend \DIFaddbegin \DIFadd{gains should be interpreted as evidence of statistical naturalness rather than definitive perceptual superiority}\DIFaddend .
+
+\subsubsection{Branch Balance Analysis}
+\label{subsec:branch_analysis}
+
+\DIFdelbegin \DIFdel{The branch analysis assesses whether the granularity branches remain complementary rather than becoming }\DIFdelend \DIFaddbegin \DIFadd{To verify that the three granularity branches capture complementary restoration cues rather than }\DIFaddend correlated copies of the same \DIFdelbegin \DIFdel{descriptor. We compute }\DIFdelend \DIFaddbegin \DIFadd{evidence, we analyze the }\DIFaddend pairwise cosine similarity between branch descriptors \DIFdelbegin \DIFdel{on }\DIFdelend \DIFaddbegin \DIFadd{across }\DIFaddend the SRWOV synthetic test set. This analysis directly \DIFdelbegin \DIFdel{supports the representation-balance claim: useful }\DIFdelend \DIFaddbegin \DIFadd{tests the feature-space symmetry claim: balanced }\DIFaddend branches should remain comparable but not redundant.
+
+The full model yields lower inter-branch similarity than the MGFE-only variant (Figures~\ref{fig:branch_similarity} and~\ref{fig:branch_error_map})\DIFdelbegin \DIFdel{. This supports the role of RATR as }\DIFdelend \DIFaddbegin \DIFadd{, confirming that RATR is not just an auxiliary loss but }\DIFaddend the mechanism that keeps \DIFaddbegin \DIFadd{the }\DIFaddend granularity branches functionally distinct. The RATR-only variant remains closer to the full model than to MGFE-only, \DIFdelbegin \DIFdel{which further indicates }\DIFdelend \DIFaddbegin \DIFadd{showing }\DIFaddend that ranking diversity regularization \DIFaddbegin \DIFadd{already }\DIFaddend suppresses collapse even before \DIFaddbegin \DIFadd{the }\DIFaddend recalibration feedback is enabled.
+
+Figure~\ref{fig:branch_similarity} illustrates this contrast for a representative frame. In the MGFE-only configuration, the off-diagonal similarities remain high, indicating that the branches \DIFaddbegin \DIFadd{still }\DIFaddend encode nearly the same restoration evidence. In the full model, these off-diagonal values \DIFdelbegin \DIFdel{decrease }\DIFdelend \DIFaddbegin \DIFadd{drop }\DIFaddend markedly, especially for the fine-grained branch, \DIFdelbegin \DIFdel{showing }\DIFdelend \DIFaddbegin \DIFadd{demonstrating that RATR produces }\DIFaddend a more differentiated \DIFaddbegin \DIFadd{and balanced }\DIFaddend branch geometry.
+
+\DIFdelbegin %DIFDELCMD < \begin{figure}[!t]
+%DIFDELCMD < \centering
+%DIFDELCMD < \includegraphics[width=0.84\textwidth]{figures/Fig9a_branch_similarity.pdf}
+%DIFDELCMD < \caption{Branch balance analysis. Pairwise cosine similarity is compared between the MGFE-only configuration and the full MgfrOFR model. RATR reduces off-diagonal similarity from 0.42--0.66 to 0.11--0.37, confirming that ranking-aware regularization prevents granularity branches from collapsing into correlated descriptors.\label{fig:branch_similarity}}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{figure}[!t]
+\centering
+\includegraphics[width=0.84\textwidth]{figures/Fig9a_branch_similarity.pdf}
+\caption{Branch balance analysis. Pairwise cosine similarity is compared between the MGFE-only configuration and the full MgfrOFR model under the 30-clip REDS synthetic protocol. RATR reduces off-diagonal similarity from 0.85--0.90 to 0.23--0.31, confirming that ranking-aware regularization prevents granularity branches from collapsing into correlated descriptors.\label{fig:branch_similarity}}
+\end{figure}
+\DIFaddend 
+
+\DIFdelbegin %DIFDELCMD < \begin{figure}[!t]
+%DIFDELCMD < \centering
+%DIFDELCMD < \includegraphics[width=0.98\textwidth]{figures/Fig9b_error_map.pdf}
+%DIFDELCMD < \caption{Pixel-wise absolute-error comparison on four gate-selected synthetic frames. The left and middle columns compare $|$Baseline $-$ GT$|$ and $|$MgfrOFR $-$ GT$|$; the right column illustrates their difference, where red indicates regions in which MgfrOFR reduces the reconstruction error. The error maps demonstrate that lower branch correlation translates into spatially broader restoration gains rather than isolated local fixes.\label{fig:branch_error_map}}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \begin{figure}[!t]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/Fig9b_error_map.pdf}
+\caption{Pixel-wise absolute-error comparison on four representative synthetic frames. The left and middle columns compare $|$MambaOFR $-$ GT$|$ and $|$MgfrOFR $-$ GT$|$; the right column illustrates their difference, where red indicates regions in which MgfrOFR reduces the reconstruction error. The error maps demonstrate that lower branch correlation translates into spatially broader restoration gains rather than isolated local fixes.\label{fig:branch_error_map}}
+\end{figure}
+\DIFaddend 
+
+\DIFdelbegin \DIFdel{The inspected examples suggest }\DIFdelend \DIFaddbegin \DIFadd{Building on the similarity analysis, we qualitatively observe }\DIFaddend a consistent specialization pattern. The fine-grained branch is most sensitive to localized defects such as scratches and pixel-level noise; the coarse branch emphasizes broader structural corruption such as blotches and cracks; and the medium branch occupies an intermediate role. This behavior is consistent with progressive token fusion, where fewer surviving tokens aggregate over wider spatial support. The pixel-domain error maps in Figure~\ref{fig:branch_error_map} further \DIFdelbegin \DIFdel{indicate that branch decorrelation corresponds to }\DIFdelend \DIFaddbegin \DIFadd{demonstrate that this branch decorrelation translates into spatially }\DIFaddend broader restoration gains rather than isolated local fixes.
+
+\subsubsection{When Does MgfrOFR Struggle?}
+\label{subsec:failure}
+
+MgfrOFR's advantage is not uniform across all degradation conditions. The ablation \DIFdelbegin \DIFdel{study (Table~\ref{tab:ablation}) shows that MGFE alone degrades perceptual quality, and the visual ablations suggest }\DIFdelend \DIFaddbegin \DIFadd{and sensitivity results indicate }\DIFaddend that the full model is most useful when heterogeneous degradation is present, such as structural damage co-occurring with fine scratches in the same frame. On clips dominated by a single degradation type, such as uniform flicker without spatial damage, the multi-granularity decomposition can add representational overhead without proportional benefit, and the baseline or RATR-only variant may match the full model's fidelity.
+
+The real-world CLIP-IQA+ result highlights a trade-off between naturalness and enhancement-oriented perceptual quality. MgfrOFR's CLIP-IQA+ (\DIFdelbegin \DIFdel{0.4368) ranks second to }\DIFdelend \DIFaddbegin \DIFadd{0.4092) is below }\DIFaddend OldPhoto (0.4503), \DIFaddbegin \DIFadd{MambaOFR (0.4351), and RTN (0.4163), }\DIFaddend while MgfrOFR achieves the best NIQE (\DIFdelbegin \DIFdel{5.06) and BRISQUE (18.70}\DIFdelend \DIFaddbegin \DIFadd{5.12) and improves BRISQUE relative to MambaOFR (24.79 vs.\ 29.79}\DIFaddend ). This pattern reflects that different no-reference metrics measure distinct aspects of restoration quality. CLIP-IQA+ is trained on human quality annotations that correlate with sharp textures and high-contrast details~\cite{wang2023clipiqa}, favoring methods \DIFdelbegin \DIFdel{such as OldPhoto }\DIFdelend that enhance perceptual sharpness through learned global priors. NIQE and BRISQUE instead measure statistical deviation from natural image distributions and penalize artifacts introduced by texture hallucination. MgfrOFR's granularity-based recalibration operates conservatively on the propagated feature stream, which appears to preserve statistical naturalness while providing less texture enhancement than \DIFdelbegin \DIFdel{OldPhoto}\DIFdelend \DIFaddbegin \DIFadd{the stronger CLIP-IQA+ baselines}\DIFaddend . For archival restoration, NIQE/BRISQUE may be more relevant proxies when content fidelity is prioritized, but a human study is needed to validate that preference.
+
+\subsubsection{Limitations, Threats to Validity, and Future Work}
+\label{subsec:limitations}
+
+\paragraph{Threats to Validity.}
+Five threats affect the interpretation of the results. \textbf{Dataset threat}: all training uses synthetic degradation applied to REDS clips, which introduces a synthetic-to-real domain gap and may limit generalization to archival footage with correlated degradation chains not modeled by the pipeline. \textbf{Metric threat}: evaluation relies on PSNR/SSIM\DIFdelbegin \DIFdel{for pixel fidelity }\DIFdelend \DIFaddbegin \DIFadd{/LPIPS/DISTS for synthetic full-reference assessment }\DIFaddend and no-reference metrics for real-world assessment; these metrics emphasize different aspects of quality and may not fully align with human perceptual judgments\DIFdelbegin \DIFdel{, especially for perceptual metrics where inter-clip variance prevents statistical significance at $N{=}30$}\DIFdelend . \textbf{Human-evaluation threat}: the study does not include an expert reader study with film-restoration practitioners or archivists, so the practical value of improvements on authentic footage is inferred from proxy metrics and qualitative inspection. \textbf{Baseline threat}: three baselines (VRT, RVRT, ShiftNet) required adaptation from video restoration to \DIFdelbegin \DIFdel{OFR-specific degradation }\DIFdelend \DIFaddbegin \DIFadd{degradation specific to old film restoration}\DIFaddend , which preserves their architectures but may not reflect their optimal performance under a different training regime. \textbf{Synthetic-to-real threat}: the real-world evaluation lacks ground truth, so improvements in NIQE/BRISQUE reflect statistical naturalness rather than verified content fidelity, and the absence of external validation on additional datasets weakens the generalization claim.
+
+\paragraph{Limitations and Future Work.}
+RATR adds a training-time cost because it requires branch-wise similarity matrices over the batch-time descriptor set $\bar{N}=BT$. Its dominant cost therefore grows approximately quadratically in $\bar{N}$. \DIFdelbegin \DIFdel{In our setting ($B{=}4$, $T{=}7$, $G{=}3$), the total overhead of MGFE and RATR is 0.5\,GB (7.0 vs.\ 6.5\,GB; Table~\ref{tab:complexity}); however, longer }\DIFdelend \DIFaddbegin \DIFadd{Longer }\DIFaddend clips or larger effective batch-time products would make this quadratic term more pronounced\DIFdelbegin \DIFdel{. Gradient }\DIFdelend \DIFaddbegin \DIFadd{, so gradient }\DIFaddend checkpointing or selective ranking construction, such as sampling a subset of anchors per iteration, will be needed for larger training settings. The second limitation is the synthetic-to-real domain gap caused by REDS-based training degradation. Although the real-world NIQE/BRISQUE results are encouraging, authentic archival footage can contain correlated degradation chains that synthetic pipelines do not model. The third limitation is evaluation scope: validation is limited to SRWOV, and additional archival datasets plus human evaluation would strengthen the generalization claim.
+
+Promising extensions include adaptive branch activation conditioned on degradation severity, frequency-aware branch specialization that assigns structural recovery and texture restoration to dedicated branches, and joint \DIFdelbegin \DIFdel{OFR--colorization }\DIFdelend \DIFaddbegin \DIFadd{old film restoration and colorization }\DIFaddend frameworks for archival digitization and cultural heritage restoration workflows~\cite{kokaram2004missing}.
+ %
+\section{Conclusions}
+\label{sec:conclusion}
+
+We presented MgfrOFR, a Mamba-based old film restoration framework that augments MambaOFR with explicit multi-granularity feature balancing. \DIFdelbegin \DIFdel{MGFE }\DIFdelend \DIFaddbegin \DIFadd{The Multi-Granularity Feature Extractor (MGFE) }\DIFaddend reorganizes propagated features into coarse-to-fine restoration-token branches and recalibrates the spatial stream through channel-wise feedback\DIFdelbegin \DIFdel{. RATR}\DIFdelend \DIFaddbegin \DIFadd{, while Ranking-Aware Triplet Regularization (RATR) }\DIFaddend discourages branch collapse by penalizing correlated temporal-similarity rankings during training\DIFdelbegin \DIFdel{while preserving the baseline inference interface}\DIFdelend .
+
+\DIFdelbegin \DIFdel{The SRWOV results support the claim that coarse-to-fine branch balance improves old film restoration under heterogeneous degradation. Under the unified reproduction protocol on the SRWOV }\DIFdelend \DIFaddbegin \DIFadd{With the final average-fusion configuration on the }\DIFaddend synthetic benchmark, MgfrOFR achieves the strongest full-reference scores among the tested baselines, improving PSNR by \DIFdelbegin \DIFdel{1.14}\DIFdelend \DIFaddbegin \DIFadd{1.02}\DIFaddend ~dB over MambaOFR (\DIFdelbegin \DIFdel{27.13}\DIFdelend \DIFaddbegin \DIFadd{27.86}\DIFaddend ~dB vs.\ \DIFdelbegin \DIFdel{25.99}\DIFdelend \DIFaddbegin \DIFadd{26.84}\DIFaddend ~dB)\DIFdelbegin \DIFdel{with only 0.32\% additional parameters}\DIFdelend . On 216 real-world archival clips, MgfrOFR obtains the lowest NIQE \DIFdelbegin \DIFdel{and BRISQUE while remaining competitive on }\DIFdelend \DIFaddbegin \DIFadd{(5.12), improves BRISQUE over MambaOFR (24.79 vs.\ 29.79), and shows a lower }\DIFaddend CLIP-IQA+ \DIFaddbegin \DIFadd{value (0.4092) than the sharper enhancement-oriented and old film restoration baselines}\DIFaddend . Because the real-world setting lacks ground truth, these no-reference gains should be interpreted as evidence of improved statistical naturalness rather than definitive proof of perceptual superiority. The ablation study further shows that MGFE and RATR are complementary: MGFE alone \DIFdelbegin \DIFdel{provides limited gains}\DIFdelend \DIFaddbegin \DIFadd{improves the baseline but remains weaker than the full model on perceptual full-reference metrics}\DIFaddend , whereas the full model \DIFdelbegin \DIFdel{improves fidelity and aggregate perceptual scores }\DIFdelend \DIFaddbegin \DIFadd{gives the best combined result }\DIFaddend when branch diversity is explicitly enforced \DIFaddbegin \DIFadd{through RATR and average fusion}\DIFaddend .
+
+\DIFdelbegin \DIFdel{Several limitations define the scope of the conclusion. The }\DIFdelend \DIFaddbegin \DIFadd{These results suggest that representation-level branch balance is a useful inductive bias for heterogeneous-degradation video restoration and practical archival digitization workflows. The main implication is that feature-space symmetry and temporally coordinated ranking behavior can improve restoration under degradation-induced asymmetry without changing the baseline inference interface. Several limitations remain: the }\DIFaddend method inherits the synthetic-to-real domain gap of REDS-based training; RATR adds a training-time cost that grows approximately quadratically with the batch-time descriptor set\DIFdelbegin \DIFdel{and increases }\DIFdelend \DIFaddbegin \DIFadd{, increasing }\DIFaddend training time by approximately 7.6\% over MambaOFR under our setting; and evaluation is limited to the SRWOV benchmark \DIFdelbegin \DIFdel{plus }\DIFdelend \DIFaddbegin \DIFadd{and }\DIFaddend no-reference proxies on authentic footage. Future work will focus on adaptive branch activation conditioned on degradation severity, frequency-aware branch specialization that assigns structural recovery and texture restoration to dedicated branches, lighter ranking constructions such as selective anchor sampling, human-in-the-loop evaluation, and broader validation on additional archival benchmarks.
+
+\vspace{6pt}
+
+\authorcontributions{Conceptualization, F.C. and Y.D.; methodology, F.C.; software, F.C.; validation, F.C. and Q.Z.; formal analysis, F.C.; investigation, F.C.; resources, K.Y., L.C. and Y.D.; data curation, F.C.; writing---original draft preparation, F.C.; writing---review and editing, Q.Z., K.Y., L.C. and Y.D.; visualization, F.C.; supervision, Y.D.; project administration, Y.D.; funding acquisition, Y.D. All authors have read and agreed to the published version of the manuscript.}
+
+\funding{This research received no external funding.}
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\DIFdelbegin %DIFDELCMD < \supplementary{Not applicable.}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \supplementary{The following supporting information is provided with this submission. Video S1: side-by-side old-film restoration comparison in two parts. The first part uses REDS-synthetic clips with paired ground truth and per-frame PSNR (Input, MambaOFR, MgfrOFR, GT); the second part uses real-world SRWOV archival clips annotated with the overall no-reference NIQE/BRISQUE (Input, MambaOFR, MgfrOFR).}
+\DIFaddend 
+
+\dataavailability{The training data follow the public REDS benchmark and the SRWOV protocol described by MambaOFR. The manuscript source and figures are included in this submission package. Code, configurations, and evaluation scripts for this study are publicly available at \url{https://github.com/wscffaa/MgfrOFR}. Public benchmark data should be obtained from the original REDS and SRWOV/MambaOFR sources; no new dataset is redistributed in this work.}
+
+\DIFdelbegin %DIFDELCMD < \acknowledgments{The authors thank the developers of MambaOFR for releasing their code and pretrained models.}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \acknowledgments{The authors thank the developers of MambaOFR for releasing their code and pretrained models. During the preparation of this manuscript, the authors used OpenAI Codex (GPT-5, accessed 1 July 2026) solely for language polishing, including grammar, spelling, punctuation, and wording clarity. The authors reviewed and edited the output and take full responsibility for the content of this publication.}
+\DIFaddend
+
+\conflictsofinterest{The authors declare no conflicts of interest.}
+
+\DIFdelbegin %DIFDELCMD < \abbreviations{Abbreviations}{
+%DIFDELCMD < The following abbreviations are used in this manuscript:
+%DIFDELCMD < \par\smallskip
+%DIFDELCMD < \noindent
+%DIFDELCMD < \footnotesize
+%DIFDELCMD < \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.2\textwidth}X@{}}
+%DIFDELCMD < OFR & Old Film Restoration\\
+%DIFDELCMD < MgfrOFR & Proposed old film restoration framework in this work\\
+%DIFDELCMD < MGFE & Multi-Granularity Feature Extractor\\
+%DIFDELCMD < RATR & Ranking-Aware Triplet Regularization\\
+%DIFDELCMD < SSM & State Space Model\\
+%DIFDELCMD < PSNR & Peak Signal-to-Noise Ratio\\
+%DIFDELCMD < SSIM & Structural Similarity Index\\
+%DIFDELCMD < LPIPS & Learned Perceptual Image Patch Similarity\\
+%DIFDELCMD < DISTS & Deep Image Structure and Texture Similarity\\
+%DIFDELCMD < NIQE & Natural Image Quality Evaluator\\
+%DIFDELCMD < BRISQUE & Blind/Referenceless Image Spatial Quality Evaluator\\
+%DIFDELCMD < CLIP-IQA+ & CLIP-based Image Quality Assessment (enhanced)\\
+%DIFDELCMD < SRWOV & Synthetic + Real-World Old Video\\
+%DIFDELCMD < REDS & REalistic and Diverse Scenes\\
+%DIFDELCMD < GT & Ground Truth\\
+%DIFDELCMD < CNN & Convolutional Neural Network\\
+%DIFDELCMD < GPU & Graphics Processing Unit\\
+%DIFDELCMD < \end{tabularx}
+%DIFDELCMD < }
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:
+\par\smallskip
+\noindent
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.2\textwidth}X@{}}
+MgfrOFR & Proposed old film restoration framework in this work\\
+MGFE & Multi-Granularity Feature Extractor\\
+RATR & Ranking-Aware Triplet Regularization\\
+SSM & State Space Model\\
+PSNR & Peak Signal-to-Noise Ratio\\
+SSIM & Structural Similarity Index\\
+LPIPS & Learned Perceptual Image Patch Similarity\\
+DISTS & Deep Image Structure and Texture Similarity\\
+NIQE & Natural Image Quality Evaluator\\
+BRISQUE & Blind/Referenceless Image Spatial Quality Evaluator\\
+CLIP-IQA+ & CLIP-based Image Quality Assessment (enhanced)\\
+SRWOV & Synthetic + Real-World Old Video\\
+REDS & REalistic and Diverse Scenes\\
+GT & Ground Truth\\
+CNN & Convolutional Neural Network\\
+GPU & Graphics Processing Unit\\
+\end{tabularx}
+}
+\DIFaddend 
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\reftitle{References}
+\bibliography{references,references-initial-only}
+\PublishersNote{}
+\end{adjustwidth}
+\end{document}

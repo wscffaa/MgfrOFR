@@ -1,0 +1,17 @@
+{
+  "project": "001-reidmamba",
+  "note": "TEST metrics from Exp/results/test_*.log — NOT training validation",
+  "extracted_at": "2026-04-30T18:55:00+08:00",
+  "REDS_synthetic": {
+    "a0": { "psnr": 26.3845, "ssim": 0.9087, "lpips": 0.0770, "dists": 0.0772 },
+    "a1": { "psnr": 27.0565, "ssim": 0.9184, "lpips": 0.0671, "dists": 0.0736 },
+    "a2": { "psnr": 26.4511, "ssim": 0.9088, "lpips": 0.0852, "dists": 0.0847 },
+    "a3": { "psnr": 26.7180, "ssim": 0.9133, "lpips": 0.0767, "dists": 0.0786 }
+  },
+  "RealFilm_SRWOV": {
+    "a0": { "niqe": 5.2987, "brisque": 28.2467, "clipiqa": 0.4352 },
+    "a1": { "niqe": 5.3011, "brisque": 29.0976, "clipiqa": 0.4333 },
+    "a2": { "niqe": 5.6440, "brisque": 32.9143, "clipiqa": 0.4320 },
+    "a3": { "niqe": 5.4346, "brisque": 30.0935, "clipiqa": 0.4333 }
+  }
+}

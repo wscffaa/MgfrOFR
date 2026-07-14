@@ -1,0 +1,60 @@
+{
+  "scope": "stage1-production-to-pre-closure-proof",
+  "superseded_for_final_source_by": "final-number-authorized-delta-report.json",
+  "baseline_sha256": "73c657f6f224ece246bd2289754cbb031151bbe08fe9b711e1eadde773a7567c",
+  "current_sha256": "c071db1ba2b7291c8008c87bdc311eb3531de6ebc9d030375c4a4b1e26bf2860",
+  "normalization_preconditions": {
+    "observed": {
+      "orcid_b_exact": 1,
+      "access_date_exact": 2,
+      "gpt_punctuation_exact": 1,
+      "fp32_paragraph_expansion_exact": 1,
+      "fp32_caption_expansion_exact": 1
+    },
+    "expected": {
+      "orcid_b_exact": 1,
+      "access_date_exact": 2,
+      "gpt_punctuation_exact": 1,
+      "fp32_paragraph_expansion_exact": 1,
+      "fp32_caption_expansion_exact": 1
+    },
+    "pass": true
+  },
+  "raw_rendered_delta": {
+    "added": {
+      "-5": 1,
+      "0008": 1,
+      "0009": 1,
+      "10": 2,
+      "2026": 2,
+      "32": 3,
+      "7018": 1,
+      "9432": 1
+    },
+    "removed": {}
+  },
+  "authorized_allowlist": {
+    "added": {
+      "-5": 1,
+      "0008": 1,
+      "0009": 1,
+      "10": 2,
+      "2026": 2,
+      "32": 3,
+      "7018": 1,
+      "9432": 1
+    },
+    "removed": {}
+  },
+  "raw_delta_exact_match": true,
+  "normalized_delta": {
+    "added": {},
+    "removed": {}
+  },
+  "numeric_sequence": {
+    "baseline_count": 906,
+    "current_normalized_count": 906,
+    "exact_order_match": true
+  },
+  "verdict": "PASS"
+}

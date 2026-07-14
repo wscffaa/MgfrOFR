@@ -1,0 +1,16 @@
+paper_id: mgfrofr
+method: MgfrOFR
+title: "MgfrOFR"
+venue: "Symmetry (MDPI)"
+manuscript_id: ""
+stage: paper
+sub_phase: accepted
+thesis_chapter: ""
+legacy_source: [001-reidmamba]
+basicofr_version: "1.0.0"
+release_repo: null
+github: "git@github.com:wscffaa/MgfrOFR-dev.git"
+servers: {}
+training:
+  status: idle
+  note: ""

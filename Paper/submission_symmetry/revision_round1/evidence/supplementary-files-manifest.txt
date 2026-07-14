@@ -1,0 +1,7 @@
+Archive:  projects/001-reidmamba/Paper/submission_symmetry/revision_round1/upload/MGFROFR-supplementary-files.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+   166483  06-30-2026 11:13   MGFROFR-supplementary.pdf
+  6909398  06-30-2026 17:44   Supplementary_Video_S1.mp4
+---------                     -------
+  7075881                     2 files

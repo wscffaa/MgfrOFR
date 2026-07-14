@@ -1,0 +1,120 @@
+%  LaTeX support: latex@mdpi.com
+
+\documentclass[symmetry,article,submit,pdftex,moreauthors]{Definitions/mdpi}
+
+% MDPI internal commands - do not modify
+\firstpage{1}
+\makeatletter
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+\datereceived{ }
+\daterevised{ }
+\dateaccepted{ }
+\datepublished{ }
+
+\Title{Multi-Granularity Feature Decomposition with Ranking-Aware Regularization for Old Film Restoration}
+
+\input{sections/authors}
+\input{sections/abstract}
+
+\keyword{old film restoration; multi-granularity feature decomposition; ranking-aware regularization; state space models; feature-space symmetry}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{placeins}
+\DeclareRobustCommand{\bestres}[1]{\textcolor{red}{#1}}
+\DeclareRobustCommand{\secondres}[1]{\textcolor{blue}{#1}}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.85}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\headheight}{20pt}
+
+% Reduce widow/orphan penalties to prevent large blank areas caused by
+% MDPI's strict default (10000). 300 still discourages widows/clubs
+% but allows LaTeX to break paragraphs when a page has remaining space.
+\clubpenalty=300
+\widowpenalty=300
+\displaywidowpenalty=300
+
+% On float pages (pages that contain only floats), LaTeX vertically centers
+% the content by default. Set top/bottom glue to 0 so floats stack at the
+% top, eliminating the large blank areas above figures on dedicated float pages.
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpbot}{0pt}
+\makeatother
+
+\AtBeginDocument{\hypersetup{
+  pdftitle={Multi-Granularity Feature Decomposition with Ranking-Aware Regularization for Old Film Restoration},
+  pdfsubject={Representation-level symmetry-aware multi-granularity feature balancing for old film restoration},
+  pdfauthor={Feifan Cai; Qi Zhang; Kun Yang; Lei Chen; Youdong Ding},
+  pdfkeywords={old film restoration, symmetry-aware representation learning, multi-granularity features, state space model}
+}}
+
+\begin{document}
+
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/method}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\vspace{6pt}
+
+\authorcontributions{Conceptualization, F.C. and Y.D.; methodology, F.C.; software, F.C.; validation, F.C. and Q.Z.; formal analysis, F.C.; investigation, F.C.; resources, K.Y., L.C. and Y.D.; data curation, F.C.; writing---original draft preparation, F.C.; writing---review and editing, Q.Z., K.Y., L.C. and Y.D.; visualization, F.C.; supervision, Y.D.; project administration, Y.D.; funding acquisition, Y.D. All authors have read and agreed to the published version of the manuscript.}
+
+\funding{This research received no external funding.}
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\supplementary{The following supporting information is provided with this submission. Video S1: side-by-side old-film restoration comparison in two parts. The first part uses REDS-synthetic clips with paired ground truth and per-frame PSNR (Input, MambaOFR, MgfrOFR, GT); the second part uses real-world SRWOV archival clips annotated with the overall no-reference NIQE/BRISQUE (Input, MambaOFR, MgfrOFR).}
+
+\dataavailability{The training data follow the public REDS benchmark and the SRWOV protocol described by MambaOFR. The manuscript source and figures are included in this submission package. Code, configurations, and evaluation scripts for this study are publicly available at \url{https://github.com/wscffaa/MgfrOFR}. Public benchmark data should be obtained from the original REDS and SRWOV/MambaOFR sources; no new dataset is redistributed in this work.}
+
+\acknowledgments{The authors thank the developers of MambaOFR for releasing their code and pretrained models. During the preparation of this manuscript, the authors used OpenAI Codex (GPT-5, accessed 1 July 2026) solely for language polishing, including grammar, spelling, punctuation, and wording clarity. The authors reviewed and edited the output and take full responsibility for the content of this publication.}
+
+\conflictsofinterest{The authors declare no conflicts of interest.}
+
+\abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:
+\par\smallskip
+\noindent
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.2\textwidth}X@{}}
+MgfrOFR & Proposed old film restoration framework in this work\\
+MGFE & Multi-Granularity Feature Extractor\\
+RATR & Ranking-Aware Triplet Regularization\\
+SSM & State Space Model\\
+PSNR & Peak Signal-to-Noise Ratio\\
+SSIM & Structural Similarity Index\\
+LPIPS & Learned Perceptual Image Patch Similarity\\
+DISTS & Deep Image Structure and Texture Similarity\\
+NIQE & Natural Image Quality Evaluator\\
+BRISQUE & Blind/Referenceless Image Spatial Quality Evaluator\\
+CLIP-IQA+ & CLIP-based Image Quality Assessment (enhanced)\\
+SRWOV & Synthetic + Real-World Old Video\\
+REDS & REalistic and Diverse Scenes\\
+GT & Ground Truth\\
+CNN & Convolutional Neural Network\\
+GPU & Graphics Processing Unit\\
+\end{tabularx}
+}
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\reftitle{References}
+\bibliography{references}
+\PublishersNote{}
+\end{adjustwidth}
+\end{document}

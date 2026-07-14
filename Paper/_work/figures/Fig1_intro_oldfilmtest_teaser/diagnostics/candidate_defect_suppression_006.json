@@ -1,0 +1,158 @@
+[
+  {
+    "clip": "006",
+    "frame": "00000020",
+    "score": 1.118738055229187,
+    "roi_xywh": [
+      144,
+      576,
+      540,
+      348
+    ],
+    "input": "datasets/val/RealFilm/OldFilmTest/006/00000020.png",
+    "output": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/006/outputs/00000020_mgfrofr_f1_oldfilmtest_teaser.png"
+  },
+  {
+    "clip": "006",
+    "frame": "0000003",
+    "score": 1.0208333730697632,
+    "roi_xywh": [
+      144,
+      624,
+      540,
+      348
+    ],
+    "input": "datasets/val/RealFilm/OldFilmTest/006/0000003.png",
+    "output": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/006/outputs/0000003_mgfrofr_f1_oldfilmtest_teaser.png"
+  },
+  {
+    "clip": "006",
+    "frame": "00000021",
+    "score": 0.9993055462837219,
+    "roi_xywh": [
+      144,
+      576,
+      540,
+      348
+    ],
+    "input": "datasets/val/RealFilm/OldFilmTest/006/00000021.png",
+    "output": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/006/outputs/00000021_mgfrofr_f1_oldfilmtest_teaser.png"
+  },
+  {
+    "clip": "006",
+    "frame": "00000040",
+    "score": 0.9970425963401794,
+    "roi_xywh": [
+      144,
+      576,
+      540,
+      348
+    ],
+    "input": "datasets/val/RealFilm/OldFilmTest/006/00000040.png",
+    "output": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/006/outputs/00000040_mgfrofr_f1_oldfilmtest_teaser.png"
+  },
+  {
+    "clip": "006",
+    "frame": "0000002",
+    "score": 0.9932112097740173,
+    "roi_xywh": [
+      912,
+      144,
+      540,
+      348
+    ],
+    "input": "datasets/val/RealFilm/OldFilmTest/006/0000002.png",
+    "output": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/006/outputs/0000002_mgfrofr_f1_oldfilmtest_teaser.png"
+  },
+  {
+    "clip": "006",
+    "frame": "00000089",
+    "score": 0.9920857548713684,
+    "roi_xywh": [
+      912,
+      144,
+      540,
+      348
+    ],
+    "input": "datasets/val/RealFilm/OldFilmTest/006/00000089.png",
+    "output": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/006/outputs/00000089_mgfrofr_f1_oldfilmtest_teaser.png"
+  },
+  {
+    "clip": "006",
+    "frame": "00000023",
+    "score": 0.9895474314689636,
+    "roi_xywh": [
+      144,
+      576,
+      540,
+      348
+    ],
+    "input": "datasets/val/RealFilm/OldFilmTest/006/00000023.png",
+    "output": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/006/outputs/00000023_mgfrofr_f1_oldfilmtest_teaser.png"
+  },
+  {
+    "clip": "006",
+    "frame": "00000060",
+    "score": 0.9822198152542114,
+    "roi_xywh": [
+      144,
+      576,
+      540,
+      348
+    ],
+    "input": "datasets/val/RealFilm/OldFilmTest/006/00000060.png",
+    "output": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/006/outputs/00000060_mgfrofr_f1_oldfilmtest_teaser.png"
+  },
+  {
+    "clip": "006",
+    "frame": "00000025",
+    "score": 0.9817888140678406,
+    "roi_xywh": [
+      144,
+      576,
+      540,
+      348
+    ],
+    "input": "datasets/val/RealFilm/OldFilmTest/006/00000025.png",
+    "output": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/006/outputs/00000025_mgfrofr_f1_oldfilmtest_teaser.png"
+  },
+  {
+    "clip": "006",
+    "frame": "0000005",
+    "score": 0.9758859872817993,
+    "roi_xywh": [
+      144,
+      576,
+      540,
+      348
+    ],
+    "input": "datasets/val/RealFilm/OldFilmTest/006/0000005.png",
+    "output": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/006/outputs/0000005_mgfrofr_f1_oldfilmtest_teaser.png"
+  },
+  {
+    "clip": "006",
+    "frame": "00000014",
+    "score": 0.9721024632453918,
+    "roi_xywh": [
+      144,
+      576,
+      540,
+      348
+    ],
+    "input": "datasets/val/RealFilm/OldFilmTest/006/00000014.png",
+    "output": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/006/outputs/00000014_mgfrofr_f1_oldfilmtest_teaser.png"
+  },
+  {
+    "clip": "006",
+    "frame": "0000009",
+    "score": 0.9619252681732178,
+    "roi_xywh": [
+      144,
+      576,
+      540,
+      348
+    ],
+    "input": "datasets/val/RealFilm/OldFilmTest/006/0000009.png",
+    "output": "projects/001-reidmamba/Exp/results/mgfrofr_f1_oldfilmtest_teaser/visualization/OldFilmTest/006/outputs/0000009_mgfrofr_f1_oldfilmtest_teaser.png"
+  }
+]

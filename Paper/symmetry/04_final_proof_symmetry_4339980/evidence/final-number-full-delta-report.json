@@ -1,0 +1,42 @@
+{
+  "scope": "stage1-production-to-pre-closure-proof",
+  "superseded_for_final_source_by": "final-number-authorized-delta-report.json",
+  "baseline_sha256": "73c657f6f224ece246bd2289754cbb031151bbe08fe9b711e1eadde773a7567c",
+  "current_sha256": "c071db1ba2b7291c8008c87bdc311eb3531de6ebc9d030375c4a4b1e26bf2860",
+  "full_source_delta": {
+    "added": {
+      "-24": 1,
+      "-5": 1,
+      "0008": 1,
+      "0009": 1,
+      "1": 1,
+      "10": 3,
+      "100": 1,
+      "10501": 1,
+      "12": 1,
+      "12.4": 1,
+      "18": 1,
+      "2.7": 1,
+      "2026": 3,
+      "3": 1,
+      "32": 3,
+      "3548": 2,
+      "40": 1,
+      "4110x": 2,
+      "600": 2,
+      "7018": 1,
+      "839": 1,
+      "9432": 1
+    },
+    "removed": {
+      "0000": 1,
+      "0002": 1,
+      "1522": 1,
+      "3827": 1
+    },
+    "added_occurrences": 31,
+    "removed_occurrences": 4
+  },
+  "removed_reason": "replacement of commented mismatched Qi Zhang ORCID 0000-0002-3827-1522 with verified 0009-0008-9432-7018",
+  "verdict": "AUTHORIZED"
+}

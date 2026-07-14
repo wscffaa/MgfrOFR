@@ -1,0 +1,40 @@
+Archive:  projects/001-reidmamba/Paper/submission_symmetry/revision_round1/upload/MGFROFR-latex-source.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     4842  06-30-2026 18:17   MGFROFR.tex
+    19700  06-30-2026 18:20   MGFROFR.bbl
+    21034  06-21-2026 12:50   references.bib
+        0  05-11-2026 06:07   sections/
+    29366  06-30-2026 00:24   sections/method.tex
+    13253  06-30-2026 17:41   sections/discussion.tex
+     2509  06-30-2026 15:27   sections/conclusion.tex
+     1385  06-30-2026 15:27   sections/abstract.tex
+    22097  06-30-2026 17:41   sections/results.tex
+    11148  06-26-2026 21:21   sections/related_work.tex
+     5531  06-30-2026 00:24   sections/introduction.tex
+      887  05-11-2026 08:24   sections/authors.tex
+        0  05-10-2026 17:13   Definitions/
+    12671  05-10-2026 17:10   Definitions/logo-orcid.pdf
+    13161  05-10-2026 17:13   Definitions/logo-mdpi-eps-converted-to.pdf
+   138426  05-10-2026 17:10   Definitions/mdpi_apacite.bst
+    62350  05-10-2026 17:10   Definitions/mdpi.cls
+   563678  05-10-2026 17:10   Definitions/logo-mdpi.eps
+   287998  05-10-2026 17:10   Definitions/logo-updates.eps
+    71315  05-10-2026 17:10   Definitions/mdpi_apacite.sty
+   120406  05-10-2026 17:10   Definitions/journalnames.tex
+    23683  05-10-2026 17:10   Definitions/mdpi.bst
+    37920  05-10-2026 17:10   Definitions/mdpi_chicago.bst
+    92233  05-10-2026 22:58   figures/Fig1_mgfrofr_architecture.pdf
+   209045  05-10-2026 23:14   figures/Fig2_mgfe_module_detail.pdf
+   225875  05-10-2026 23:26   figures/Fig3_ratr_module_detail.pdf
+   762395  06-30-2026 17:44   figures/Fig4_SOTA_Synthetic_REDS_synthetic_Qualitative_roi_tile_special.pdf
+   895647  06-30-2026 17:44   figures/Fig5_SOTA_RealWorld_SRWOV_Qualitative.pdf
+  3374957  05-11-2026 05:06   figures/Fig6_Ablation_REDS_synthetic_Qualitative.jpg
+    33058  06-30-2026 17:44   figures/Fig9a_branch_similarity.pdf
+  1206494  06-30-2026 17:44   figures/Fig9b_error_map.pdf
+    32115  06-30-2026 17:44   figures/Fig9c_branch_sim_evolution.pdf
+   777932  06-30-2026 17:44   figures/Fig10_failure_cases.pdf
+  6909398  06-30-2026 17:44   supplementary/Supplementary_Video_S1.mp4
+      926  06-30-2026 17:44   supplementary/SuppVideoS1_manifest.json
+---------                     -------
+ 15983435                     35 files

@@ -1,0 +1,189 @@
+# ==============================================================================
+# RRTN GAN 老电影修复训练配置
+# ==============================================================================
+# 基于 RRTN (Recursive Swin Old Film Restoration) 的视频修复 GAN 模型配置
+# RRTN 特点：
+# - 二阶可变形对齐（联合 t-1 和 t-2 帧信息）
+# - 四分支递归传播（backward_1 → forward_1 → backward_2 → forward_2）
+# - 噪声掩码驱动（光流残差几何均值）
+#
+# 基于 rtn_baseline.yml 模板，仅修改 name 和 network_g 部分
+# ==============================================================================
+#
+# 训练命令示例：
+# CUDA_VISIBLE_DEVICES=0 python train.py -opt options/train/rrtn/rrtn_baseline.yml --debug
+#
+
+# ======================== 基础配置 ========================
+name: rrtn_realmovie_baseline              # ← 修改：实验名称
+model_type: RTNGANModel               # 模型类型（复用 RTN 的训练逻辑）
+scale: 1                              # 上采样倍数
+num_gpu: 1                            # GPU 数量
+manual_seed: 2021                     # 随机种子
+dist: false                           # 分布式训练
+find_unused_parameters: true          # DDP 参数检查
+
+# ======================== 数据集配置 ========================
+# 与 rtn_baseline.yml 完全一致，确保公平对比
+datasets:
+  # -------------------- 训练集 --------------------
+  train:
+    name: REDS
+    type: Film_dataset_1
+
+    # 数据路径
+    dataroot_gt: datasets/RealMovieDatasets/RealMovies/RealMovie/TrainDatasets/GT
+    dataroot_lq: datasets/RealMovieDatasets/RealMovies/RealMovie/TrainDatasets/GT
+
+    is_train: true
+    num_frame: 7                      # 每次采样的帧数
+    gt_size: [256, 256]               # 随机裁剪尺寸
+    scale: 1
+
+    # 时序增强
+    interval_list: [1, 2]
+    random_reverse: false
+
+    # 空间增强
+    use_flip: true
+    use_rot: true
+
+    # 归一化
+    normalizing: true
+
+    # 降质模板路径
+    texture_template: datasets/OldFilmRestoration/noise_data
+
+    # 数据加载
+    io_backend:
+      type: disk
+    use_shuffle: true
+    num_worker_per_gpu: 4
+    batch_size_per_gpu: 1
+    dataset_enlarge_ratio: 1
+
+  # -------------------- 验证集 --------------------
+  val:
+    name: OldFilmval
+    type: Film_dataset_1
+
+    dataroot_gt: datasets/RealMovieDatasets/RealMovies/RealMovie/ValDatasets_mini/GT
+    dataroot_lq: datasets/RealMovieDatasets/RealMovies/RealMovie/ValDatasets_mini/LQ
+
+    num_frame: -1
+    cache_data: false
+    normalizing: true
+
+    io_backend:
+      type: disk
+
+# ======================== 网络架构配置 ========================
+# -------------------- 生成器 G (RRTN) --------------------
+# ← 修改：RRTN 特有配置
+network_g:
+  type: RRTNRestorationNet            # ← 修改：RRTN 架构
+  num_feat: 16                        # 特征通道数（与 RTN 一致）
+  num_block: 6                        # 残差块数量（与 RTN 一致）
+  flow_type: raft                     # 光流估计器（与 RTN 一致）
+
+  # RRTN 特有参数（← 新增）
+  input_channel: 3                    # 输入通道数
+  input_size: 256                     # 输入尺寸（用于 Swin 位置编码）
+  num_recursion: 2                    # 递归轮数（2 表示四分支）
+  max_residue_magnitude: 10           # 可变形偏移最大残差
+  downscale_first: false              # 是否先下采样
+  cpu_cache_length: 100               # 长序列 CPU 缓存阈值
+
+# -------------------- 判别器 D --------------------
+# 与 rtn_baseline.yml 完全一致
+network_d:
+  type: RTNDiscriminator
+  in_channels: 3
+  base_channels: 64
+  use_sigmoid: false
+  use_spectral_norm: true
+
+# ======================== 训练配置 ========================
+# 与 rtn_baseline.yml 完全一致，确保公平对比
+train:
+  # EMA 配置
+  ema_decay: 0.0
+
+  # 可视化配置
+  train_visualization_iter: 1000
+
+  # GAN 训练配置
+  net_d_iters: 1
+  net_d_init_iters: 0
+  g_gan_weight: 0.01
+  d_gan_weight: 1.0
+
+  # 优化器配置（epoch-based，与 MambaOFR 原版一致）
+  total_epoch: 20
+
+  optim_g:
+    type: Adam
+    lr: !!float 0.0002
+    betas: [0.9, 0.99]
+
+  optim_d:
+    type: Adam
+    lr: !!float 0.0002
+    betas: [0.9, 0.99]
+
+  # 损失函数配置
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1.0
+    reduction: mean
+
+  perceptual_opt:
+    type: VGGLoss
+    loss_weight: 1.0
+
+  gan_opt:
+    type: AdversarialLoss
+    loss_type: nsgan                  # MambaOFR 原版使用 hinge
+    loss_weight: 1.0
+
+  # 学习率调度（线性衰减，与 MambaOFR 一致）
+  scheduler:
+    type: LinearDecayLR
+    total_iter: -1                    # 自动从 total_epoch 计算
+    steady_ratio: 0.5                 # 前 50% epoch 恒定，后 50% 线性衰减到 0
+
+# ======================== 验证配置 ========================
+# 与 rtn_baseline.yml 完全一致
+val:
+  val_freq: !!float 5000
+  save_img: false
+  val_chunk_size: -1
+
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
+
+# ======================== 日志配置 ========================
+# 与 rtn_baseline.yml 完全一致
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 5000
+  use_tb_logger: true
+
+# ======================== 路径配置 ========================
+# ⚠️ experiments_root 和 tb_logger 为占位符，由 codegen 脚本自动替换为项目路径。
+# 正确值形如: projects/{NNN}-{project}/Exp/experiments
+# 直接使用本模板训练将因路径不存在而报错（这是有意为之的安全措施）。
+path:
+  experiments_root: baselines/trained/rrtn_realmovie/experiments   # ← codegen 自动替换
+  tb_logger: baselines/trained/rrtn_realmovie/tb_logger            # ← codegen 自动替换
+  pretrain_network_g: ~
+  strict_load_g: true
+  pretrain_network_d: ~
+  resume_state: ~

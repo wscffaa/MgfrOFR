@@ -1,0 +1,62 @@
+schema: project_idea_manifest/v3
+project_id: 001-reidmamba
+project_name: MGFROFR
+created_at: '2026-03-22T19:25:00'
+bundle_id: ''
+bundle_path: ''
+baseline: MambaOFR
+target_venue: Symmetry (MDPI)
+approach: paper_source
+slots_covered:
+- spatial
+- reconstruction
+source_ids:
+- reidmamba
+innovation_ids:
+- reidmamba_mgfe
+- reidmamba_ratr
+sources:
+- source_id: reidmamba
+  paper_title: 'ReIDMamba: Learning Discriminative Features with Visual State Space
+    Model for Person Re-Identification'
+  arxiv_id: '2511.07948'
+  github: https://github.com/GuHY777/ReIDMamba
+  innovations_used:
+  - reidmamba_mgfe
+  - reidmamba_ratr
+innovations:
+- id: reidmamba_mgfe
+  name: Multi-Granularity Feature Extractor (MGFE)
+  slot: spatial
+  mount_point: S2 fwd/bwd_resblocks output
+  strategy: 多粒度 restoration token 分支头，将 feat_prop 展平为 token 序列后引入分支描述向量进行 channel-wise 特征重标定（recalibration）
+- id: reidmamba_ratr
+  name: Ranking-Aware Triplet Regularization (RATR)
+  slot: reconstruction
+  mount_point: 训练期附加损失
+  strategy: 训练期 ranking-aware 正则损失，对多分支描述子施加可微 Kendall's Tau（intra/inter）排序相关性约束，抑制分支间冗余的时序相似度排序；仅训练期启用
+artifacts:
+  source_map: ''
+  diff_plan: Idea/diff_plan.json
+  ablation_matrix: Idea/ablation_matrix.json
+  method_name: Idea/method_name.json
+  module_names: Idea/module_names.json
+phase: paper
+project_type: multi_slot_standalone
+slot_coverage:
+- slot: spatial
+  depth: full
+  innovations:
+  - reidmamba_mgfe
+- slot: reconstruction
+  depth: sub_component
+  innovations:
+  - reidmamba_ratr
+source_projects: []
+paper_readiness:
+  target_venue: Symmetry (MDPI)
+  venue_tier: Q3
+  estimated_slots_needed: 1
+  current_slot_count: 2
+  gap: 0
+combination_history: []

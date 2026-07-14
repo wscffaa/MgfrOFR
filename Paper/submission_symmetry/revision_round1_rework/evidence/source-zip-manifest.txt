@@ -1,0 +1,33 @@
+Archive:  upload/MGFROFR-latex-source.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+     5459  07-01-2026 15:52   MGFROFR.tex
+    19213  07-01-2026 15:52   MGFROFR.bbl
+    20348  07-01-2026 02:13   references.bib
+     1220  07-01-2026 13:06   sections/abstract.tex
+      781  05-10-2026 21:47   sections/authors.tex
+     2648  07-01-2026 13:45   sections/conclusion.tex
+    11968  07-01-2026 13:45   sections/discussion.tex
+     5291  07-01-2026 13:24   sections/introduction.tex
+    26771  07-01-2026 14:13   sections/method.tex
+     7857  07-01-2026 13:24   sections/related_work.tex
+    23481  07-01-2026 14:40   sections/results.tex
+    92233  05-10-2026 22:58   figures/Fig1_mgfrofr_architecture.pdf
+   209045  05-10-2026 23:15   figures/Fig2_mgfe_module_detail.pdf
+   225875  05-10-2026 23:26   figures/Fig3_ratr_module_detail.pdf
+ 13300566  07-01-2026 13:59   figures/Fig4_SOTA_Synthetic_REDS_synthetic_Qualitative_roi_tile_special.jpg
+  3412151  05-11-2026 05:06   figures/Fig5_SOTA_RealWorld_SRWOV_Qualitative.jpg
+  3374957  05-11-2026 05:06   figures/Fig6_Ablation_REDS_synthetic_Qualitative.jpg
+    24737  04-14-2026 02:19   figures/Fig9a_branch_similarity.pdf
+  6791884  04-19-2026 20:27   figures/Fig9b_error_map.pdf
+    12671  05-10-2026 17:10   Definitions/logo-orcid.pdf
+    13161  05-10-2026 17:13   Definitions/logo-mdpi-eps-converted-to.pdf
+   563678  05-10-2026 17:10   Definitions/logo-mdpi.eps
+   287998  05-10-2026 17:10   Definitions/logo-updates.eps
+   120406  05-10-2026 17:10   Definitions/journalnames.tex
+    62350  05-10-2026 17:10   Definitions/mdpi.cls
+    71315  05-10-2026 17:10   Definitions/mdpi_apacite.sty
+    23683  05-10-2026 17:10   Definitions/mdpi.bst
+    37920  05-10-2026 17:10   Definitions/mdpi_chicago.bst
+---------                     -------
+ 28749667                     28 files
