@@ -1,0 +1,137 @@
+name: mgfrofr_a1_mgfe
+model_type: MGFROFRModel
+scale: 1
+num_gpu: 1
+manual_seed: 2021
+dist: false
+find_unused_parameters: true
+
+datasets:
+  train:
+    name: REDS
+    type: Film_dataset_1
+    dataroot_gt: datasets/OldFilmRestoration/train/REDS/train_sharp
+    dataroot_lq: datasets/OldFilmRestoration/train/REDS/train_sharp
+    is_train: true
+    num_frame: 7
+    gt_size: [256, 256]
+    scale: 1
+    interval_list: [1, 2]
+    random_reverse: false
+    use_flip: true
+    use_rot: true
+    normalizing: true
+    texture_template: datasets/OldFilmRestoration/noise_data
+    io_backend:
+      type: disk
+    use_shuffle: true
+    num_worker_per_gpu: 4
+    batch_size_per_gpu: 1
+    dataset_enlarge_ratio: 1
+
+  val:
+    name: OldFilmval
+    type: Film_dataset_1
+    dataroot_gt: datasets/OldFilmRestoration/val/miniREDS/GT/val_sharp
+    dataroot_lq: datasets/OldFilmRestoration/val/miniREDS/LQ/val_sharp_degraded
+    num_frame: -1
+    cache_data: true
+    normalizing: true
+    io_backend:
+      type: disk
+
+network_g:
+  type: MgfrOFR
+  num_feat: 16
+  num_block: 6
+  flow_type: raft
+  use_checkpoint: true
+  mamba_embed_dim: 64
+  mamba_depths: [2, 2, 2]
+  mamba_d_state: 16
+  mamba_mlp_ratio: 1.2
+  mamba_drop_path: 0.0
+  use_mgfe: true
+  mgfe_num_tokens: 12
+  mgfe_num_branches: 3
+  mgfe_token_fusion: max
+
+network_d:
+  type: RTNDiscriminator
+  in_channels: 3
+  base_channels: 64
+  use_sigmoid: false
+  use_spectral_norm: true
+
+train:
+  ema_decay: 0.0
+  train_visualization_iter: 1000
+  net_d_iters: 1
+  net_d_init_iters: 0
+  g_gan_weight: 0.01
+  d_gan_weight: 1.0
+  total_iter: 200000
+  use_ratr: false
+
+  early_stopping:
+    enabled: false
+    metric: psnr
+    patience: 6
+    min_delta: 0.05
+    mode: max
+    save_best: true
+
+  optim_g:
+    type: Adam
+    lr: !!float 2e-4
+    betas: [0.9, 0.99]
+
+  optim_d:
+    type: Adam
+    lr: !!float 2e-4
+    betas: [0.9, 0.99]
+
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1.0
+    reduction: mean
+
+  perceptual_opt:
+    type: VGGLoss
+    loss_weight: 1.0
+
+  gan_opt:
+    type: AdversarialLoss
+    loss_type: nsgan
+    loss_weight: 1.0
+
+  scheduler:
+    type: MultiStepLR
+    milestones: [50000, 100000, 150000]
+    gamma: 0.5
+
+val:
+  val_freq: !!float 5e3
+  save_img: false
+  val_chunk_size: -1
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: true
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: true
+
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 5e3
+  use_tb_logger: true
+
+path:
+  experiments_root: experiments
+  pretrain_network_g: pretrained/mambaofr_reds_16_net_g_best.pth  # warm-start from canonical baseline
+  pretrain_network_d: ~
+  resume_state: ~
+  tb_logger: tb_logger
