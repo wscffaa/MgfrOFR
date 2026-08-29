@@ -9,9 +9,10 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
-import mgfrofr.archs  # noqa: F401,E402
-import mgfrofr.losses  # noqa: F401,E402
-import mgfrofr.models  # noqa: F401,E402
+# 与仓根 train.py/test.py 保持同一注册路径：框架扫描器负责加载方法包。
+import basicofr.archs  # noqa: F401,E402
+import basicofr.losses  # noqa: F401,E402
+import basicofr.models  # noqa: F401,E402
 from basicsr.utils.registry import ARCH_REGISTRY, LOSS_REGISTRY, MODEL_REGISTRY  # noqa: E402
 
 
