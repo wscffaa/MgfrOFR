@@ -56,6 +56,6 @@ val:
 logger:
   print_freq: 100
 path:
-  pretrain_network_g: Exp/experiments/mgfrofr_g2/models/net_g_best.pth
+  pretrain_network_g: Exp/experiments/mgfrofr_g2/models/net_g_180000.pth
   results_root: Exp/results_best
   results_subdir: mgfrofr_g2_synthetic

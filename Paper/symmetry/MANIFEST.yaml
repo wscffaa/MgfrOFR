@@ -1,0 +1,20 @@
+journal: "Symmetry (MDPI)"
+manuscript_id: symmetry-4339980
+updated: "2026-08-30"
+canonical_source:
+  main: 04_final_proof_symmetry_4339980/source/symmetry-4339980-english.tex
+  supplementary: ""
+lifecycle:
+  - date: "2026-07-01"
+    stage: round1-revision-submission
+    kind: submission_package
+    path: 02_revision_round1_rework
+  - date: "2026-07-08"
+    stage: round2-revision-submission
+    kind: submission_package
+    path: 03_revision_round2_rework
+  - date: "2026-07-11"
+    stage: final-proof-author-proofreading
+    kind: proof_package
+    path: 04_final_proof_symmetry_4339980
+review_index: []
